@@ -15,6 +15,11 @@
 
 .balle {
   color: red;
+  text-decoration: dotted;
+}
+
+.red {
+  content: "";
 }
 
 
