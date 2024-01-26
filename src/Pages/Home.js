@@ -14,7 +14,7 @@ const Home = (props) => {
             <Scoreboard
                 players={props.players}
             />
-
+            
             <Link to="/menu" className="d-flex">
                 Start
             </Link>
