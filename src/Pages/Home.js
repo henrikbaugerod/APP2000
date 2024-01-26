@@ -1,5 +1,7 @@
 import React from 'react';
 import Header from '../Components/Header';
+import Scoreboard from '../Components/Scoreboard';
+import { Link } from 'react-router-dom';
 
 const Home = (props) => {
 
@@ -9,12 +11,17 @@ const Home = (props) => {
                 title={''}
             />
 
-            {props.array.map((item) => (
-                <div>
-                    <p>{item.name}</p>
-                    <span>{item.age}</span>
-                </div>
-            ))}
+            <Scoreboard
+                players={props.players}
+            />
+
+            <Link to="/menu" className="d-flex">
+                Start
+            </Link>
+
+            <Link to="/menu" className="d-flex">
+                Start
+            </Link>
 
         </div>
 
