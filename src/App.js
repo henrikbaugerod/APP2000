@@ -19,7 +19,7 @@ function App() {
     return (
         <div className="App">
             <Home
-                array={playesr}
+                array={players}
             />
         </div>
     );
