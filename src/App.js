@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, HashRouter, useLocation } from "react-router-dom";
 import Home from "./Pages/Home";
 import Menu from "./Pages/Menu";
+import NewGame from "./Pages/NewGame";
 
 
 let players = [
@@ -46,6 +47,12 @@ function App() {
                 <Route path="/menu"
                     element={<Menu
 
+                    />}
+                />
+
+                <Route path="/newgame"
+                    element={<NewGame
+                        players={players}
                     />}
                 />
 

@@ -19,8 +19,8 @@ const Home = (props) => {
                 Start
             </Link>
 
-            <Link to="/menu" className="d-flex">
-                Start
+            <Link to="/newgame" className="d-flex">
+                NewGame
             </Link>
 
         </div>
