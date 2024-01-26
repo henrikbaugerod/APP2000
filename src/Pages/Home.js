@@ -21,7 +21,7 @@ const Home = (props) => {
 
 
 
-            <div className="row mt-5">
+            <div className="row mt-5 mb-5">
                 <div className="col-6">
                     <Link to="/newgame" className="d-flex btn bg-darkPurple text-white justify-content-center py-3 rounded-pill">
                         Play

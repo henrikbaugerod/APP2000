@@ -40,7 +40,7 @@ const Scoreboard = (props) => {
             </div>
 
             {props.players.map((player, key) => (
-                key > 2 ? (
+                key > 2 && key <= 6 ? (
                     <PlayerBox 
                         name={player.name}
                         points={player.points}

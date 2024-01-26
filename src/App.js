@@ -40,6 +40,24 @@ const players = [
         "name": 'Ståle',
         "age": 20,
         "points": 30
+    },
+    {
+        "key": 6,
+        "name": 'Mattis',
+        "age": 20,
+        "points": 30
+    },
+    {
+        "key": 7,
+        "name": 'Thor',
+        "age": 20,
+        "points": 30
+    },
+    {
+        "key": 8,
+        "name": 'Henning',
+        "age": 20,
+        "points": 30
     }
 ];
 
