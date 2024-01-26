@@ -14,14 +14,25 @@ const Home = (props) => {
             <Scoreboard
                 players={props.players}
             />
-            
-            <Link to="/menu" className="d-flex">
-                Start
-            </Link>
 
-            <Link to="/newgame" className="d-flex">
-                NewGame
-            </Link>
+            <div className="row mt-5 text-center">
+                <h2>We billiard.</h2>
+            </div>
+
+
+
+            <div className="row mt-5">
+                <div className="col-6">
+                    <Link to="/newgame" className="d-flex btn bg-darkPurple text-white justify-content-center py-3 rounded-pill">
+                        Play
+                    </Link>
+                </div>
+                <div className="col-6">
+                    <Link to="/menu" className="d-flex btn border border-white text-white justify-content-center py-3 rounded-pill">
+                        Menu
+                    </Link>
+                </div>
+            </div>
 
         </div>
 

@@ -46,8 +46,12 @@ body {
 
 /* Scoreboard.js */
 /* =====================================  */
+.bg-purple {
+    background-color: #7900FF !important;
+}
+
 .bg-darkPurple {
-    background-color: #7900FF;
+    background-color: #2E1230 !important;
 }
 
 .bg-silver {

@@ -3,8 +3,8 @@ import React from 'react';
 const PlayerBox = (props) => {
 
     return (
-        <div className="col-12 mb-3">
-            <div className="bg-darkPurple p-3 playerBox rounded-3">
+        <div className="col-12 mb-2">
+            <div className="bg-purple p-3 playerBox rounded-3">
                 <div className="row align-items-center">
                     <div class="col-auto">
                         <h4 className="mb-0">{props.place + 1}</h4>
