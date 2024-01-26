@@ -15,6 +15,23 @@ body {
     max-height: 60px;
 }
 
+.menu-button {
+    background-color: #7900FF;
+    color: white;
+    border-radius: 8px;
+    font-size: 30px;
+    padding: 20px; 
+    align-items: left;
+    text-align: left;
+    border: none;
+}
+
+.menu-icon {
+    filter: invert(100%);
+    width: 60px;
+    height: 60px;
+    padding-right: 20px;
+}
 
 
 /* =====================================  */
