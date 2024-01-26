@@ -19,7 +19,7 @@ const NewGamePlayer = () => {
                 </div>
 
                 {/* Points */}
-                <div className="newGamePoints bg-darkPurple">
+                <div className="newGamePoints bg-darkPurple rounded-3">
                     <p>poeng</p>
                 </div>
             </div>

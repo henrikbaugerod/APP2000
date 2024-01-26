@@ -29,19 +29,34 @@ body {
 }
 
 .newGameName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newGameName p {
     text-align: center;
+    margin-bottom: 0px;
 }
 
 .newGamePoints {
     width: 100px;
     height: 40px;
-    margin: auto;
     object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .newGamePoints p {
     text-align: center;
+    margin-bottom: 0px;
 }
+
+
+
+
+
 
 /* Scoreboard.js */
 /* =====================================  */
