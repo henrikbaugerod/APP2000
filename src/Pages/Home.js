@@ -1,13 +1,13 @@
 import React from 'react';
+import Header from '../Components/Header';
 
 const Home = () => {
 
     return (
         <div className="container">
-            <div className="row">
-                <h1>Hello</h1>
-            </div>
+            <Header />
         </div>
+        
     );
 };
 
