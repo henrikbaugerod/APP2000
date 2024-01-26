@@ -4,7 +4,7 @@ import Menu from "./Pages/Menu";
 import NewGame from "./Pages/NewGame";
 
 
-let players = [
+const players = [
     {
         "key": 0,
         "name": 'henrik',
@@ -15,7 +15,7 @@ let players = [
         "key": 1,
         "name": 'hanne',
         "age": 20,
-        "points": 24
+        "points": 2
     },
     {
         "key": 2,
@@ -27,15 +27,48 @@ let players = [
         "key": 3,
         "name": 'morten',
         "age": 4,
-        "points": 40
+        "points": 23
     },
     {
         "key": 4,
         "name": 'per',
         "age": 4,
         "points": 38
+    },
+    {
+        "key": 5,
+        "name": 'Ståle',
+        "age": 20,
+        "points": 30
+    },
+    {
+        "key": 6,
+        "name": 'Mattis',
+        "age": 20,
+        "points": 30
+    },
+    {
+        "key": 7,
+        "name": 'Thor',
+        "age": 20,
+        "points": 30
+    },
+    {
+        "key": 8,
+        "name": 'Henning',
+        "age": 20,
+        "points": 30
     }
 ];
+
+const sortedPlayers = (players) => {
+    // Deep copy the original array
+    const sortedList = JSON.parse(JSON.stringify(players));
+    // Sort the copied array
+    return sortedList.sort((a, b) => b.points - a.points);
+}
+
+const sortedPlayersList = sortedPlayers(players);
 
 
 function App() {
@@ -45,7 +78,7 @@ function App() {
 
                 <Route path="/"
                     element={<Home
-                        players={players}
+                        players={sortedPlayersList}
                     />}
                 />
 
@@ -57,7 +90,7 @@ function App() {
 
                 <Route path="/newgame"
                     element={<NewGame
-                        players={players}
+                        players={sortedPlayersList}
                     />}
                 />
 
