@@ -8,18 +8,18 @@ const NewGamePlayer = () => {
 
                 {/* Picture */}
                 <div className="col-12">
-                    <div className="circle">
-                        
+                    <div className="circle bg-darkPurple">
+
                     </div>
                 </div>
 
                 {/* Name */}
-                <div>
+                <div className="newGameName">
                     <p>tekst</p>
                 </div>
 
                 {/* Points */}
-                <div>
+                <div className="newGamePoints bg-darkPurple">
                     <p>poeng</p>
                 </div>
             </div>
