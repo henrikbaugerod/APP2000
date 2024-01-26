@@ -1,8 +1,9 @@
+import Home from "./Pages/Home";
 
 function App() {
     return (
         <div className="App">
-            <h1>Welcome to Catch Billiard</h1>
+            <Home />
         </div>
     );
 }
