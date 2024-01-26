@@ -1,13 +1,23 @@
 import React from 'react';
 import Header from '../Components/Header';
 
-const Home = () => {
+const Home = (props) => {
 
     return (
         <div className="container">
-            <Header />
+            <Header
+                title={''}
+            />
+
+            {props.array.map((item) => (
+                <div>
+                    <p>{item.name}</p>
+                    <span>{item.age}</span>
+                </div>
+            ))}
+
         </div>
-        
+
     );
 };
 
