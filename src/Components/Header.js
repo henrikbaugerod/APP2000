@@ -3,7 +3,7 @@ import React from 'react';
 const Header = (props) => {
 
     return (
-        <div className="row justify-content-center text-center py-4">
+        <div className="row justify-content-center text-center py-4 mb-4">
             <div className="header-logo">
                 <img src="images/Group 93.svg" alt="" />
 

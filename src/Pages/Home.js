@@ -14,13 +14,13 @@ const Home = (props) => {
             <Scoreboard
                 players={props.players}
             />
-
+            
             <Link to="/menu" className="d-flex">
                 Start
             </Link>
 
-            <Link to="/menu" className="d-flex">
-                Start
+            <Link to="/newgame" className="d-flex">
+                NewGame
             </Link>
 
         </div>
