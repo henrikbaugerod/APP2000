@@ -74,7 +74,7 @@ body {
 
 
 
-
+/* =====================================  */
 /* Scoreboard.js */
 /* =====================================  */
 .bg-purple {
@@ -113,6 +113,10 @@ body {
     border: 2px solid #FFD600;
 }
 
+/* =====================================  */
+/* Home.js */
+/* =====================================  */
+
 .podium-side {
     height: 180px;
     width: 35%;
@@ -145,6 +149,9 @@ body {
     margin-top: 20px;
 }
 
+/* =====================================  */
+/* Players.js */
+/* =====================================  */
 .playerBox img {
     width: 35px;
     height: 35px;
@@ -154,4 +161,8 @@ body {
 
 .playerButton:hover > .playerBox {
     background-color: #8d29ff !important;
+}
+
+.categoryButton:hover {
+    background-color: #41008c !important;
 }

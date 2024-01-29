@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 
 const Players = (props) => {
     const [filtredPlayers, setfiltredPlayers] = useState(null);
+    const [selectedCategory, setSelectedCategory] = useState("all");
+
     useEffect(() => {
         setfiltredPlayers(props.players);
     }, []);
@@ -14,6 +16,8 @@ const Players = (props) => {
         playerCategory !== "all"
             ? setfiltredPlayers(filterPlayers(playerCategory))
             : setfiltredPlayers(props.players);
+
+        setSelectedCategory(e.target.value)
     }
 
     function filterPlayers(category) {
@@ -29,17 +33,17 @@ const Players = (props) => {
 
             <div className="row gx-0 mb-4" style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.3)' }}>
                 <div className="col-4 text-center">
-                    <button value="all" onClick={handleCategory}>
+                    <button value="all" onClick={handleCategory} className={`${selectedCategory == 'all' ? 'bg-purple' : 'bg-normalPurple'} w-100 border-0 py-2 text-white categoryButton`}>
                         All
                     </button>
                 </div>
                 <div className="col-4 text-center">
-                    <button value="catch" onClick={handleCategory}>
+                    <button value="catch" onClick={handleCategory} className={`${selectedCategory == 'catch' ? 'bg-purple' : 'bg-normalPurple'} w-100 border-0 py-2 text-white categoryButton`}>
                         Catch
                     </button>
                 </div>
                 <div className="col-4 text-center">
-                    <button value="external" onClick={handleCategory}>
+                    <button value="external" onClick={handleCategory} className={`${selectedCategory == 'external' ? 'bg-purple' : 'bg-normalPurple'} w-100 border-0 py-2 text-white categoryButton`}>
                         External
                     </button>
                 </div>
@@ -58,10 +62,10 @@ const Players = (props) => {
                                 </div>
                             </div>
                             <div className="col text-start">
-                                <Link to="/newplayer">
-                                <h5 className="mb-0 text-capitalize">Add new player</h5>
+                                <Link to="/newplayer" className="text-decoration-none text-white">
+                                    <h5 className="mb-0 text-capitalize">Add new player</h5>
                                 </Link>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -69,7 +73,7 @@ const Players = (props) => {
             </div>
 
             {filtredPlayers &&
-                filtredPlayers.map((player, key) => (
+                filtredPlayers.map((player) => (
                     <PlayerBox
                         name={player.name}
                         image={player.image}
