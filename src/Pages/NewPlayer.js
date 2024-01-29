@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../Components/Header';
+import { Link } from 'react-router-dom';
 
 const NewPlayer = () => {
 
@@ -37,6 +38,18 @@ const NewPlayer = () => {
                                 <label class="form-check-label" for="external">External</label>
                             </div>
                     </div>
+                </div>
+            </div>
+            <div className="row mt-5 pt-5">
+                <div className="col-6">
+                    <Link to="/playerprofile" className="d-flex btn bg-darkPurple text-white justify-content-center py-3 rounded-pill">
+                        Register
+                    </Link>
+                </div>
+                <div className="col-6">
+                    <Link to="/players" className="d-flex btn border border-white text-white justify-content-center py-3 rounded-pill">
+                        Cancel
+                    </Link>
                 </div>
             </div>
 
