@@ -166,3 +166,14 @@ body {
 .categoryButton:hover {
     background-color: #41008c !important;
 }
+
+/* =====================================  */
+/* NewPlayer.js */
+/* =====================================  */
+
+.borderCircle{
+    width: 110px;
+    height: 110px;
+    border-style: solid;
+    border-color: #8d29ff;
+}
