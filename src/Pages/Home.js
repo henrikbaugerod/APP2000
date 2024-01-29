@@ -8,7 +8,7 @@ const Home = (props) => {
     return (
         <div className="container">
             <Header
-                title={''}
+                showBackButton={false}
             />
 
             <Scoreboard

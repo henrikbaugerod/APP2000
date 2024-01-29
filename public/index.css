@@ -81,6 +81,10 @@ body {
     background-color: #7900FF !important;
 }
 
+.bg-normalPurple {
+    background-color: #6100CC !important;
+}
+
 .bg-darkPurple {
     background-color: #2E1230 !important;
 }
@@ -146,4 +150,8 @@ body {
     height: 35px;
     object-fit: cover;
     border-radius: 50%;
+}
+
+.playerButton:hover > .playerBox {
+    background-color: #8d29ff !important;
 }

@@ -9,9 +9,9 @@ const Menu = (props) => {
     return (
         <div className="container">
             <Header
-                title={''}
+                backLink={'/'}
             />
-            
+
             <Link to="/players" className="text-decoration-none">
                 <MenuButton
                     image={'./images/user-regular.svg'}
