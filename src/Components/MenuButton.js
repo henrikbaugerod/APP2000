@@ -1,12 +1,12 @@
 import React from 'react';
 
-const MenuButton = () => {
+const MenuButton = (props) => {
 
     return (
         <div className="row justify-content-center">
-            <button className="menu-button">
-                <img src='./images/user-regular.svg' className='menu-icon ms-4'/>
-                Players
+            <button className="menu-button mb-4 d-flex align-items-center">
+                <img src={props.image} className='menu-icon ms-4'/>
+                <p className='mb-0'>{props.text}</p>
             </button>
         </div>
     );
