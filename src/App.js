@@ -8,63 +8,61 @@ const players = [
     {
         "key": 0,
         "name": 'henrik',
-        "age": 4,
+        "image": 'images/person.jpg',
         "points": 30
     },
     {
         "key": 1,
         "name": 'hanne',
-        "age": 20,
+        "image": 'images/person.jpg',
         "points": 2
     },
     {
         "key": 2,
         "name": 'anders',
-        "age": 4,
+        "image": 'images/person.jpg',
         "points": 3
     },
     {
         "key": 3,
         "name": 'morten',
-        "age": 4,
+        "image": 'images/person.jpg',
         "points": 23
     },
     {
         "key": 4,
         "name": 'per',
-        "age": 4,
+        "image": 'images/person.jpg',
         "points": 38
     },
     {
         "key": 5,
         "name": 'Ståle',
-        "age": 20,
+        "image": 'images/person.jpg',
         "points": 30
     },
     {
         "key": 6,
         "name": 'Mattis',
-        "age": 20,
+        "image": 'images/person.jpg',
         "points": 30
     },
     {
         "key": 7,
         "name": 'Thor',
-        "age": 20,
+        "image": 'images/person.jpg',
         "points": 30
     },
     {
         "key": 8,
         "name": 'Henning',
-        "age": 20,
+        "image": 'images/person.jpg',
         "points": 30
     }
 ];
 
 const sortedPlayers = (players) => {
-    // Deep copy the original array
     const sortedList = JSON.parse(JSON.stringify(players));
-    // Sort the copied array
     return sortedList.sort((a, b) => b.points - a.points);
 }
 
