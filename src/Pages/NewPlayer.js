@@ -17,6 +17,15 @@ const NewPlayer = () => {
                     </div>
                 </div>
             </div>
+            <div className='row mt-3 justify-content-center'>
+                <div className='col-3'>
+                    <div className='editButton'>
+                    <Link to="/" className="d-flex btn bg-darkPurple text-white justify-content-center py-3 rounded-pill">
+                        Edit
+                    </Link>
+                    </div>
+                </div>
+            </div>
             <div className='row mt-5'>
                 <div className='col-12'>
                     <div className='textBox'>

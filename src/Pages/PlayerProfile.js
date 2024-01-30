@@ -16,12 +16,16 @@ const playerprofile = () => {
                     </div>
                 </div>
             </div>
-            <div className="row justify-content-center mt-5">
-                <div className='col-5'>
-                    <div className='buttons'>
-                        <button type="button">Click Me!</button>
-                        <button type="button">Click me!</button>
-                    </div>
+            <div className="row gx-0 mt-5" style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.3)' }}>
+                <div className='col-6 text-center'>
+                    <button type="button" id="highlight" className='bg-purple bg-normalPurple w-100 border-0 py-2 text-white categoryButton'>
+                        Information
+                    </button>
+                </div>
+                <div className='col-6 text-center'>
+                    <button type="button" className='bg-purple bg-normalPurple w-100 border-0 py-2 text-white categoryButton'>
+                        Stats
+                    </button>
                 </div>
             </div>
         </div>

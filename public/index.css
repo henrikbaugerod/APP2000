@@ -172,8 +172,8 @@ body {
 /* =====================================  */
 
 .borderCircle{
-    width: 110px;
-    height: 110px;
+    width: 145px;
+    height: 145px;
     border-style: solid;
     border-color: #8d29ff;
 }
@@ -203,4 +203,12 @@ body {
     width: 25px !important;
     height: 25px !important;
     margin-bottom: 10px;
+}
+
+/* =====================================  */
+/* PlayerProfile.js */
+/* =====================================  */
+
+#highlight, #highlight:hover, #highlight:active, #highlight:focus {
+    color: white !important;
 }
