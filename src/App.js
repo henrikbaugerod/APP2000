@@ -5,6 +5,7 @@ import Menu from "./Pages/Menu";
 import NewGame from "./Pages/NewGame";
 import Players from "./Pages/Players";
 import NewPlayer from './Pages/NewPlayer';
+import PlayerProfile from './Pages/PlayerProfile';
 
 
 const players = [
@@ -117,6 +118,13 @@ function App() {
 
                 <Route path="/newplayer"
                     element={<NewPlayer
+                        players={sortedPlayersList}
+                        setPlayers={setSortedPlayersList}
+                    />}
+                />
+
+                <Route path="/playerprofile"
+                    element={<PlayerProfile
                         players={sortedPlayersList}
                         setPlayers={setSortedPlayersList}
                     />}
