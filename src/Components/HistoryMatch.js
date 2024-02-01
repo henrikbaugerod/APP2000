@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 const HistoryMatch = (props) => {
     console.log(new Date(8.64e15).toString());
@@ -11,8 +13,11 @@ const HistoryMatch = (props) => {
                 <div className="col-4 text-start">
                         <h5 className="mb-0">{props.date}</h5>
                     </div>
+                
                     <div className="col-1">
-                        <img src={props.image} alt="" />
+                        <Link to="/players">
+                            <img src={props.image} alt=""/>
+                        </Link>
                     </div>
                     <div className="col-1">
                         <h5>vs</h5>
