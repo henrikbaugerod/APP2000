@@ -11,9 +11,15 @@ body {
 /* =====================================  */
 /* Header.js */
 /* =====================================  */
+
 .header-logo img {
     max-height: 60px;
 }
+
+
+/* =====================================  */
+/* Menu-js */
+/* =====================================  */
 
 .menu-button {
     background-color: #7900FF;
@@ -71,12 +77,11 @@ body {
 }
 
 
-
-
-
 /* =====================================  */
 /* Scoreboard.js */
 /* =====================================  */
+
+
 .bg-purple {
     background-color: #7900FF !important;
 }
@@ -199,7 +204,7 @@ body {
     font-size: 20px;
 }
 
-.form-check-input {
+.form-radio-input {
     width: 25px !important;
     height: 25px !important;
     margin-bottom: 10px;
@@ -211,4 +216,12 @@ body {
 
 #highlight, #highlight:hover, #highlight:active, #highlight:focus {
     color: white !important;
+}
+
+/* =====================================  */
+/* History.js */
+/* =====================================  */
+
+.history-image {
+
 }

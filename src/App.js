@@ -6,6 +6,7 @@ import NewGame from "./Pages/NewGame";
 import Players from "./Pages/Players";
 import NewPlayer from './Pages/NewPlayer';
 import PlayerProfile from './Pages/PlayerProfile';
+import History from './Pages/History';
 
 import { collection, getDocs } from "firebase/firestore";
 import { db } from './firebase';
@@ -73,6 +74,12 @@ function App() {
                     element={<PlayerProfile
                         players={players}
                         setPlayers={setPlayers}
+                    />}
+                />
+
+                <Route path="/history"
+                    element={<History
+
                     />}
                 />
 
