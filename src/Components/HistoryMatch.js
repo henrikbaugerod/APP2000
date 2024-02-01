@@ -5,13 +5,26 @@ const HistoryMatch = (props) => {
 
 
     return (
-        <div className="row justify-content-center">
-            <button className="history-button mb-4 d-flex">
-                <p>01.02.2024</p>
-                <img src={props.image} className='history-image ms-4' alt="profile" />
-
-                <p>Score</p>
-            </button>
+        <div className="col-12 mb-2 text-white border-0" key="{props.place}" style={{ backgroundColor: 'transparent' }}>
+            <div className="p-3 playerBox">
+                <div className="row align-items-center">
+                <div className="col-4 text-start">
+                        <h5 className="mb-0">{props.date}</h5>
+                    </div>
+                    <div className="col-1">
+                        <img src={props.image} alt="" />
+                    </div>
+                    <div className="col-1">
+                        <h5>vs</h5>
+                    </div>
+                    <div className="col-1">
+                        <img src={props.image2} alt="" />
+                    </div>
+                    <div className="col-4 text-end">
+                        <h5 className="mb-0 fw-semibold">{props.score}</h5>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

@@ -56,7 +56,11 @@ const History = (props) => {
 
                 <Link to="/players" className="text-decoration-none">
                 <HistoryMatch
+                    date={"2.februar"}
                     image={'./images/user-regular.svg'}
+                    image2={'./images/user-regular.svg'}
+                    score={'1-1'}
+                    
                 />
                 </Link>
 
