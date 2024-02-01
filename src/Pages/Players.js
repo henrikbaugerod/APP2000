@@ -21,7 +21,7 @@ const Players = (props) => {
     }
 
     function filterPlayers(category) {
-        let filtredPlayers = props.players.filter(type => type.category === category);
+        let filtredPlayers = props.players.filter(type => type.location === category);
         return filtredPlayers;
     }
 
@@ -51,22 +51,22 @@ const Players = (props) => {
 
             <div className="row">
                 <Link to="/newplayer" className="col-12 mb-4 text-white border-0 playerButton" key={props.place} style={{ backgroundColor: 'transparent', textDecoration: 'none' }}>
-                  
-                        <h5 className="bg-purple p-3 playerBox rounded-3">
-                            <div className="row align-items-center">
-                                <div className="col-1">
-                                    <h4 className="mb-0">#</h4>
-                                </div>
-                                <div className="col-auto">
-                                    <div className="bg-normalPurple" style={{ width: '35px', height: '35px', borderRadius: '50%' }}>
-                                        <img src="./images/Vector.svg" alt="" style={{ width: '100%', padding: '8px' }} />
-                                    </div>
-                                </div>
-                                <div className="col text-start">
-                                    Add new player
+
+                    <h5 className="bg-purple p-3 playerBox rounded-3">
+                        <div className="row align-items-center">
+                            <div className="col-1">
+                                <h4 className="mb-0">#</h4>
+                            </div>
+                            <div className="col-auto">
+                                <div className="bg-normalPurple" style={{ width: '35px', height: '35px', borderRadius: '50%' }}>
+                                    <img src="./images/Vector.svg" alt="" style={{ width: '100%', padding: '8px' }} />
                                 </div>
                             </div>
-                        </h5>
+                            <div className="col text-start">
+                                Add new player
+                            </div>
+                        </div>
+                    </h5>
 
                 </Link>
             </div>
@@ -75,12 +75,14 @@ const Players = (props) => {
             {filtredPlayers &&
                 filtredPlayers.map((player) => (
                     <PlayerBox
+                        key={player.id}
                         name={player.name}
                         image={player.image}
                         points={player.points}
                         place={player.ranking}
                     />
-                ))}
+                ))
+            }
 
         </div>
     );

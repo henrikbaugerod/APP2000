@@ -45,6 +45,7 @@ const Scoreboard = (props) => {
                         image={player.image}
                         points={player.points}
                         place={key}
+                        key={key}
                     />
                 ) : ''
             ))}
