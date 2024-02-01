@@ -12,6 +12,7 @@ const HistoryMatch = (props) => {
                 <div className="col-4 text-start">
                         <h5 className="mb-0">{props.date}</h5>
                     </div>
+                
                     <div className="col-1">
                     <Link to="/players" className="text-decoration-none">
                         <img src={props.image} alt="" />

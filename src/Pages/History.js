@@ -59,7 +59,6 @@ const History = (props) => {
                     image={'./images/user-regular.svg'}
                     image2={'./images/user-regular.svg'}
                     score={'1-1'}
-                    
                 />
 
             </div>
