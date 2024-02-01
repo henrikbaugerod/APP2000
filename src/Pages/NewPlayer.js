@@ -38,12 +38,12 @@ const NewPlayer = () => {
                     <div className='header1'>
                         <h1>Category</h1>
                             <div className='checkBox'>
-                                <input class="form-radio-input" type="radio" id="cat" name="cat" value="catch"/>
-                                <label class="form-check-label" for="catch">Catch</label>
+                                <input className="form-radio-input" type="radio" id="cat" name="cat" value="catch"/>
+                                <label className="form-check-label" htmlFor="catch">Catch</label>
                             </div>
                             <div className='checkBox'>
-                            <input class="form-radio-input" type="radio" id="cat" name="cat" value="external"/>
-                                <label class="form-check-label" for="external">External</label>
+                            <input className="form-radio-input" type="radio" id="cat" name="cat" value="external"/>
+                                <label className="form-check-label" htmlForfor="external">External</label>
                             </div>
                     </div>
                 </div>
