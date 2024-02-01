@@ -54,7 +54,6 @@ const History = (props) => {
                     </button>
                 </div>
 
-                <Link to="/players" className="text-decoration-none">
                 <HistoryMatch
                     date={"2.februar"}
                     image={'./images/user-regular.svg'}
@@ -62,7 +61,6 @@ const History = (props) => {
                     score={'1-1'}
                     
                 />
-                </Link>
 
             </div>
 
