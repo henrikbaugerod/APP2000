@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
 const HistoryMatch = (props) => {
     console.log(new Date(8.64e15).toString());
 
@@ -15,9 +14,9 @@ const HistoryMatch = (props) => {
                     </div>
                 
                     <div className="col-1">
-                        <Link to="/players">
-                            <img src={props.image} alt=""/>
-                        </Link>
+                    <Link to="/players" className="text-decoration-none">
+                        <img src={props.image} alt="" />
+                    </Link>
                     </div>
                     <div className="col-1">
                         <h5>vs</h5>
