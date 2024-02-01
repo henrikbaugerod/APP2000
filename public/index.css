@@ -183,7 +183,7 @@ body {
     height: 60px;
     background-color: #7900FF;
     border: none;
-    color: none;
+    color: white;
     padding-left: 15px;
     font-size: 20px;
 
@@ -209,6 +209,3 @@ body {
 /* PlayerProfile.js */
 /* =====================================  */
 
-#highlight, #highlight:hover, #highlight:active, #highlight:focus {
-    color: white !important;
-}

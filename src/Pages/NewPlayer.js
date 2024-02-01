@@ -39,7 +39,7 @@ const NewPlayer = () => {
                         <h1>Category</h1>
                             <div className='checkBox'>
                                 <input class="form-radio-input" type="radio" id="cat" name="cat" value="catch"/>
-                                <label class="form-check-label" for="catch">Catch</label>
+                                <label class="form-check-label" for="catch">CATCH</label>
                             </div>
                             <div className='checkBox'>
                             <input class="form-radio-input" type="radio" id="cat" name="cat" value="external"/>
