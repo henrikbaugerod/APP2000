@@ -11,7 +11,7 @@ const Header = (props) => {
 
             {props.showBackButton !== false ? (
                 <Link to={props.backLink !== '' ? props.backLink : '/'} className="position-absolute " style={{ transform: 'translateY(-50%)', top: '50%', left: '0', width: 'fit-content' }}>
-                    <img src="./images/arrow-left-regular.svg" alt="" style={{ width: '35px' }} />
+                    <img src="./images/arrow-left-regular.svg" alt="" style={{ width: '35px', filter: 'invert(100%)' }} />
                 </Link>
             ) : ''}
 

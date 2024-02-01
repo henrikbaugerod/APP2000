@@ -1,4 +1,3 @@
-import React, {useState, useEffect} from 'react';
 import Header from '../Components/Header';
 import { Link } from 'react-router-dom';
 
@@ -13,7 +12,7 @@ const NewPlayer = () => {
             <div className="row justify-content-center">
                 <div className="col-4">
                     <div className='profilePic'>
-                        <img src="./images/person.jpg"  alt="Profile Picture" className="rounded-circle borderCircle" />
+                        <img src="./images/person.jpg"  alt="Profile" className="rounded-circle borderCircle" />
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, HashRouter, useLocation } from "react-router-dom";
+import React, { useState } from 'react';
+import { Routes, Route, HashRouter } from "react-router-dom";
 import Home from "./Pages/Home";
 import Menu from "./Pages/Menu";
 import NewGame from "./Pages/NewGame";
