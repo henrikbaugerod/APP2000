@@ -6,6 +6,7 @@ import NewGame from "./Pages/NewGame";
 import Players from "./Pages/Players";
 import NewPlayer from './Pages/NewPlayer';
 import PlayerProfile from './Pages/PlayerProfile';
+import History from './Pages/History';
 
 
 const players = [
@@ -127,6 +128,12 @@ function App() {
                     element={<PlayerProfile
                         players={sortedPlayersList}
                         setPlayers={setSortedPlayersList}
+                    />}
+                />
+
+                <Route path="/history"
+                    element={<History
+
                     />}
                 />
 
