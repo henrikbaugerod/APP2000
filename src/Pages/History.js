@@ -53,9 +53,17 @@ const History = (props) => {
                         External
                     </button>
                 </div>
+            </div>
 
-                <HistoryMatch
-                    date={"2.februar"}
+            <div className=''>
+                <HistoryMatch 
+                    date={"1. Februar"}
+                    image={'./images/user-regular.svg'}
+                    image2={'./images/user-regular.svg'}
+                    score={'1-1'}
+                />
+                <HistoryMatch 
+                    date={"24. Januar"}
                     image={'./images/user-regular.svg'}
                     image2={'./images/user-regular.svg'}
                     score={'1-1'}
