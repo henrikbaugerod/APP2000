@@ -19,7 +19,8 @@ function App() {
             .then((querySnapshot) => {
                 const newData = querySnapshot.docs
                     .map((doc) => ({ ...doc.data(), id: doc.id }))
-                    .sort((a, b) => b.points - a.points); // Sort players by points in descending order
+                    .sort((a, b) => b.points - a.points) // Sort players by points in descending order
+                    .map((player, index) => ({ ...player, ranking: index })); // Add ranking to each player
                 setPlayers(newData);
             })
     }
