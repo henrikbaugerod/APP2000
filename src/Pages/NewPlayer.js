@@ -28,8 +28,8 @@ const NewPlayer = () => {
             <div className='row mt-5'>
                 <div className='col-12'>
                     <div className='textBox'>
-                        <input type="text" id="name" name="name" placeholder="Name" className='mb-3 rounded-3'></input>
-                        <input type="text" id="nickName" name="nickName" placeholder="Nickname" className='rounded-3'></input>
+                        <input type="text" id="enterName" name="name" placeholder="Name" className='mb-3 rounded-3'></input>
+                        <input type="text" id="enterNick" name="nickName" placeholder="Nickname" className='rounded-3'></input>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@ const NewPlayer = () => {
                                 <label class="form-check-label" for="catch">CATCH</label>
                             </div>
                             <div className='checkBox'>
-                            <input class="form-radio-input" type="radio" id="cat" name="cat" value="external"/>
+                                <input class="form-radio-input" type="radio" id="cat" name="cat" value="external"/>
                                 <label class="form-check-label" for="external">External</label>
                             </div>
                     </div>
@@ -50,9 +50,11 @@ const NewPlayer = () => {
             </div>
             <div className="row mt-5 pt-5">
                 <div className="col-6">
-                    <Link to="/playerprofile" className="d-flex btn bg-darkPurple text-white justify-content-center py-3 rounded-pill">
-                        Register
-                    </Link>
+                    <div className='buttonReg'>
+                        <button id="Register" className="d-flex btn bg-darkPurple text-white justify-content-center py-3 rounded-pill">
+                            Register
+                        </button>
+                    </div>
                 </div>
                 <div className="col-6">
                     <Link to="/players" className="d-flex btn border border-white text-white justify-content-center py-3 rounded-pill">
@@ -60,7 +62,6 @@ const NewPlayer = () => {
                     </Link>
                 </div>
             </div>
-
         </div>
     );
 };

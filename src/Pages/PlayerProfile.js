@@ -1,7 +1,8 @@
 import Header from '../Components/Header';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const Playerprofile = () => {
+const Playerprofile = (props) => {
     const [activeButton, setActiveButton] = useState('information');
 
     const handleTabChange = (tab) => {
@@ -17,6 +18,15 @@ const Playerprofile = () => {
                 <div className="col-4">
                     <div className='profilePic'>
                         <img src="./images/person.jpg" alt="profile" className="rounded-circle borderCircle" />
+                    </div>
+                </div>
+            </div>
+            <div className='row mt-3 justify-content-center'>
+                <div className='col-3'>
+                    <div className='editButton'>
+                    <Link to="/" className="d-flex btn bg-darkPurple text-white justify-content-center py-3 rounded-pill">
+                        Change
+                    </Link>
                     </div>
                 </div>
             </div>
@@ -42,7 +52,7 @@ const Playerprofile = () => {
                         <div className='col-12'>
                             <div className='textBox'>
                                 <input type="text" id="name" name="name" placeholder="Name" className='mb-3 rounded-3' value="Hentes fra Database" readonly></input>
-                                <input type="text" id="nickName" name="nickName" placeholder="Nickname" className='rounded-3' value="Hentes fra Database" readonly></input>
+                                <input type="text" id="nickName" name="nickName" placeholder="Nickname" className='rounded-3' value={`${props.players.nickname}`} readonly></input>
                             </div>
                         </div>
                     </div>
