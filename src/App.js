@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, HashRouter } from "react-router-dom";
 import Home from "./Pages/Home";
 import Menu from "./Pages/Menu";
@@ -6,84 +6,32 @@ import NewGame from "./Pages/NewGame";
 import Players from "./Pages/Players";
 import NewPlayer from './Pages/NewPlayer';
 import PlayerProfile from './Pages/PlayerProfile';
+import History from './Pages/History';
 
-
-const players = [
-    {
-        "key": 0,
-        "name": 'henrik',
-        "image": 'images/person.jpg',
-        "points": 30,
-        "category": 'catch'
-    },
-    {
-        "key": 1,
-        "name": 'hanne',
-        "image": 'images/person.jpg',
-        "points": 2,
-        "category": 'external'
-    },
-    {
-        "key": 2,
-        "name": 'anders',
-        "image": 'images/person.jpg',
-        "points": 3,
-        "category": 'catch'
-    },
-    {
-        "key": 3,
-        "name": 'morten',
-        "image": 'images/person.jpg',
-        "points": 23,
-        "category": 'external'
-    },
-    {
-        "key": 4,
-        "name": 'per',
-        "image": 'images/person.jpg',
-        "points": 38,
-        "category": 'catch'
-    },
-    {
-        "key": 5,
-        "name": 'Ståle',
-        "image": 'images/person.jpg',
-        "points": 30,
-        "category": 'external'
-    },
-    {
-        "key": 6,
-        "name": 'Mattis',
-        "image": 'images/person.jpg',
-        "points": 30,
-        "category": 'catch'
-    },
-    {
-        "key": 7,
-        "name": 'Thor',
-        "image": 'images/person.jpg',
-        "points": 30,
-        "category": 'catch'
-    },
-    {
-        "key": 8,
-        "name": 'Henning',
-        "image": 'images/person.jpg',
-        "points": 30,
-        "category": 'external'
-    }
-];
-
-const sortedPlayers = (players) => {
-    const sortedList = JSON.parse(JSON.stringify(players));
-    const sortedPlayersWithRanking = sortedList
-        .sort((a, b) => b.points - a.points)
-        .map((player, index) => ({ ...player, ranking: index }));
-    return sortedPlayersWithRanking;
-}
+import { collection, getDocs } from "firebase/firestore";
+import { db } from './firebase';
 
 function App() {
-    const [sortedPlayersList, setSortedPlayersList] = useState(sortedPlayers(players));
+    const [players, setPlayers] = useState([]);
+
+    const fetchPost = async () => {
+        await getDocs(collection(db, "players"))
+            .then((querySnapshot) => {
+                const newData = querySnapshot.docs
+                    .map((doc) => ({ ...doc.data(), id: doc.id }))
+                    .sort((a, b) => b.points - a.points) // Sort players by points in descending order
+                    .map((player, index) => ({ ...player, ranking: index })); // Add ranking to each player
+                setPlayers(newData);
+            })
+    }
+
+
+    useEffect(() => {
+        fetchPost();
+    }, [])
+
+    console.log("Players= ", players)
+
 
     return (
         <HashRouter>
@@ -91,8 +39,8 @@ function App() {
 
                 <Route path="/"
                     element={<Home
-                        players={sortedPlayersList}
-                        setPlayers={setSortedPlayersList}
+                        players={players}
+                        setPlayers={setPlayers}
                     />}
                 />
 
@@ -104,29 +52,35 @@ function App() {
 
                 <Route path="/newgame"
                     element={<NewGame
-                        players={sortedPlayersList}
-                        setPlayers={setSortedPlayersList}
+                        players={players}
+                        setPlayers={setPlayers}
                     />}
                 />
 
                 <Route path="/players"
                     element={<Players
-                        players={sortedPlayersList}
-                        setPlayers={setSortedPlayersList}
+                        players={players}
+                        setPlayers={setPlayers}
                     />}
                 />
 
                 <Route path="/newplayer"
                     element={<NewPlayer
-                        players={sortedPlayersList}
-                        setPlayers={setSortedPlayersList}
+                        players={players}
+                        setPlayers={setPlayers}
                     />}
                 />
 
                 <Route path="/playerprofile"
                     element={<PlayerProfile
-                        players={sortedPlayersList}
-                        setPlayers={setSortedPlayersList}
+                        players={players}
+                        setPlayers={setPlayers}
+                    />}
+                />
+
+                <Route path="/history"
+                    element={<History
+
                     />}
                 />
 

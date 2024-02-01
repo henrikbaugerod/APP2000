@@ -1,15 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../Components/Header';
 import Scoreboard from '../Components/Scoreboard';
 import { Link } from 'react-router-dom';
 
+
+
 const Home = (props) => {
+    /*const [selectedFile, setSelectedFile] = useState(null);
+
+    const handleFileChange = (event) => {
+        setSelectedFile(event.target.files[0]);
+    };
+
+    const handleUpload = () => {
+        if (!selectedFile) return;
+
+        const formData = new FormData();
+        formData.append('image', selectedFile);
+
+        axios.post('/images/', formData) // Adjust the URL '/upload' to match your server route
+            .then(response => {
+                console.log('File uploaded successfully:', response.data);
+            })
+            .catch(error => {
+                console.error('Error uploading file:', error);
+            });
+    };*/
+
 
     return (
         <div className="container">
             <Header
                 showBackButton={false}
             />
+
+            {/*<div>
+                <input type="file" onChange={handleFileChange} />
+                <button onClick={handleUpload}>Upload</button>
+            </div>*/}
 
             <Scoreboard
                 players={props.players}
