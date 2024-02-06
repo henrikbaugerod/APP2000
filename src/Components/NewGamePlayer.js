@@ -5,22 +5,35 @@ const NewGamePlayer = () => {
     return (
         <div className="container">
             <div className="row">
+                <div className='col-12'>
 
-                {/* Picture */}
-                <div className="col-12">
-                    <div className="circle bg-darkPurple">
+                    {/* Picture */}
+                    <div className='row'>
+                        <div className='col-12'>
+                            <div className="playerCircle bg-purple">
 
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                {/* Name */}
-                <div className="newGameName">
-                    <p>tekst</p>
-                </div>
+                    {/* Name */}
+                    <div className='row'>
+                        <div className='col-12'>
+                            <div className="newGameName">
+                                <p>tekst</p>
+                            </div>
+                        </div>
+                    </div>
 
-                {/* Points */}
-                <div className="newGamePoints bg-darkPurple rounded-3">
-                    <p>poeng</p>
+                    {/* Points */}
+                    <div className='row'>
+                        <div className='col-12'>
+                            <div className="newGamePoints bg-purple rounded-3">
+                                <p>poeng</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
