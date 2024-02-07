@@ -46,6 +46,7 @@ function App() {
                         players={players}
                         setPlayers={setPlayers}
                         sortedPlayers={sortedPlayers}
+                        setSortedPlayers={setSortedPlayers}
                     />}
                 />
 
@@ -67,6 +68,7 @@ function App() {
                         players={players}
                         setPlayers={setPlayers}
                         sortedPlayers={sortedPlayers}
+                        setSortedPlayers={setSortedPlayers}
                     />}
                 />
 
@@ -81,6 +83,8 @@ function App() {
                     element={<PlayerProfile
                         players={players}
                         setPlayers={setPlayers}
+                        sortedPlayers={sortedPlayers}
+                        setSortedPlayers={setSortedPlayers}
                     />}
                 />
 

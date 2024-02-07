@@ -47,10 +47,20 @@ const Playerprofile = (props) => {
                 // Update the image URL in the database
                 await updateDoc(playerRef, { image: fileUrl });
 
-                // Update the players state with the new image URL
-                const updatedPlayers = { ...props.players };
-                updatedPlayers[playerId].image = fileUrl;
-                props.setPlayers(updatedPlayers);
+                /// Update the players state with the new image URL
+                const updatedPlayers = [...props.players];
+                const playerIndex = updatedPlayers.findIndex(player => player.id === playerId);
+                if (playerIndex !== -1) {
+                    updatedPlayers[playerIndex] = { ...updatedPlayers[playerIndex], image: fileUrl };
+                    props.setPlayers(updatedPlayers);
+                }
+
+                const updatedSortedPlayers = [...props.sortedPlayers];
+                const sortedPlayerIndex = updatedSortedPlayers.findIndex(player => player.id === playerId);
+                if (sortedPlayerIndex !== -1) {
+                    updatedSortedPlayers[sortedPlayerIndex] = { ...updatedSortedPlayers[sortedPlayerIndex], image: fileUrl };
+                    props.setSortedPlayers(updatedSortedPlayers);
+                }
 
                 console.log("Image updated successfully");
             } catch (e) {
@@ -63,6 +73,9 @@ const Playerprofile = (props) => {
             setFile(null)
         }
     };
+
+    console.log("Players = ", props.players)
+    console.log("SortedPlayers = ", props.sortedPlayers)
 
     return (
         <div className="container">
