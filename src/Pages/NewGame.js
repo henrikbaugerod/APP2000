@@ -10,40 +10,33 @@ const NewGame = () => {
     <div className="container">
       <Header backLink={"/"} />
 
-      {/* Player card */}
+      {/* PLAYER CARD */}
       <div className="row mt-5 mb-5">
         {/* Player 1 */}
-        <div className="col-5">
-          <NewGamePlayer />
-        </div>
+        <NewGamePlayer />
 
-        {/* vs */}
-        <div className="col-2">
+        <div className="col-2 d-flex justify-content-center align-items-center">
           <p>vs</p>
         </div>
 
         {/* Player 2 */}
-        <div className="col-5">
-          <NewGamePlayer />
-        </div>
+        <NewGamePlayer />
       </div>
 
-      {/* Player points */}
+      {/* PLAYER POINTS */}
       <div className="row mt-5 mb-5">
         {/* Player 1 */}
-        <div className="col-6">
-          <NewGamePoints />
-        </div>
+        <NewGamePoints />
+
+        <div className="col-2"></div>
 
         {/* Player 2 */}
-        <div className="col-6">
-          <NewGamePoints />
-        </div>
+        <NewGamePoints />
       </div>
 
       {/* Buttons */}
       <div className="row mt-5 mb-5">
-        <div className="button col-6 d-flex btn bg-darkPurple text-white justify-content-center py-3 rounded-pill">
+        <div className="col-6 d-flex btn button bg-darkPurple text-white justify-content-center py-3 rounded-pill">
           <RegisterButton buttonText="Register"></RegisterButton>
         </div>
         <div className="col-6">
