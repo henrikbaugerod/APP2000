@@ -3,6 +3,8 @@ import PlayerBox from './PlayerBox';
 
 
 const Scoreboard = (props) => {
+    
+
 
     return (
         <div className="row justify-content-center gx-0">
@@ -41,6 +43,7 @@ const Scoreboard = (props) => {
             {props.players.map((player, key) => (
                 key > 2 && key <= 6 ? (
                     <PlayerBox
+                        id={player.id}
                         name={player.name}
                         image={player.image}
                         points={player.points}

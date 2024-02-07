@@ -13,7 +13,7 @@ const Home = (props) => {
             />
 
             <Scoreboard
-                players={props.players}
+                players={props.sortedPlayers}
             />
 
             <div className="row mt-5 text-center">

@@ -13,24 +13,28 @@ import { db } from './firebase';
 
 function App() {
     const [players, setPlayers] = useState([]);
+    const [sortedPlayers, setSortedPlayers] = useState([]);
 
     const fetchPost = async () => {
         await getDocs(collection(db, "players"))
             .then((querySnapshot) => {
-                const newData = querySnapshot.docs
+                const unsortedData = querySnapshot.docs
                     .map((doc) => ({ ...doc.data(), id: doc.id }))
-                    .sort((a, b) => b.points - a.points) // Sort players by points in descending order
-                    .map((player, index) => ({ ...player, ranking: index })); // Add ranking to each player
-                setPlayers(newData);
+                    .map((player, index) => ({ ...player, ranking: index + 1 })); // Add ranking to each player without sorting
+
+                const sortedData = [...unsortedData].sort((a, b) => b.points - a.points) // Sort players by points in descending order
+                    .map((player, index) => ({ ...player, sortedRanking: index + 1 })); // Add ranking to each player
+
+                setPlayers(unsortedData);
+                setSortedPlayers(sortedData);
             })
     }
+
 
 
     useEffect(() => {
         fetchPost();
     }, [])
-
-    console.log("Players= ", players)
 
 
     return (
@@ -41,6 +45,7 @@ function App() {
                     element={<Home
                         players={players}
                         setPlayers={setPlayers}
+                        sortedPlayers={sortedPlayers}
                     />}
                 />
 
@@ -61,6 +66,7 @@ function App() {
                     element={<Players
                         players={players}
                         setPlayers={setPlayers}
+                        sortedPlayers={sortedPlayers}
                     />}
                 />
 

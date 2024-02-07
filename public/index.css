@@ -26,7 +26,7 @@ body {
     color: white;
     border-radius: 8px;
     font-size: 30px;
-    padding: 20px; 
+    padding: 20px;
     align-items: left;
     text-align: left;
     border: none;
@@ -105,7 +105,7 @@ body {
     font: inherit;
     cursor: pointer;
     outline: inherit;
-  }
+}
 
 
 /* =====================================  */
@@ -195,7 +195,7 @@ body {
     border-radius: 50%;
 }
 
-.playerButton:hover > .playerBox {
+.playerButton:hover>.playerBox {
     background-color: #8d29ff !important;
 }
 
@@ -207,14 +207,14 @@ body {
 /* NewPlayer.js */
 /* =====================================  */
 
-.borderCircle{
+.borderCircle {
     width: 145px;
     height: 145px;
     border-style: solid;
     border-color: #8d29ff;
 }
 
-.textBox input{
+.textBox input {
     width: 100%;
     height: 60px;
     background-color: #7900FF;
@@ -225,12 +225,12 @@ body {
 
 }
 
-.textBox input::placeholder{
+.textBox input::placeholder {
     color: white;
     font-size: 20px;
 }
 
-.checkBox label{
+.checkBox label {
     padding-left: 10px;
     font-size: 20px;
 }

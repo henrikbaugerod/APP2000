@@ -8,20 +8,20 @@ const Players = (props) => {
     const [selectedCategory, setSelectedCategory] = useState("all");
 
     useEffect(() => {
-        setfiltredPlayers(props.players);
-    }, [props.players]);
+        setfiltredPlayers(props.sortedPlayers);
+    }, [props.sortedPlayers]);
 
     function handleCategory(e) {
         let playerCategory = e.target.value;
         playerCategory !== "all"
             ? setfiltredPlayers(filterPlayers(playerCategory))
-            : setfiltredPlayers(props.players);
+            : setfiltredPlayers(props.sortedPlayers);
 
         setSelectedCategory(e.target.value)
     }
 
     function filterPlayers(category) {
-        let filtredPlayers = props.players.filter(type => type.location === category);
+        let filtredPlayers = props.sortedPlayers.filter(type => type.location === category);
         return filtredPlayers;
     }
 
@@ -73,13 +73,13 @@ const Players = (props) => {
 
 
             {filtredPlayers &&
-                filtredPlayers.map((player) => (
+                filtredPlayers.map((player, key) => (
                     <PlayerBox
-                        key={player.id}
+                        id={player.id}
                         name={player.name}
                         image={player.image}
                         points={player.points}
-                        place={player.ranking}
+                        place={key}
                     />
                 ))
             }
