@@ -29,7 +29,7 @@ const Menu = (props) => {
             <Link to="/history" className="text-decoration-none">
                 <MenuButton
                     image={'./images/clock-rotate-left-solid.svg'}
-                    text={"History"}
+                    text={"Match history"}
                 ></MenuButton>
             </Link>
 
