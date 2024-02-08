@@ -19,6 +19,7 @@ function App() {
     const [matches, setMatches] = useState([]);
     const [registeredPlayers, setRegisteredPlayers] = useState([]);
     const [tournamentMatches, setTournamentMatches] = useState([]);
+    const [round, setRound] = useState(null);
 
     const fetchPost = async () => {
         await getDocs(collection(db, "players"))
@@ -119,6 +120,7 @@ function App() {
                         registeredPlayers={registeredPlayers}
                         setRegisteredPlayers={setRegisteredPlayers}
                         setTournamentMatches={setTournamentMatches}
+                        setRound={setRound}
                     />}
                 />
 
@@ -127,6 +129,9 @@ function App() {
                         players={players}
                         registeredPlayers={registeredPlayers}
                         tournamentMatches={tournamentMatches}
+                        setTournamentMatches={setTournamentMatches}
+                        round={round}
+                        setRound={setRound}
                     />}
                 />
 

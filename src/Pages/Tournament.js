@@ -54,6 +54,7 @@ const Tournament = (props) => {
         }
 
         props.setTournamentMatches(round);
+        props.setRound(numRounds);
     }
 
     return (
