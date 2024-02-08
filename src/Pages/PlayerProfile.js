@@ -113,7 +113,7 @@ const Playerprofile = (props) => {
                                     {isLoading ? (
                                         <button type="submit" className="d-flex btn bg-darkPurple text-white justify-content-center py-2 px-4 rounded-pill disabled">Uploading...</button>
                                     ) : (
-                                        <button type="submit" className="d-flex btn bg-darkPurple text-white justify-content-center py-2 px-4 rounded-pill">Change</button>
+                                        <button type="submit" className="d-flex btn bg-darkPurple text-white justify-content-center py-2 px-4 rounded-pill">Upload</button>
                                     )}
                                 </div>
                             )}

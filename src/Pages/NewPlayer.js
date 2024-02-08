@@ -2,59 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Header from '../Components/Header';
 import { Link } from 'react-router-dom';
- 
-import { updateDoc, doc } from "firebase/firestore";
-import { db } from '../firebase';
 
 const NewPlayer = (props) => {
-    const [file, setFile] = useState(null);
-    const [playerId, setPlayerId] = useState(sessionStorage.getItem('playerId'));
-
-    const handleFileChange = (event) => {
-        setFile(event.target.files[0]);
-    };
-    //console.log(file)
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        if (!file) return;
-
-        const formData = new FormData();
-        formData.append('file', file);
-
-        try {
-            const response = await axios.post('https://biljard.catchmedia.no/getimages', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    'Access-Control-Allow-Headers': '*'
-                }
-            });
-            console.log('File uploaded successfully', response);
-
-            const fileUrl = 'https://biljard.catchmedia.no/assets/images/' + file.name;
-
-            const playerRef = doc(db, "players", playerId);
-
-            try {
-                // Update the image URL in the database
-                await updateDoc(playerRef, { image: fileUrl });
-
-                // Update the players state with the new image URL
-                const updatedPlayers = { ...props.players };
-                updatedPlayers[playerId].image = fileUrl;
-                props.setPlayers(updatedPlayers);
-
-                console.log("Image updated successfully");
-            } catch (e) {
-                console.error("Error updating image: ", e);
-            }
-        } catch (error) {
-            console.error('Error uploading file', error);
-        }
-    };
-
-    console.log(playerId)
-
     return (
         <div className="container">
             <Header
@@ -65,22 +14,7 @@ const NewPlayer = (props) => {
                 <div className="row justify-content-center">
                     <div className="col-4">
                         <div className='profilePic'>
-                            {props.players && props.players[playerId] && props.players[playerId].image ? (
-                                <img src={props.players[playerId].image} alt="Profile" className="rounded-circle borderCircle" width="50px" height="50px" />
-                            ) : (
-                                <img src="" alt="Profile" className="rounded-circle borderCircle" />
-                            )}
-
-                        </div>
-                    </div>
-                </div>
-                <div className='row mt-3 justify-content-center'>
-                    <div className='col-3'>
-                        <div className='editButton'>
-                            <form onSubmit={handleSubmit}>
-                                <input type="file" name="file" onChange={handleFileChange} className="custom-file-input form-control    " />
-                                <input type="submit" value="Upload" />
-                            </form>
+                            <img src="" alt="Profile" className="rounded-circle borderCircle" />
                         </div>
                     </div>
                 </div>
