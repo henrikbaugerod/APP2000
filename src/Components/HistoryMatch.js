@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 
 const HistoryMatch = (props) => {
     console.log(new Date(8.64e15).toString());
+        const setPlayerId = () => {
+            sessionStorage.setItem('playerId', props.id)
+        }
+    
 
 
     return (
@@ -16,7 +20,7 @@ const HistoryMatch = (props) => {
                     <div className="col-auto">
                         <div className='row gx-2 justify-content-center'>
                             <div className="col-auto text-end">
-                                <Link to="/players" className="text-decoration-none">
+                                <Link to="/playerprofile" className="text-decoration-none">
                                     <img src={props.image} alt="" className='img-fluid' />
                                 </Link>
                             </div>
@@ -24,7 +28,7 @@ const HistoryMatch = (props) => {
                                 <h5>vs</h5>
                             </div>
                             <div className="col-auto">
-                                <Link to="/players" className="text-decoration-none">
+                                <Link to="/playerprofile" className="text-decoration-none">
                                     <img src={props.image2} alt="" className='img-fluid' />
                                 </Link>
                             </div>

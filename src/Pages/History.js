@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 const History = (props) => {
     const [filtredPlayers, setfiltredPlayers] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState("all");
+    
 
     useEffect(() => {
         setfiltredPlayers(props.history);
@@ -75,6 +76,7 @@ const History = (props) => {
             {filtredPlayers &&
                 filtredPlayers.map((player) => (
                     <PlayerBox
+                        id={player.id}
                         name={player.name}
                         image={player.image}
                         points={player.points}
