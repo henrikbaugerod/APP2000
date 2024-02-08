@@ -46,14 +46,16 @@ const Scoreboard = (props) => {
             {
                 props.players.map((player, key) => (
                     key > 2 && key <= 6 ? (
-                        <PlayerBox
-                            id={player.id}
-                            name={player.name}
-                            image={player.image}
-                            points={player.points}
-                            place={key}
-                            key={key}
-                        />
+                        <Link to='/playerprofile'>
+                            <PlayerBox
+                                id={player.id}
+                                name={player.name}
+                                image={player.image}
+                                points={player.points}
+                                place={key}
+                                key={key}
+                            />
+                        </Link>
                     ) : ''
                 ))
             }

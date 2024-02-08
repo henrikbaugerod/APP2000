@@ -3,13 +3,18 @@ import Header from '../Components/Header';
 import PlayerBox from '../Components/PlayerBox';
 import { Link } from 'react-router-dom';
 
-const Players = (props) => {
+const Tournament = (props) => {
     const [filtredPlayers, setfiltredPlayers] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState("all");
+    const [playerCount, setPlayerCount] = useState(0);
 
     useEffect(() => {
         setfiltredPlayers(props.sortedPlayers);
     }, [props.sortedPlayers]);
+
+    useEffect(() => {
+        props.setRegisteredPlayers([]);
+    }, [])
 
     function handleCategory(e) {
         let playerCategory = e.target.value;
@@ -25,10 +30,37 @@ const Players = (props) => {
         return filtredPlayers;
     }
 
+    const generateBracket = (players) => {
+        const numPlayers = players.length;
+        const nextMultipleOfFour = Math.ceil(numPlayers / 4) * 4;
+        const numByes = nextMultipleOfFour - numPlayers;
+
+        // Add bye players
+        for (let i = 0; i < numByes; i++) {
+            players.push("BYE");
+        }
+
+        const numRounds = Math.ceil(Math.log2(players.length));
+        const numMatchesFirstRound = Math.pow(2, numRounds - 1);
+
+        const round = [];
+        const numMatches = numMatchesFirstRound;
+        for (let j = 0; j < numMatches; j++) {
+            round.push({
+                match: j + 1,
+                player1: players[j],
+                player2: players[players.length - j - 1]
+            });
+        }
+
+        props.setTournamentMatches(round);
+    }
+
     return (
         <div className="container">
             <Header
                 backLink={'/menu'}
+                text={'Add players to tournament'}
             />
 
             <div className="row gx-0 mb-4" style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.3)' }}>
@@ -39,7 +71,7 @@ const Players = (props) => {
                 </div>
                 <div className="col-4 text-center">
                     <button value="catch" onClick={handleCategory} className={`${selectedCategory === 'catch' ? 'bg-purple' : 'bg-normalPurple'} w-100 border-0 py-2 text-white categoryButton`}>
-                        Catch {props.tester}
+                        Catch
                     </button>
                 </div>
                 <div className="col-4 text-center">
@@ -71,25 +103,38 @@ const Players = (props) => {
                 </Link>
             </div>
 
-
             {filtredPlayers &&
                 filtredPlayers.map((player, key) => (
-                    <div className="row">
-                        <Link to='/playerprofile'>
-                            <PlayerBox
-                                id={player.id}
-                                name={player.name}
-                                image={player.image}
-                                points={player.points}
-                                place={key}
-                            />
-                        </Link>
-                    </div>
+                    <PlayerBox
+                        id={player.id}
+                        name={player.name}
+                        image={player.image}
+                        points={player.points}
+                        place={key}
+                        checkbox={true}
+                        playerCount={playerCount}
+                        setPlayerCount={setPlayerCount}
+                        registeredPlayers={props.registeredPlayers}
+                        setRegisteredPlayers={props.setRegisteredPlayers}
+                    />
                 ))
             }
+
+            <div className="row mt-5 pt-5">
+                <div className="col-6">
+                    <Link to="/tournament-game" className="d-flex btn bg-darkPurple text-white justify-content-center py-3 rounded-pill" onClick={() => generateBracket(props.registeredPlayers)}>
+                        Play {playerCount >= 1 ? '(' + playerCount + ' players)' : null}
+                    </Link>
+                </div>
+                <div className="col-6">
+                    <Link to="/menu" className="d-flex btn border border-white text-white justify-content-center py-3 rounded-pill">
+                        Cancel
+                    </Link>
+                </div>
+            </div>
 
         </div>
     );
 };
 
-export default Players;
+export default Tournament;

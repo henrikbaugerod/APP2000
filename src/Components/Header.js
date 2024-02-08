@@ -5,8 +5,9 @@ const Header = (props) => {
 
     return (
         <div className="row justify-content-center text-center py-4 mb-4 position-relative w-100">
-            <div className="header-logo">
+            <div className="header-logo position-relevant">
                 <img src="images/Group 93.svg" alt="" />
+                {props.text ? <p className="position-absolute start-50 mt-1" style={{ transform: 'translateX(-50%)' }}>{props.text}</p> : null}
             </div>
 
             {props.showBackButton !== false ? (

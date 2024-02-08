@@ -19,7 +19,7 @@ const Menu = (props) => {
                 />
             </Link>
 
-            <Link to="/tournaments" className="text-decoration-none">
+            <Link to="/tournament" className="text-decoration-none">
                 <MenuButton
                     image={'./images/trophy-solid.svg'}
                     text={"Tournaments"}

@@ -11,6 +11,7 @@ const Playerprofile = (props) => {
     const [file, setFile] = useState(null);
     const [playerId, setPlayerId] = useState(sessionStorage.getItem('playerId'));
     const [isLoading, setIsLoading] = useState(false);
+    const [backLink, setBackLink] = useState(sessionStorage.getItem('backLink'))
 
     const handleTabChange = (tab) => {
         setActiveButton(tab);
@@ -62,7 +63,6 @@ const Playerprofile = (props) => {
                     props.setSortedPlayers(updatedSortedPlayers);
                 }
 
-                console.log("Image updated successfully");
             } catch (e) {
                 console.error("Error updating image: ", e);
             }
@@ -74,13 +74,10 @@ const Playerprofile = (props) => {
         }
     };
 
-    console.log("Players = ", props.players)
-    console.log("SortedPlayers = ", props.sortedPlayers)
-
     return (
         <div className="container">
             <Header
-                backLink={'/players'}
+                backLink={backLink ? backLink : '/players'}
             />
 
             <div className="row justify-content-center">
@@ -97,7 +94,7 @@ const Playerprofile = (props) => {
             {activeButton === 'information' ? (
                 <div className='row mt-3 justify-content-center pb-3'>
                     <div className='editButton'>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} id="imageForm">
                             <div className='col text-center'>
                                 {file === null ? (
                                     <input type="file" name="file" onChange={handleFileChange} className="custom-file-input" />
@@ -137,7 +134,7 @@ const Playerprofile = (props) => {
                 </div>
                 <div className={`col-6 text-center`}>
                     <button type="button" className={`${activeButton === 'stats' ? 'bg-purple' : 'bg-normalPurple'} w-100 border-0 py-2 text-white categoryButton`} onClick={() => handleTabChange('stats')}>
-                        Stats
+                        Game history
                     </button>
                 </div>
             </div>
@@ -183,8 +180,7 @@ const Playerprofile = (props) => {
 
             {activeButton === 'stats' && (
                 <div>
-                    {/* Render Stats content here */}
-                    <p>Stats content goes here</p>
+                    <p>Stats goes here</p>
                 </div>
             )}
 

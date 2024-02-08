@@ -7,6 +7,8 @@ import Players from "./Pages/Players";
 import NewPlayer from './Pages/NewPlayer';
 import PlayerProfile from './Pages/PlayerProfile';
 import History from './Pages/History';
+import Tournament from './Pages/Tournament';
+import TournamentGame from './Pages/TournamentGame';
 
 import { collection, getDocs } from "firebase/firestore";
 import { db } from './firebase';
@@ -14,6 +16,9 @@ import { db } from './firebase';
 function App() {
     const [players, setPlayers] = useState([]);
     const [sortedPlayers, setSortedPlayers] = useState([]);
+    const [matches, setMatches] = useState([]);
+    const [registeredPlayers, setRegisteredPlayers] = useState([]);
+    const [tournamentMatches, setTournamentMatches] = useState([]);
 
     const fetchPost = async () => {
         await getDocs(collection(db, "players"))
@@ -30,11 +35,23 @@ function App() {
             })
     }
 
+    const fetchMatches = async () => {
+        await getDocs(collection(db, "matches"))
+            .then((querySnapshot) => {
+                const unsortedMatches = querySnapshot.docs
+                    .map((doc) => ({ ...doc.data(), id: doc.id }))
+
+                setMatches(unsortedMatches);
+            })
+    }
+
 
 
     useEffect(() => {
         fetchPost();
+        fetchMatches();
     }, [])
+
 
 
     return (
@@ -85,12 +102,31 @@ function App() {
                         setPlayers={setPlayers}
                         sortedPlayers={sortedPlayers}
                         setSortedPlayers={setSortedPlayers}
+                        matches={matches}
                     />}
                 />
 
                 <Route path="/history"
                     element={<History
+                        players={players}
+                    />}
+                />
 
+                <Route path="/tournament"
+                    element={<Tournament
+                        players={players}
+                        sortedPlayers={sortedPlayers}
+                        registeredPlayers={registeredPlayers}
+                        setRegisteredPlayers={setRegisteredPlayers}
+                        setTournamentMatches={setTournamentMatches}
+                    />}
+                />
+
+                <Route path="/tournament-game"
+                    element={<TournamentGame
+                        players={players}
+                        registeredPlayers={registeredPlayers}
+                        tournamentMatches={tournamentMatches}
                     />}
                 />
 
