@@ -87,7 +87,7 @@ const TournamentGame = (props) => {
                                 <img
                                     src={props.players[match.player2] && props.players[match.player2].image ? props.players[match.player2].image : "./images/bye.svg"}
                                     alt=""
-                                    className={`img-fluid playerImg2 playerImg2-${key} ${match.player2.includes('BYE') ? 'opacity-25' : ''}`}
+                                    className={`img-fluid playerImg2 playerImg2-${key} ${match.player2.textContent === ('BYE') ? 'opacity-25' : ''}`}
                                     onClick={(event) => handleClick(event, key, match)}
                                 />
                                 {match.player2.includes('BYE') ? <p className="mt-2 mb-0">BYE</p> : <p className="mt-2 mb-0">{props.players[match.player2].name}</p>}

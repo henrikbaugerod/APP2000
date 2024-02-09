@@ -10,8 +10,10 @@ import History from './Pages/History';
 import Tournament from './Pages/Tournament';
 import TournamentGame from './Pages/TournamentGame';
 
+
 import { collection, getDocs } from "firebase/firestore";
 import { db } from './firebase';
+import Surprise from './Pages/Surprise';
 
 function App() {
     const [players, setPlayers] = useState([]);
@@ -132,6 +134,12 @@ function App() {
                         setTournamentMatches={setTournamentMatches}
                         round={round}
                         setRound={setRound}
+                    />}
+                />
+
+                <Route path="/surprise"
+                    element={<Surprise
+                        
                     />}
                 />
 

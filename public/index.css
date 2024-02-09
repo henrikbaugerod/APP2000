@@ -325,7 +325,7 @@ input[type="file"]::file-selector-button:hover {
     background-color: #7900FF;
 }
 
-input[type="file"]::file-selector-button:active  {
+input[type="file"]::file-selector-button:active {
     background-color: #7900FF;
 }
 
@@ -358,4 +358,60 @@ input[type="file"]::file-selector-button:active  {
 .tournamentBox img {
     width: 50px;
     height: 50px;
+}
+
+
+/* =====================================  */
+/* Surprise.js */
+/* =====================================  */
+
+
+@keyframes scroll {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    90% {
+        transform: translate3d(0, calc(-100% + 328px), 0);
+    }
+
+    100% {
+        transform: translate3d(0, calc(-100% + 332px), 0);
+    }
+}
+
+@keyframes blur {
+    0% {
+        filter: blur(0);
+    }
+
+    10% {
+        filter: blur(0);
+    }
+
+    30% {
+        filter: blur(6px);
+    }
+
+    60% {
+        filter: blur(6px);
+    }
+
+    80% {
+        filter: blur(0);
+    }
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(10deg);
+    }
+
+    50% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(10deg);
+    }
 }
