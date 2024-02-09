@@ -364,11 +364,6 @@ input[type="file"]::file-selector-button:active {
 /* =====================================  */
 /* Surprise.js */
 /* =====================================  */
-.spinning {
-    animation: scroll 3s cubic-bezier(.5, 0, .5, 1) 1, blur 3s cubic-bezier(.5, 0, .5, 1) 1;
-}
-
-
 
 
 @keyframes scroll {
