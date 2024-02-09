@@ -121,7 +121,7 @@ const Tournament = (props) => {
                 ))
             }
 
-            <div className="row mt-5 pt-5">
+            <div className="row mt-5 pt-5 mb-0">
                 <div className="col-6">
                     <Link to="/tournament-game" className="d-flex btn bg-darkPurple text-white justify-content-center py-3 rounded-pill" onClick={() => generateBracket(props.registeredPlayers)}>
                         Play {playerCount >= 1 ? '(' + playerCount + ' players)' : null}
