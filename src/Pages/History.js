@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom';
 const History = (props) => {
     const [filtredPlayers, setfiltredPlayers] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState("all");
-    
+    const { Matches } = props;
+    console.log(Matches);
 
     useEffect(() => {
         setfiltredPlayers(props.history);
@@ -43,7 +44,7 @@ const History = (props) => {
             </div>
 
             <div className="row gx-0 mb-4">
-                <div className="col-4 text-center">                    
+                <div className="col-4 text-center">
                     <button value="all" onClick={handleCategory} className={`categoryButton ${selectedCategory === 'all' ? 'bg-purple active-shadow-bottom' : 'bg-normalPurple active-border-bottom'} w-100 py-2 text-white categoryButton`}>
                         All
                     </button>
@@ -60,19 +61,27 @@ const History = (props) => {
                 </div>
             </div>
 
-            <div className=''>
-                <HistoryMatch 
-                    date={"1. Februar"}
-                    image={'./images/user-regular.svg'}
-                    image2={'./images/user-regular.svg'}
-                    score={'1-1'}
-                />
-                <HistoryMatch 
-                    date={"24. Januar"}
-                    image={'./images/user-regular.svg'}
-                    image2={'./images/user-regular.svg'}
-                    score={'1-1'}
-                />
+            <div className="col-12 d-flex align-items-center">
+
+                {console.log("Matches = ", props.matches)}
+                {console.log("Player = ", props.players)}
+
+                {props.matches.map((match) => (
+                    <div className="row">
+                        <Link to='/playerprofile' onClick={() => sessionStorage.setItem('previousPage', '/players')}>
+                            <HistoryMatch
+                                image={props.players[match.player_one].image}
+                                score={match.score_player_one}
+                            />
+                        </Link>
+
+                    </div>
+                ))}
+
+
+
+
+
             </div>
         </div>
     );

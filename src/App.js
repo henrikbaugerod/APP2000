@@ -112,6 +112,7 @@ function App() {
                 <Route path="/history"
                     element={<History
                         players={players}
+                        matches={matches}
                     />}
                 />
 
