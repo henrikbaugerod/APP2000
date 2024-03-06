@@ -49,14 +49,12 @@ function App() {
     }
 
 
-
     useEffect(() => {
         fetchPost();
         fetchMatches();
-        sessionStorage.setItem('backLink', '/');
+        sessionStorage.setItem('currentPage', '/');
+        sessionStorage.setItem('previousPage', '/');
     }, [])
-
-
 
     return (
         <HashRouter>

@@ -26,12 +26,14 @@ const Players = (props) => {
     }
 
     useEffect(() => {
-        sessionStorage.setItem('backLink', '/menu');
-    }, [])
+        sessionStorage.setItem('currentPage', '/players')
+    }, []);
 
     return (
         <div className="container">
-            <Header/>
+            <Header
+                previousPage='/menu'
+            />
 
             <div className="row gx-0 mb-4" style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.3)' }}>
                 <div className="col-4 text-center">
@@ -52,7 +54,7 @@ const Players = (props) => {
             </div>
 
             <div className="row">
-                <Link to="/newplayer" className="col-12 mb-4 text-white border-0 playerButton" key={props.place} style={{ backgroundColor: 'transparent', textDecoration: 'none' }}>
+                <Link to="/newplayer" className="col-12 mb-4 text-white border-0 playerButton" key={props.place} style={{ backgroundColor: 'transparent', textDecoration: 'none' }} onClick={() => sessionStorage.setItem('previousPage', '/players')}>
 
                     <h5 className="bg-purple p-3 playerBox rounded-3">
                         <div className="row align-items-center">
@@ -77,7 +79,7 @@ const Players = (props) => {
             {filtredPlayers &&
                 filtredPlayers.map((player, key) => (
                     <div className="row">
-                        <Link to='/playerprofile'>
+                        <Link to='/playerprofile' onClick={() => sessionStorage.setItem('previousPage', '/players')}>
                             <PlayerBox
                                 id={player.id}
                                 name={player.name}

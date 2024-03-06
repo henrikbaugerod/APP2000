@@ -57,6 +57,10 @@ const Tournament = (props) => {
         props.setRound(numRounds);
     }
 
+    useEffect(() => {
+        sessionStorage.setItem('currentPage', '/tournament')
+    }, []);
+
     return (
         <div className="container">
             <Header

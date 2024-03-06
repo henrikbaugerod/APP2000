@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import Header from '../Components/Header';
 import { Link } from 'react-router-dom';
 
 const NewPlayer = (props) => {
+    useEffect(() => {
+        sessionStorage.setItem('currentPage', '/newplayer')
+    }, []);
+
     return (
         <div className="container">
             <Header
