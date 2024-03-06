@@ -42,19 +42,19 @@ const History = (props) => {
                 </div>
             </div>
 
-            <div className="row gx-0 mb-4" style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.3)' }}>
-                <div className="col-4 text-center">
-                    <button value="all" onClick={handleCategory} className={`${selectedCategory === 'all' ? 'bg-purple' : 'bg-normalPurple'} w-100 border-0 py-2 text-white categoryButton`}>
+            <div className="row gx-0 mb-4">
+                <div className="col-4 text-center">                    
+                    <button value="all" onClick={handleCategory} className={`categoryButton ${selectedCategory === 'all' ? 'bg-purple active-shadow-bottom' : 'bg-normalPurple active-border-bottom'} w-100 py-2 text-white categoryButton`}>
                         All
                     </button>
                 </div>
                 <div className="col-4 text-center">
-                    <button value="catch" onClick={handleCategory} className={`${selectedCategory === 'catch' ? 'bg-purple' : 'bg-normalPurple'} w-100 border-0 py-2 text-white categoryButton`}>
+                    <button value="catch" onClick={handleCategory} className={`categoryButton ${selectedCategory === 'catch' ? 'bg-purple active-shadow-bottom' : 'bg-normalPurple active-border-bottom'} w-100 py-2 text-white categoryButton`}>
                         Catch
                     </button>
                 </div>
                 <div className="col-4 text-center">
-                    <button value="external" onClick={handleCategory} className={`${selectedCategory === 'external' ? 'bg-purple' : 'bg-normalPurple'} w-100 border-0 py-2 text-white categoryButton`}>
+                    <button value="external" onClick={handleCategory} className={`categoryButton ${selectedCategory === 'external' ? 'bg-purple active-shadow-bottom' : 'bg-normalPurple active-border-bottom'} w-100 py-2 text-white categoryButton`}>
                         External
                     </button>
                 </div>
@@ -73,21 +73,7 @@ const History = (props) => {
                     image2={'./images/user-regular.svg'}
                     score={'1-1'}
                 />
-
             </div>
-
-
-            {filtredPlayers &&
-                filtredPlayers.map((player) => (
-                    <PlayerBox
-                        id={player.id}
-                        name={player.name}
-                        image={player.image}
-                        points={player.points}
-                        place={player.ranking}
-                    />
-                ))}
-
         </div>
     );
 };
