@@ -5,15 +5,11 @@ import { Link } from 'react-router-dom';
 
 const Scoreboard = (props) => {
     const setPlayerId = (id) => {
-        sessionStorage.setItem('playerId', id)
-    }
-
-    const setBackLink = () => {
-        sessionStorage.setItem('backLink', '/');
+        sessionStorage.setItem('playerId', id);
     }
 
     return (
-        <div className="row justify-content-center gx-0">
+        <div className="row justify-content-center gx-0" onClick={() => sessionStorage.setItem('previousPage', '/')}>
             <div className="mb-5">
                 <div className="col-12 d-flex align-items-center">
                     {props.players.map((player, key) => (
@@ -50,7 +46,7 @@ const Scoreboard = (props) => {
             {
                 props.players.map((player, key) => (
                     key > 2 && key <= 6 ? (
-                        <Link to='/playerprofile' onClick={setBackLink}>
+                        <Link to='/playerprofile'>
                             <PlayerBox
                                 id={player.id}
                                 name={player.name}

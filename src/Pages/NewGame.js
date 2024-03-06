@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../Components/Header";
 import NewGamePlayer from "../Components/NewGamePlayer";
 import NewGamePoints from "../Components/NewGamePoints";
@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 import RegisterButton from "../Components/RegisterButton";
 
 const NewGame = () => {
+  useEffect(() => {
+    sessionStorage.setItem('currentPage', '/newgame')
+  }, []);
+
   return (
     <div className="container">
       <Header backLink={"/"} />

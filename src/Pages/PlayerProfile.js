@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from '../Components/Header';
 import { Link } from 'react-router-dom';
@@ -73,6 +73,10 @@ const Playerprofile = (props) => {
             setFile(null)
         }
     };
+
+    useEffect(() => {
+        sessionStorage.setItem('currentPage', '/playerprofile')
+    }, []);
 
     return (
         <div className="container">
