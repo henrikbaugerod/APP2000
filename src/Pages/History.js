@@ -70,18 +70,17 @@ const History = (props) => {
                     <div className="row">
                         <Link to='/playerprofile' onClick={() => sessionStorage.setItem('previousPage', '/players')}>
                             <HistoryMatch
+                                date={match.date.toDate().toDateString()                                }
                                 image={props.players[match.player_one].image}
+                                image2={props.players[match.player_two].image}
+
                                 score={match.score_player_one}
+                                score2={match.score_player_two}
                             />
                         </Link>
 
                     </div>
                 ))}
-
-
-
-
-
             </div>
         </div>
     );
