@@ -53,6 +53,7 @@ function App() {
     useEffect(() => {
         fetchPost();
         fetchMatches();
+        sessionStorage.setItem('backLink', '/');
     }, [])
 
 
@@ -139,7 +140,7 @@ function App() {
 
                 <Route path="/surprise"
                     element={<Surprise
-                        
+
                     />}
                 />
 

@@ -8,6 +8,10 @@ const Scoreboard = (props) => {
         sessionStorage.setItem('playerId', id)
     }
 
+    const setBackLink = () => {
+        sessionStorage.setItem('backLink', '/');
+    }
+
     return (
         <div className="row justify-content-center gx-0">
             <div className="mb-5">
@@ -46,7 +50,7 @@ const Scoreboard = (props) => {
             {
                 props.players.map((player, key) => (
                     key > 2 && key <= 6 ? (
-                        <Link to='/playerprofile'>
+                        <Link to='/playerprofile' onClick={setBackLink}>
                             <PlayerBox
                                 id={player.id}
                                 name={player.name}
@@ -54,6 +58,7 @@ const Scoreboard = (props) => {
                                 points={player.points}
                                 place={key}
                                 key={key}
+                                backLink={'/'}
                             />
                         </Link>
                     ) : ''

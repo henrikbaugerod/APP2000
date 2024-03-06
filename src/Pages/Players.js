@@ -25,11 +25,13 @@ const Players = (props) => {
         return filtredPlayers;
     }
 
+    useEffect(() => {
+        sessionStorage.setItem('backLink', '/menu');
+    }, [])
+
     return (
         <div className="container">
-            <Header
-                backLink={'/menu'}
-            />
+            <Header/>
 
             <div className="row gx-0 mb-4" style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.3)' }}>
                 <div className="col-4 text-center">

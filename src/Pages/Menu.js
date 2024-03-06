@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../Components/Header';
 import MenuButton from '../Components/MenuButton';
 import { Link } from 'react-router-dom';
@@ -6,11 +6,13 @@ import { Link } from 'react-router-dom';
 
 
 const Menu = (props) => {
+    useEffect(() => {
+        sessionStorage.setItem('backLink', '/players');
+    }, [])
+
     return (
         <div className="container">
-            <Header
-                backLink={'/'}
-            />
+            <Header/>
 
             <Link to="/players" className="text-decoration-none">
                 <MenuButton
