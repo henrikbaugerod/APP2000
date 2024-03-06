@@ -374,7 +374,14 @@ input[type="file"]::file-selector-button:active {
     border-left: 0;
     border-right: 0;
 }
-  
+
+.historyBox img {
+    width: 100px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 
 /* =====================================  */
 /* Tournament.js */
