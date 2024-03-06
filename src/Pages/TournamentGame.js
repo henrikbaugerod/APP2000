@@ -87,10 +87,10 @@ const TournamentGame = (props) => {
                                 <img
                                     src={props.players[match.player2] && props.players[match.player2].image ? props.players[match.player2].image : "./images/bye.svg"}
                                     alt=""
-                                    className={`img-fluid playerImg2 playerImg2-${key} ${match.player2.textContent === ('BYE') ? 'opacity-25' : ''}`}
+                                    className={`img-fluid playerImg2 playerImg2-${key}`}
                                     onClick={(event) => handleClick(event, key, match)}
                                 />
-                                {match.player2.includes('BYE') ? <p className="mt-2 mb-0">BYE</p> : <p className="mt-2 mb-0">{props.players[match.player2].name}</p>}
+                                {match.player2 === 'BYE' ? <p className="mt-2 mb-0">BYE</p> : <p className="mt-2 mb-0">{props.players[match.player2] ? props.players[match.player2].name : 'BYE'}</p>}
                             </div>
                         </div>
                     </div>
@@ -100,7 +100,7 @@ const TournamentGame = (props) => {
             <div className="row justify-content-center mt-4">
                 <div className="col-auto">
                     {props.round === 1 ? (
-                        <Link to="/menu" className="btn bg-darkPurple text-white justify-content-center py-3 rounded-pill px-5">
+                        <Link to="/tournamentwinner" className="btn bg-darkPurple text-white justify-content-center py-3 rounded-pill px-5">
                             End tournament
                         </Link>
                     ) : (

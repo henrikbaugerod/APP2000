@@ -27,6 +27,10 @@ const History = (props) => {
         return filtredPlayers;
     }
 
+    useEffect(() => {
+        sessionStorage.setItem('currentPage', '/history')
+    }, []);
+
     return (
         <div className="container">
             <Header

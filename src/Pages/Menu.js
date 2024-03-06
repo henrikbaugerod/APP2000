@@ -36,6 +36,7 @@ const Menu = (props) => {
                 <MenuButton
                     image={'./images/clock-rotate-left-solid.svg'}
                     text={"Match history"}
+                    previousPage='/menu'
                 />
             </Link>
 
@@ -43,6 +44,7 @@ const Menu = (props) => {
                 <MenuButton
                     image={'./images/gift-solid.svg'}
                     text={"Surprise"}
+                    previousPage='/menu'
                 />
             </Link>
         </div>
