@@ -37,7 +37,7 @@ const History = (props) => {
             <Header
                 backLink={'/menu'}
             />
-            <div className="row align-items-center mb-3">
+            <div className="row align-items-center mb-3 bg">
                 <div className="col-12 text-center">
                     <h5>Match history</h5>
                 </div>
@@ -62,23 +62,20 @@ const History = (props) => {
             </div>
 
             <div className="col-12 d-flex align-items-center">
-
                 {console.log("Matches = ", props.matches)}
                 {console.log("Player = ", props.players)}
 
                 {props.matches.map((match) => (
                     <div className="row">
-                        <Link to='/playerprofile' onClick={() => sessionStorage.setItem('previousPage', '/players')}>
-                            <HistoryMatch
-                                date={match.date.toDate().toDateString()                                }
-                                image={props.players[match.player_one].image}
-                                image2={props.players[match.player_two].image}
+                        <HistoryMatch
+                            date={match.date.toDate().toDateString()                                }
 
-                                score={match.score_player_one}
-                                score2={match.score_player_two}
-                            />
-                        </Link>
+                            image={props.players[match.player_one].image}
+                            image2={props.players[match.player_two].image}
 
+                            score={match.score_player_one}
+                            score2={match.score_player_two}
+                        />
                     </div>
                 ))}
             </div>

@@ -13,7 +13,7 @@ const HistoryMatch = (props) => {
         <div className="col-12 mb-2 text-white border-0">
             <div className="p-3 playerBox" style={{ borderBottom: '1px solid #7900FF' }}>
                 <div className="row align-items-center">
-                    <div className="col">
+                    <div className="col-auto">
                         <h5 className="mb-0">{props.date}</h5>
                     </div>
 
@@ -35,7 +35,7 @@ const HistoryMatch = (props) => {
                         </div>
                     </div>
 
-                    <div className="col text-end">
+                    <div className="col-auto text-end">
                         <h5 className="mb-0 fw-semibold">{props.score} - {props.score2}</h5>
                     </div>
                 </div>
