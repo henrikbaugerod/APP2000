@@ -12,13 +12,12 @@ const HistoryMatch = (props) => {
     return (
         <div className="col-12 mb-2 text-white border-0">
             <div className="p-3 playerBox" style={{ borderBottom: '1px solid #7900FF' }}>
-                <div className="row align-items-center">
-                    <div className="col-auto">
-                        <h5 className="mb-0">{props.date}</h5>
-                    </div>
-
                     <div className="col-auto">
                         <div className='row gx-2 justify-content-center'>
+                            <div className="col-auto">
+                                <h5 className="mb-0">{props.date}</h5>
+                            </div>
+                            
                             <div className="col-auto text-end">
                                 <Link to="/playerprofile" className="text-decoration-none">
                                     <img src={props.image} alt="" className='img-fluid' />
@@ -32,15 +31,13 @@ const HistoryMatch = (props) => {
                                     <img src={props.image2} alt="" className='img-fluid' />
                                 </Link>
                             </div>
+                            <div className="col-auto text-end">
+                                <h5 className="mb-0 fw-semibold">{props.score} - {props.score2}</h5>
+                            </div>                        
                         </div>
-                    </div>
-
-                    <div className="col-auto text-end">
-                        <h5 className="mb-0 fw-semibold">{props.score} - {props.score2}</h5>
                     </div>
                 </div>
             </div>
-        </div>
     );
 };
 
