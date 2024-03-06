@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Header = (props) => {
 
     return (
-        <div className="row justify-content-center text-center py-4 mb-4 position-relative w-100">
+        <div className="header row justify-content-center text-center py-4 mb-4 w-100">
             <div className="header-logo position-relevant">
                 <Link to='/'>
                     <img src="images/Group 93.svg" alt="" />

@@ -137,9 +137,9 @@ function App() {
                     />}
                 />
 
-                <Route path="/tournamentwinner" 
-                    element={<TournamentWinner 
-                        
+                <Route path="/tournamentwinner"
+                    element={<TournamentWinner
+                        players={players}
                     />}
                 />
 

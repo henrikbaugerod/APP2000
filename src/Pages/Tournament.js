@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from '../Components/Header';
 import PlayerBox from '../Components/PlayerBox';
 import { Link } from 'react-router-dom';
+import Footer from '../Components/Footer';
 
 const Tournament = (props) => {
     const [filtredPlayers, setfiltredPlayers] = useState(null);
@@ -63,26 +64,28 @@ const Tournament = (props) => {
 
     return (
         <div className="container">
-            <Header
-                backLink={'/menu'}
-                text={'Add players to tournament'}
-            />
+            <div className="sticky-top">
+                <Header
+                    backLink={'/menu'}
+                    text={'Add players to tournament'}
+                />
 
-            <div className="row gx-0 mb-4" style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.3)' }}>
-                <div className="col-4 text-center">
-                    <button value="all" onClick={handleCategory} className={`${selectedCategory === 'all' ? 'bg-purple' : 'bg-normalPurple'} w-100 border-0 py-2 text-white categoryButton`}>
-                        All
-                    </button>
-                </div>
-                <div className="col-4 text-center">
-                    <button value="catch" onClick={handleCategory} className={`${selectedCategory === 'catch' ? 'bg-purple' : 'bg-normalPurple'} w-100 border-0 py-2 text-white categoryButton`}>
-                        Catch
-                    </button>
-                </div>
-                <div className="col-4 text-center">
-                    <button value="external" onClick={handleCategory} className={`${selectedCategory === 'external' ? 'bg-purple' : 'bg-normalPurple'} w-100 border-0 py-2 text-white categoryButton`}>
-                        External
-                    </button>
+                <div className="row gx-0 mb-4" style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.3)' }}>
+                    <div className="col-4 text-center">
+                        <button value="all" onClick={handleCategory} className={`${selectedCategory === 'all' ? 'bg-purple' : 'bg-normalPurple'} w-100 border-0 py-2 text-white categoryButton`}>
+                            All
+                        </button>
+                    </div>
+                    <div className="col-4 text-center">
+                        <button value="catch" onClick={handleCategory} className={`${selectedCategory === 'catch' ? 'bg-purple' : 'bg-normalPurple'} w-100 border-0 py-2 text-white categoryButton`}>
+                            Catch
+                        </button>
+                    </div>
+                    <div className="col-4 text-center">
+                        <button value="external" onClick={handleCategory} className={`${selectedCategory === 'external' ? 'bg-purple' : 'bg-normalPurple'} w-100 border-0 py-2 text-white categoryButton`}>
+                            External
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -125,6 +128,12 @@ const Tournament = (props) => {
                 ))
             }
 
+            <Footer 
+                link1='/tournament-game'
+                link2='/menu'
+            />
+
+            {/*
             <div className="row mt-5 pt-5 mb-0">
                 <div className="col-6">
                     <Link to="/tournament-game" className="d-flex btn bg-darkPurple text-white justify-content-center py-3 rounded-pill" onClick={() => generateBracket(props.registeredPlayers)}>
@@ -137,7 +146,7 @@ const Tournament = (props) => {
                     </Link>
                 </div>
             </div>
-
+            */}
         </div>
     );
 };

@@ -28,7 +28,6 @@ const PlayerBox = (props) => {
     }
 
     return (
-
         <button className="col-12 mb-2 text-white border-0 playerButton px-0" key="{props.place}" style={{ backgroundColor: 'transparent' }} onClick={() => setPlayerId(props.id)}>
             <div className={`bg-purple p-3 playerBox rounded-3 position-relative`} id={`box-${props.id}`}>
                 <div className="row align-items-center">

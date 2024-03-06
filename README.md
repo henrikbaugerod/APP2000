@@ -4,4 +4,5 @@
 # 4. npm i react-mixitup
 # 5. npm install firebase
 # 6. npm install axios --save
+# 7. npm i @fireworks-js/react
 # 5. npm start
