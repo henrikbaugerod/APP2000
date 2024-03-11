@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 const NewGamePlayer = (props) => {
   const [findPlayer, setFindPlayer] = useState(false);
   const [playerId, setPlayerId] = useState(sessionStorage.getItem("playerId"));
-  const test = true;
-  const testt = false;
 
   const handleClick = () => {
     console.log("Link clicked");
     sessionStorage.setItem("findPlayer", true);
   };
+
+  console.log(findPlayer);
 
   return (
     <div className="col-5">
@@ -23,7 +23,7 @@ const NewGamePlayer = (props) => {
           >
             <Link to="/Players">
               <div>
-                {test ? (
+                {playerId ? (
                   <img
                     src={props.players.players[playerId].image}
                     alt="Profile"
@@ -44,7 +44,7 @@ const NewGamePlayer = (props) => {
       <div className="row mt-2 mb-2">
         <div className="col-12">
           <div className="newGameName">
-            {test ? (
+            {playerId ? (
               <p>{props.players.players[playerId].name}</p>
             ) : (
               <p>tekstttt</p>
@@ -57,7 +57,7 @@ const NewGamePlayer = (props) => {
       <div className="row">
         <div className="col-12">
           <div className="newGamePoints bg-purple rounded-3">
-            {test ? (
+            {playerId ? (
               <p>{props.players.players[playerId].points} pts</p>
             ) : (
               <p>pts</p>
