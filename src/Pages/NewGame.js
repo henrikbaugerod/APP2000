@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../Components/Header";
 import NewGamePlayer from "../Components/NewGamePlayer";
 import NewGamePoints from "../Components/NewGamePoints";
 import { Link } from "react-router-dom";
 import RegisterButton from "../Components/RegisterButton";
 
-const NewGame = () => {
+const NewGame = (props) => {
   useEffect(() => {
-    sessionStorage.setItem('currentPage', '/newgame')
+    sessionStorage.setItem("currentPage", "/newgame");
   }, []);
 
   return (
@@ -17,14 +17,14 @@ const NewGame = () => {
       {/* PLAYER CARD */}
       <div className="row mt-5 mb-5">
         {/* Player 1 */}
-        <NewGamePlayer />
+        <NewGamePlayer players={props} />
 
         <div className="col-2 d-flex justify-content-center align-items-center">
           <p>vs</p>
         </div>
 
         {/* Player 2 */}
-        <NewGamePlayer />
+        <NewGamePlayer players={props} />
       </div>
 
       {/* PLAYER POINTS */}

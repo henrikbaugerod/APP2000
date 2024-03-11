@@ -54,4 +54,4 @@ const PlayerBox = (props) => {
     );
 };
 
-export default PlayerBox;
+export default PlayerBox; 
