@@ -6,6 +6,22 @@ import { Link } from "react-router-dom";
 import RegisterButton from "../Components/RegisterButton";
 
 const NewGame = (props) => {
+
+  // useStates for player1 og player2
+  const [playerId1, setPlayerId1] = useState(null);
+  const [playerId2, setPlayerId2] = useState(null);
+
+  // Callback funksjon for player1
+  const handlePlayerSelection1 = (playerId) => {
+    setPlayerId1(playerId);
+  };
+
+  // Callback funksjon for player2
+  const handlePlayerSelection2 = (playerId) => {
+    setPlayerId2(playerId);
+  };
+
+  // Oppdatere nåværende side
   useEffect(() => {
     sessionStorage.setItem("currentPage", "/newgame");
   }, []);
@@ -16,19 +32,29 @@ const NewGame = (props) => {
 
       {/* PLAYER CARD */}
       <div className="row mt-5 mb-5">
+
         {/* Player 1 */}
-        <NewGamePlayer players={props} />
+        <NewGamePlayer
+          onSelectPlayer={handlePlayerSelection1}
+          playerId={playerId1}
+          players={props}
+        />
 
         <div className="col-2 d-flex justify-content-center align-items-center">
           <p>vs</p>
         </div>
 
         {/* Player 2 */}
-        <NewGamePlayer players={props} />
+        <NewGamePlayer
+          onSelectPlayer={handlePlayerSelection2}
+          playerId={playerId2}
+          players={props}
+        />
       </div>
 
       {/* PLAYER POINTS */}
       <div className="row mt-5 mb-5">
+        
         {/* Player 1 */}
         <NewGamePoints />
 

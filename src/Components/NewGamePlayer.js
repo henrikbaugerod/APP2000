@@ -4,13 +4,21 @@ import { Link } from "react-router-dom";
 const NewGamePlayer = (props) => {
   const [findPlayer, setFindPlayer] = useState(false);
   const [playerId, setPlayerId] = useState(sessionStorage.getItem("playerId"));
+  const test = true;
 
   const handleClick = () => {
     console.log("Link clicked");
     sessionStorage.setItem("findPlayer", true);
   };
 
+  console.log("Find player");
   console.log(findPlayer);
+
+  console.log("Props player id");
+  console.log(props.playerId);
+
+  console.log("Props onSelectPlayer funksjon");
+  console.log(props.onSelectPlayer);
 
   return (
     <div className="col-5">
