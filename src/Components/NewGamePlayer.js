@@ -3,13 +3,6 @@ import { Link } from "react-router-dom";
 
 const NewGamePlayer = (props) => {
   const [findPlayer, setFindPlayer] = useState(false);
-  const test = true;
-
-  console.log("Player pressed");
-  console.log(props.playerPressed);
-
-  console.log("Props playerId");
-  console.log(props.playerId);
 
   const handleClick = () => {
     console.log("Link clicked");
@@ -24,8 +17,6 @@ const NewGamePlayer = (props) => {
       console.log("Ingen ID");
     }
   };
-
-  useEffect(() => {}, []);
 
   return (
     <div className="col-5">

@@ -10,6 +10,9 @@ const NewGame = (props) => {
   const [playerPressed, setPlayerPressed] = useState(
     sessionStorage.getItem("playerPressed")
   );
+  const [player1Points, setPlayer1Points] = useState(0);
+  const [player2Points, setPlayer2Points] = useState(0);
+  const [player1GainedPoints, setPlayer1GainedPoints] = useState(0);
 
   // Oppdatere nåværende side
   useEffect(() => {
@@ -52,12 +55,24 @@ const NewGame = (props) => {
       {/* PLAYER POINTS */}
       <div className="row mt-5 mb-5">
         {/* Player 1 */}
-        <NewGamePoints />
+        <NewGamePoints
+          onSetPlayer1Points={setPlayer1Points}
+          currentPoints={player1Points}
+          playerGainedPoints={player1GainedPoints}
+          setPlayer1GainedPoints={setPlayer1GainedPoints}
+          pointsPressed="1"
+        />
 
         <div className="col-2"></div>
 
         {/* Player 2 */}
-        <NewGamePoints />
+        <NewGamePoints
+          onSetPlayer2Points={setPlayer2Points}
+          currentPoints={player2Points}
+          playerGainedPoints={player1GainedPoints}
+          setPlayer1GainedPoints={setPlayer1GainedPoints}
+          pointsPressed="2"
+        />
       </div>
 
       {/* Buttons */}

@@ -1,20 +1,43 @@
-import React from 'react';
+import React from "react";
 
-class AddSubButton extends React.Component {
-  handleClick = () => {
-    alert('Button clicked!');
-  }
+const AddSubButton = (props) => {
+  const buttonText = props.buttonText;
+  const pointsPressed = props.pointsPressed;
+  const setPlayer1Points = props.onSetPlayer1Points;
+  const setPlayer2Points = props.onSetPlayer2Points;
+  const currentPoints = props.currentPoints;
+  const add = props.add;
 
-  render()
-   {
-    const { buttonText } = this.props;
+  const handleClick = () => {
+    console.log("Button pressed");
+    let score;
 
-    return (
-        <button onClick={this.handleClick}>
-            {buttonText}
-        </button>
-    );
-  }
-}
+    // Logikk for + 1 poeng og - 1 minus
+    if (add) {
+      if (pointsPressed == "1") {
+        score = currentPoints + 1;
+        setPlayer1Points(score);
+      } else {
+        score = currentPoints + 1;
+        setPlayer2Points(score);
+      }
+    } else {
+      if (pointsPressed == "2") {
+        //
+        score = currentPoints - 1;
+        setPlayer2Points(score);
+      } else {
+        score = currentPoints - 1; //
+        setPlayer1Points(score);
+      }
+    }
+  };
+
+  return (
+    <div>
+      <button onClick={handleClick}>{buttonText}</button>
+    </div>
+  );
+};
 
 export default AddSubButton;
