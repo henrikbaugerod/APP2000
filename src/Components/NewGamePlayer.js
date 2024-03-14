@@ -3,22 +3,29 @@ import { Link } from "react-router-dom";
 
 const NewGamePlayer = (props) => {
   const [findPlayer, setFindPlayer] = useState(false);
-  const [playerId, setPlayerId] = useState(sessionStorage.getItem("playerId"));
   const test = true;
+
+  console.log("Player pressed");
+  console.log(props.playerPressed);
+
+  console.log("Props playerId");
+  console.log(props.playerId);
 
   const handleClick = () => {
     console.log("Link clicked");
     sessionStorage.setItem("findPlayer", true);
+
+    // Vite hvilken side som er trykket
+    if (props.playerPressed == "1") {
+      sessionStorage.setItem("playerPressed", "1");
+    } else if (props.playerPressed == "2") {
+      sessionStorage.setItem("playerPressed", "2");
+    } else {
+      console.log("Ingen ID");
+    }
   };
 
-  console.log("Find player");
-  console.log(findPlayer);
-
-  console.log("Props player id");
-  console.log(props.playerId);
-
-  console.log("Props onSelectPlayer funksjon");
-  console.log(props.onSelectPlayer);
+  useEffect(() => {}, []);
 
   return (
     <div className="col-5">
@@ -31,9 +38,9 @@ const NewGamePlayer = (props) => {
           >
             <Link to="/Players">
               <div>
-                {playerId ? (
+                {props.playerId ? (
                   <img
-                    src={props.players.players[playerId].image}
+                    src={props.players.players[props.playerId].image}
                     alt="Profile"
                     className="rounded-circle borderCircle"
                     width="50px"
@@ -52,8 +59,8 @@ const NewGamePlayer = (props) => {
       <div className="row mt-2 mb-2">
         <div className="col-12">
           <div className="newGameName">
-            {playerId ? (
-              <p>{props.players.players[playerId].name}</p>
+            {props.playerId ? (
+              <p>{props.players.players[props.playerId].name}</p>
             ) : (
               <p>tekstttt</p>
             )}
@@ -65,8 +72,8 @@ const NewGamePlayer = (props) => {
       <div className="row">
         <div className="col-12">
           <div className="newGamePoints bg-purple rounded-3">
-            {playerId ? (
-              <p>{props.players.players[playerId].points} pts</p>
+            {props.playerId ? (
+              <p>{props.players.players[props.playerId].points} pts</p>
             ) : (
               <p>pts</p>
             )}

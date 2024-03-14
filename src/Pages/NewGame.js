@@ -6,24 +6,22 @@ import { Link } from "react-router-dom";
 import RegisterButton from "../Components/RegisterButton";
 
 const NewGame = (props) => {
-
-  // useStates for player1 og player2
-  const [playerId1, setPlayerId1] = useState(null);
-  const [playerId2, setPlayerId2] = useState(null);
-
-  // Callback funksjon for player1
-  const handlePlayerSelection1 = (playerId) => {
-    setPlayerId1(playerId);
-  };
-
-  // Callback funksjon for player2
-  const handlePlayerSelection2 = (playerId) => {
-    setPlayerId2(playerId);
-  };
+  const [playerId, setPlayerId] = useState(sessionStorage.getItem("playerId"));
+  const [playerPressed, setPlayerPressed] = useState(
+    sessionStorage.getItem("playerPressed")
+  );
 
   // Oppdatere nåværende side
   useEffect(() => {
     sessionStorage.setItem("currentPage", "/newgame");
+
+    if (playerPressed === "1") {
+      props.onSetPlayerId1(playerId);
+    } else if (playerPressed === "2") {
+      props.onSetPlayerId2(playerId);
+    } else {
+      console.log("Player ID kan ikke bli satt");
+    }
   }, []);
 
   return (
@@ -32,12 +30,11 @@ const NewGame = (props) => {
 
       {/* PLAYER CARD */}
       <div className="row mt-5 mb-5">
-
         {/* Player 1 */}
         <NewGamePlayer
-          onSelectPlayer={handlePlayerSelection1}
-          playerId={playerId1}
+          playerPressed="1"
           players={props}
+          playerId={props.playerId1}
         />
 
         <div className="col-2 d-flex justify-content-center align-items-center">
@@ -46,15 +43,14 @@ const NewGame = (props) => {
 
         {/* Player 2 */}
         <NewGamePlayer
-          onSelectPlayer={handlePlayerSelection2}
-          playerId={playerId2}
+          playerPressed="2"
           players={props}
+          playerId={props.playerId2}
         />
       </div>
 
       {/* PLAYER POINTS */}
       <div className="row mt-5 mb-5">
-        
         {/* Player 1 */}
         <NewGamePoints />
 
