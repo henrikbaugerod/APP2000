@@ -47,9 +47,8 @@ const Players = (props) => {
           <button
             value="all"
             onClick={handleCategory}
-            className={`${
-              selectedCategory === "all" ? "bg-purple" : "bg-normalPurple"
-            } w-100 border-0 py-2 text-white categoryButton`}
+            className={`${selectedCategory === "all" ? "bg-purple" : "bg-normalPurple"
+              } w-100 border-0 py-2 text-white categoryButton`}
           >
             All
           </button>
@@ -58,9 +57,8 @@ const Players = (props) => {
           <button
             value="catch"
             onClick={handleCategory}
-            className={`${
-              selectedCategory === "catch" ? "bg-purple" : "bg-normalPurple"
-            } w-100 border-0 py-2 text-white categoryButton`}
+            className={`${selectedCategory === "catch" ? "bg-purple" : "bg-normalPurple"
+              } w-100 border-0 py-2 text-white categoryButton`}
           >
             Catch {props.tester}
           </button>
@@ -69,9 +67,8 @@ const Players = (props) => {
           <button
             value="external"
             onClick={handleCategory}
-            className={`${
-              selectedCategory === "external" ? "bg-purple" : "bg-normalPurple"
-            } w-100 border-0 py-2 text-white categoryButton`}
+            className={`${selectedCategory === "external" ? "bg-purple" : "bg-normalPurple"
+              } w-100 border-0 py-2 text-white categoryButton`}
           >
             External
           </button>

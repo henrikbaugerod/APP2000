@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
+import { Link } from 'react-router-dom';
 
 const Surprise = () => {
     const [challenge1, setChallenge1] = useState('None');
@@ -35,7 +36,7 @@ const Surprise = () => {
             "Play while standing on a wobbly surface.",
             "Use a mirror to aim instead of looking directly at the table."
         ];
-        
+
 
         // Create a spinning effect with dummy values
         let spins = 0;
@@ -60,10 +61,12 @@ const Surprise = () => {
     }
 
     return (
-        <div className="container">
-            <Header
-                backLink={'/menu'}
-            />
+        <div className="container d-flex flex-column">
+            <div className="sticky-top">
+                <Header
+                    backLink={'/menu'}
+                />
+            </div>
 
             <div className="row">
                 <div className="col-6 text-center d-flex align-items-center flex-column">
@@ -80,9 +83,16 @@ const Surprise = () => {
                 </div>
             </div>
 
-            <div className="row justify-content-center mt-5">
-                <div className="col-auto">
-                    <button className="btn button bg-darkPurple text-white justify-content-center py-3 rounded-pill px-4" onClick={handleButtonClick} disabled={isSpinning}>Generate challenges</button>
+            <div className="footer d-flex justify-content-center mt-auto">
+                <div className="row gx-3 w-100 justify-content-center">
+                    <div className="col-6">
+                        <button className="d-flex w-100 btn bg-darkPurple text-white justify-content-center py-3 rounded-pill" onClick={handleButtonClick} disabled={isSpinning}>Generate challenges</button>
+                    </div>
+                    <div className="col-6">
+                        <Link to={'/menu'} className="d-flex btn border border-white text-white justify-content-center py-3 rounded-pill">
+                            Back
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
