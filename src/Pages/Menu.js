@@ -42,8 +42,8 @@ const Menu = (props) => {
 
             <Link to="/surprise" className="text-decoration-none">
                 <MenuButton
-                    image={'./images/gift-solid.svg'}
-                    text={"Surprise"}
+                    image={'./images/swords-regular.svg'}
+                    text={"Challenge"}
                     previousPage='/menu'
                 />
             </Link>

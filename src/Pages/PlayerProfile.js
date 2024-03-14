@@ -85,7 +85,7 @@ const Playerprofile = (props) => {
             />
 
             <div className="row justify-content-center">
-                <div className="col-4">
+                <div className="col-md-4 text-center">
                     <div className='profilePic'>
                         {props.players && props.players[playerId] && props.players[playerId].image ? (
                             <img src={props.players[playerId].image} alt="Profile" className="rounded-circle borderCircle" width="50px" height="50px" />

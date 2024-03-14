@@ -25,8 +25,6 @@ const Home = (props) => {
                 <h2>We billiard.</h2>
             </div>
 
-
-
             <div className="row mt-5 mb-5">
                 <div className="col-6">
                     <Link to="/newgame" className="d-flex btn bg-darkPurple text-white justify-content-center py-3 rounded-pill" onClick={() => sessionStorage.setItem('previousPage', '/')}>

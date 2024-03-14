@@ -7,7 +7,7 @@ const Footer = (props) => {
         <div className="footer d-flex justify-content-center    ">
             <div className="row gx-3 w-100 justify-content-center">
                 <div className="col-6">
-                    <Link to={props.link1} className="d-flex btn bg-darkPurple text-white justify-content-center py-3 rounded-pill">
+                    <Link to={props.link1} className="d-flex btn bg-darkPurple text-white justify-content-center py-3 rounded-pill" onClick={props.onClick1 ? props.onClick1 : null}>
                         Register
                     </Link>
                 </div>

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 const TournamentGame = (props) => {
     const [winners, setWinners] = useState([]);
+    const [matches, setMatches] = useState(null);
 
     const handleClick = (e, key, match) => {
         const img1 = document.getElementsByClassName('playerImg1-' + key);
@@ -25,7 +26,9 @@ const TournamentGame = (props) => {
     };
 
     useEffect(() => {
+        console.log("Winners: ", props.winners)
         const matches = document.getElementsByClassName('tournamentBox');
+        setMatches(matches.length)
         const box = document.getElementsByClassName('tournamentBoxChild');
 
         for (let i = 0; i < matches.length; i++) {
@@ -83,7 +86,7 @@ const TournamentGame = (props) => {
                             <div className="col-auto">
                                 <h5 className="mx-2">-</h5>
                             </div>
-                            <div className="col-auto text-center">
+                            <div className="col-auto text-center tournamentBoxChild">
                                 <img
                                     src={props.players[match.player2] && props.players[match.player2].image ? props.players[match.player2].image : "./images/bye.svg"}
                                     alt=""

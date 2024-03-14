@@ -130,6 +130,8 @@ const Tournament = (props) => {
 
             <Footer 
                 link1='/tournament-game'
+                onClick1= {() => generateBracket(props.registeredPlayers)}
+                text1='Play'
                 link2='/menu'
             />
 

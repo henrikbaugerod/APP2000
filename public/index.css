@@ -396,6 +396,16 @@ input[type="file"]::file-selector-button:active {
     height: 50px;
 }
 
+.tournamentBoxChild {
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.tournamentBoxChild:hover > img {
+    scale: 1.1;
+    transition: all .3s ease;
+}
+
 
 /* =====================================  */
 /* Surprise.js */
