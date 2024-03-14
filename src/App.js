@@ -58,102 +58,103 @@ function App() {
     }, [])
 
     return (
-        <HashRouter>
-            <Routes>
+      <HashRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                players={players}
+                setPlayers={setPlayers}
+                sortedPlayers={sortedPlayers}
+                setSortedPlayers={setSortedPlayers}
+              />
+            }
+          />
 
-                <Route path="/"
-                    element={<Home
-                        players={players}
-                        setPlayers={setPlayers}
-                        sortedPlayers={sortedPlayers}
-                        setSortedPlayers={setSortedPlayers}
-                    />}
-                />
+          <Route path="/menu" element={<Menu />} />
 
-                <Route path="/menu"
-                    element={<Menu
+          <Route
+            path="/newgame"
+            element={
+              <NewGame
+                players={players}
+                setPlayers={setPlayers}
+              />
+            }
+          />
 
-                    />}
-                />
+          <Route
+            path="/players"
+            element={
+              <Players
+                players={players}
+                setPlayers={setPlayers}
+                sortedPlayers={sortedPlayers}
+                setSortedPlayers={setSortedPlayers}
+              />
+            }
+          />
 
-                <Route path="/newgame"
-                    element={<NewGame
-                        players={players}
-                        setPlayers={setPlayers}
-                    />}
-                />
+          <Route
+            path="/newplayer"
+            element={<NewPlayer players={players} setPlayers={setPlayers} />}
+          />
 
-                <Route path="/players"
-                    element={<Players
-                        players={players}
-                        setPlayers={setPlayers}
-                        sortedPlayers={sortedPlayers}
-                        setSortedPlayers={setSortedPlayers}
-                    />}
-                />
+          <Route
+            path="/playerprofile"
+            element={
+              <PlayerProfile
+                players={players}
+                setPlayers={setPlayers}
+                sortedPlayers={sortedPlayers}
+                setSortedPlayers={setSortedPlayers}
+                matches={matches}
+              />
+            }
+          />
 
-                <Route path="/newplayer"
-                    element={<NewPlayer
-                        players={players}
-                        setPlayers={setPlayers}
-                    />}
-                />
+          <Route
+            path="/history"
+            element={<History players={players} matches={matches} />}
+          />
 
-                <Route path="/playerprofile"
-                    element={<PlayerProfile
-                        players={players}
-                        setPlayers={setPlayers}
-                        sortedPlayers={sortedPlayers}
-                        setSortedPlayers={setSortedPlayers}
-                        matches={matches}
-                    />}
-                />
+          <Route
+            path="/tournament"
+            element={
+              <Tournament
+                players={players}
+                sortedPlayers={sortedPlayers}
+                registeredPlayers={registeredPlayers}
+                setRegisteredPlayers={setRegisteredPlayers}
+                setTournamentMatches={setTournamentMatches}
+                setRound={setRound}
+              />
+            }
+          />
 
-                <Route path="/history"
-                    element={<History
-                        players={players}
-                        matches={matches}
-                    />}
-                />
+          <Route
+            path="/tournament-game"
+            element={
+              <TournamentGame
+                players={players}
+                registeredPlayers={registeredPlayers}
+                tournamentMatches={tournamentMatches}
+                setTournamentMatches={setTournamentMatches}
+                round={round}
+                setRound={setRound}
+              />
+            }
+          />
 
-                <Route path="/tournament"
-                    element={<Tournament
-                        players={players}
-                        sortedPlayers={sortedPlayers}
-                        registeredPlayers={registeredPlayers}
-                        setRegisteredPlayers={setRegisteredPlayers}
-                        setTournamentMatches={setTournamentMatches}
-                        setRound={setRound}
-                    />}
-                />
+          <Route
+            path="/tournamentwinner"
+            element={<TournamentWinner players={players} />}
+          />
 
-                <Route path="/tournament-game"
-                    element={<TournamentGame
-                        players={players}
-                        registeredPlayers={registeredPlayers}
-                        tournamentMatches={tournamentMatches}
-                        setTournamentMatches={setTournamentMatches}
-                        round={round}
-                        setRound={setRound}
-                    />}
-                />
-
-                <Route path="/tournamentwinner"
-                    element={<TournamentWinner
-                        players={players}
-                    />}
-                />
-
-                <Route path="/surprise"
-                    element={<Surprise
-
-                    />}
-                />
-
-
-            </Routes>
-        </HashRouter>
-
+          <Route path="/surprise" element={<Surprise />} />
+        </Routes>
+      </HashRouter>
     );
 }
 
