@@ -13,6 +13,7 @@ const NewGame = (props) => {
   const [player1Points, setPlayer1Points] = useState(0);
   const [player2Points, setPlayer2Points] = useState(0);
   const [player1GainedPoints, setPlayer1GainedPoints] = useState(0);
+  const [player2GainedPoints, setPlayer2GainedPoints] = useState(0);
 
   // Oppdatere nåværende side
   useEffect(() => {
@@ -69,8 +70,8 @@ const NewGame = (props) => {
         <NewGamePoints
           onSetPlayer2Points={setPlayer2Points}
           currentPoints={player2Points}
-          playerGainedPoints={player1GainedPoints}
-          setPlayer1GainedPoints={setPlayer1GainedPoints}
+          playerGainedPoints={player2GainedPoints}
+          setPlayer2GainedPoints={setPlayer2GainedPoints}
           pointsPressed="2"
         />
       </div>
@@ -78,7 +79,14 @@ const NewGame = (props) => {
       {/* Buttons */}
       <div className="row mt-5 mb-5">
         <div className="col-6 d-flex btn button bg-darkPurple text-white justify-content-center py-3 rounded-pill">
-          <RegisterButton buttonText="Register"></RegisterButton>
+          <RegisterButton
+            buttonText="Register"
+            playerId1={props.playerId1}
+            playerId2={props.playerId2}
+            player1GainedPoints={player1GainedPoints}
+            player2GainedPoints={player2GainedPoints}
+            props={props}
+          ></RegisterButton>
         </div>
         <div className="col-6">
           <Link

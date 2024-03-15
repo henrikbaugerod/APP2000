@@ -27,10 +27,17 @@ const AddSubButton = (props) => {
         score = currentPoints - 1;
         setPlayer2Points(score);
       } else {
-        score = currentPoints - 1; //
+        score = currentPoints - 1; 
         setPlayer1Points(score);
       }
     }
+
+    pointsGained();
+  };
+
+  // Poengsystem
+  const pointsGained = () => {
+
   };
 
   return (
