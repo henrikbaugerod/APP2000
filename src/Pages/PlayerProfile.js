@@ -127,7 +127,7 @@ const Playerprofile = (props) => {
             await updateDoc(playerRef, { nickname: nickname })
 
             // Update the location of the player in the database
-            await updateDoc(playerRef, { location: location })
+            await updateDoc(playerRef, { location: location.toLowerCase() })
 
             // Update the players name and nickname with the new values
             const updatedPlayers = [...props.players];
@@ -139,7 +139,7 @@ const Playerprofile = (props) => {
                     ...updatedPlayers[playerIndex],
                     name: name,
                     nickname: nickname,
-                    location: location,
+                    location: location.toLowerCase(),
                 };
                 props.setPlayers(updatedPlayers);
             }
@@ -153,7 +153,7 @@ const Playerprofile = (props) => {
                     ...updatedSortedPlayers[sortedPlayerIndex],
                     name: name,
                     nickname: nickname,
-                    location: location,
+                    location: location.toLowerCase(),
                 };
                 props.setSortedPlayers(updatedSortedPlayers);
             }
