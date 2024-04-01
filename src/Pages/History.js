@@ -67,18 +67,21 @@ const History = (props) => {
 
                 {props.matches.map((match) => (
                     <div className="row">
-                        <HistoryMatch
-                            id={player.id}
 
-                            date={match.date.toDate().toDateString()}
-
-                            image={props.players[match.player_one].image}
-                            image2={props.players[match.player_two].image}
-
-                            score={match.score_player_one}
-                            score2={match.score_player_two}
-                        />
-                    </div>
+            <Link to="/playerprofile">
+                <div onClick={() => sessionStorage.setItem('playerId', match.player_one)} className="d-inline-block">
+                </div>
+                <HistoryMatch
+                    id={match.id}
+                    date={match.date.toDate().toDateString()}
+                    image={props.players[match.player_one].image }
+                    image2={props.players[match.player_two].image}
+                    score={match.score_player_one}
+                    score2={match.score_player_two}
+                    /> 
+            </Link>
+                               
+            </div>
                 ))}
             </div>
         </div>
