@@ -31,7 +31,12 @@ const NewGamePlayer = (props) => {
               <div>
                 {props.playerId ? (
                   <img
-                    src={props.players.players[props.playerId].image}
+                    src={
+                      props.players.players &&
+                      props.players.players[props.playerId]
+                        ? props.players.players[props.playerId].image
+                        : null
+                    }
                     alt="Profile"
                     className="rounded-circle borderCircle"
                     width="50px"
@@ -51,7 +56,11 @@ const NewGamePlayer = (props) => {
         <div className="col-12">
           <div className="newGameName">
             {props.playerId ? (
-              <p>{props.players.players[props.playerId].name}</p>
+              <p>
+                {props.players.players && props.players.players[props.playerId]
+                  ? props.players.players[props.playerId].name
+                  : null}
+              </p>
             ) : (
               <p>tekstttt</p>
             )}
@@ -64,7 +73,12 @@ const NewGamePlayer = (props) => {
         <div className="col-12">
           <div className="newGamePoints bg-purple rounded-3">
             {props.playerId ? (
-              <p>{props.players.players[props.playerId].points} pts</p>
+              <p>
+                {props.players.players && props.players.players[props.playerId]  
+                  ? props.players.players[props.playerId].points
+                  : null}{" "}
+                pts
+              </p>
             ) : (
               <p>pts</p>
             )}

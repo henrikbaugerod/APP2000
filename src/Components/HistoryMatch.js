@@ -22,7 +22,7 @@ function formatDate(dateString) {
 
 
     return (
-        <div className="col-12 mb-2 text-white border-0">
+        <div className="col-12 mb-2 text-white border-0 text-decoration-none">
             <div className="p-3 historyBox" style={{ borderBottom: '1px solid #7900FF' }}>
                 <div className='row gx-2 align-items-center'>
                     <div className="col-4">

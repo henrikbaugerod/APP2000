@@ -15,14 +15,24 @@ const NewGame = (props) => {
   const [player1GainedPoints, setPlayer1GainedPoints] = useState(0);
   const [player2GainedPoints, setPlayer2GainedPoints] = useState(0);
 
+  console.log(player1GainedPoints);
+  console.log(player2GainedPoints);
+
+
   // Oppdatere nåværende side
   useEffect(() => {
     sessionStorage.setItem("currentPage", "/newgame");
 
     if (playerPressed === "1") {
       props.onSetPlayerId1(playerId);
+      if (props.players && props.players[playerId]) {
+        sessionStorage.setItem("player1poeng", props.players[playerId].points);
+      }
     } else if (playerPressed === "2") {
       props.onSetPlayerId2(playerId);
+      if (props.players && props.players[playerId]) {
+        sessionStorage.setItem("player2poeng", props.players[playerId].points);
+      }
     } else {
       console.log("Player ID kan ikke bli satt");
     }
@@ -61,6 +71,7 @@ const NewGame = (props) => {
           currentPoints={player1Points}
           playerGainedPoints={player1GainedPoints}
           setPlayer1GainedPoints={setPlayer1GainedPoints}
+          setPlayer2GainedPoints={setPlayer2GainedPoints}
           player1Points={player1Points}
           player2Points={player2Points}
           pointsPressed="1"
@@ -73,6 +84,7 @@ const NewGame = (props) => {
           onSetPlayer2Points={setPlayer2Points}
           currentPoints={player2Points}
           playerGainedPoints={player2GainedPoints}
+          setPlayer1GainedPoints={setPlayer1GainedPoints}
           setPlayer2GainedPoints={setPlayer2GainedPoints}
           player1Points={player1Points}
           player2Points={player2Points}
