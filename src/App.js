@@ -16,151 +16,157 @@ import Surprise from "./Pages/Surprise";
 import TournamentWinner from "./Pages/TournamentWinner";
 
 function App() {
-  const [players, setPlayers] = useState([]);
-  const [sortedPlayers, setSortedPlayers] = useState([]);
-  const [matches, setMatches] = useState([]);
-  const [registeredPlayers, setRegisteredPlayers] = useState([]);
-  const [tournamentMatches, setTournamentMatches] = useState([]);
-  const [round, setRound] = useState(null);
-  const [playerId1, setPlayerId1] = useState(null);
-  const [playerId2, setPlayerId2] = useState(null);
+    const [players, setPlayers] = useState([]);
+    const [sortedPlayers, setSortedPlayers] = useState([]);
+    const [matches, setMatches] = useState([]);
+    const [registeredPlayers, setRegisteredPlayers] = useState([]);
+    const [tournamentMatches, setTournamentMatches] = useState([]);
+    const [round, setRound] = useState(null);
+    const [playerId1, setPlayerId1] = useState(null);
+    const [playerId2, setPlayerId2] = useState(null);
 
-  const fetchPost = async () => {
-    await getDocs(collection(db, "players")).then((querySnapshot) => {
-      const unsortedData = querySnapshot.docs
-        .map((doc) => ({ ...doc.data(), id: doc.id }))
-        .map((player, index) => ({ ...player, ranking: index + 1 })); // Add ranking to each player without sorting
+    const fetchPost = async () => {
+        await getDocs(collection(db, "players")).then((querySnapshot) => {
+            const unsortedData = querySnapshot.docs
+                .map((doc) => ({ ...doc.data(), id: doc.id }))
+                .map((player, index) => ({ ...player, ranking: index + 1 })); // Add ranking to each player without sorting
 
-      const sortedData = [...unsortedData]
-        .sort((a, b) => b.points - a.points) // Sort players by points in descending order
-        .map((player, index) => ({ ...player, sortedRanking: index + 1 })); // Add ranking to each player
+            const sortedData = [...unsortedData]
+                .sort((a, b) => b.points - a.points) // Sort players by points in descending order
+                .map((player, index) => ({ ...player, sortedRanking: index + 1 })); // Add ranking to each player
 
-      setPlayers(unsortedData);
-      setSortedPlayers(sortedData);
-    });
-  };
+            setPlayers(unsortedData);
+            setSortedPlayers(sortedData);
+        });
+    };
 
-  const fetchMatches = async () => {
-    await getDocs(collection(db, "matches")).then((querySnapshot) => {
-      const unsortedMatches = querySnapshot.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
+    const fetchMatches = async () => {
+        await getDocs(collection(db, "matches")).then((querySnapshot) => {
+            const unsortedMatches = querySnapshot.docs.map((doc) => ({
+                ...doc.data(),
+                id: doc.id,
+            }));
 
-      setMatches(unsortedMatches);
-    });
-  };
+            setMatches(unsortedMatches);
+        });
+    };
 
-  useEffect(() => {
-    fetchPost();
-    fetchMatches();
-    sessionStorage.setItem("currentPage", "/");
-    sessionStorage.setItem("previousPage", "/");
-  }, []);
+    useEffect(() => {
+        fetchPost();
+        fetchMatches();
+        sessionStorage.setItem("currentPage", "/");
+        sessionStorage.setItem("previousPage", "/");
+    }, []);
 
-  return (
-    <HashRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              players={players}
-              setPlayers={setPlayers}
-              sortedPlayers={sortedPlayers}
-              setSortedPlayers={setSortedPlayers}
-            />
-          }
-        />
+    return (
+        <HashRouter>
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        <Home
+                            players={players}
+                            setPlayers={setPlayers}
+                            sortedPlayers={sortedPlayers}
+                            setSortedPlayers={setSortedPlayers}
+                        />
+                    }
+                />
 
-        <Route path="/menu" element={<Menu />} />
+                <Route path="/menu" element={<Menu />} />
 
-        <Route
-          path="/newgame"
-          element={
-            <NewGame
-              players={players}
-              setPlayers={setPlayers}
-              onSetPlayerId1={setPlayerId1}
-              onSetPlayerId2={setPlayerId2}
-              playerId1={playerId1}
-              playerId2={playerId2}
-            />
-          }
-        />
+                <Route
+                    path="/newgame"
+                    element={
+                        <NewGame
+                            players={players}
+                            setPlayers={setPlayers}
+                            onSetPlayerId1={setPlayerId1}
+                            onSetPlayerId2={setPlayerId2}
+                            playerId1={playerId1}
+                            playerId2={playerId2}
+                        />
+                    }
+                />
 
-        <Route
-          path="/players"
-          element={
-            <Players
-              players={players}
-              setPlayers={setPlayers}
-              sortedPlayers={sortedPlayers}
-              setSortedPlayers={setSortedPlayers}
-            />
-          }
-        />
+                <Route
+                    path="/players"
+                    element={
+                        <Players
+                            players={players}
+                            setPlayers={setPlayers}
+                            sortedPlayers={sortedPlayers}
+                            setSortedPlayers={setSortedPlayers}
+                        />
+                    }
+                />
 
-        <Route
-          path="/newplayer"
-          element={<NewPlayer players={players} setPlayers={setPlayers} />}
-        />
+                <Route
+                    path="/newplayer"
+                    element={
+                        <NewPlayer
+                            players={players}
+                            setPlayers={setPlayers}
+                            setSortedPlayers={setSortedPlayers}
+                        />
+                    }
+                />
 
-        <Route
-          path="/playerprofile"
-          element={
-            <PlayerProfile
-              players={players}
-              setPlayers={setPlayers}
-              sortedPlayers={sortedPlayers}
-              setSortedPlayers={setSortedPlayers}
-              matches={matches}
-            />
-          }
-        />
+                <Route
+                    path="/playerprofile"
+                    element={
+                        <PlayerProfile
+                            players={players}
+                            setPlayers={setPlayers}
+                            sortedPlayers={sortedPlayers}
+                            setSortedPlayers={setSortedPlayers}
+                            matches={matches}
+                        />
+                    }
+                />
 
-        <Route
-          path="/history"
-          element={<History players={players} matches={matches} />}
-        />
+                <Route
+                    path="/history"
+                    element={<History players={players} matches={matches} />}
+                />
 
-        <Route
-          path="/tournament"
-          element={
-            <Tournament
-              players={players}
-              sortedPlayers={sortedPlayers}
-              registeredPlayers={registeredPlayers}
-              setRegisteredPlayers={setRegisteredPlayers}
-              setTournamentMatches={setTournamentMatches}
-              setRound={setRound}
-            />
-          }
-        />
+                <Route
+                    path="/tournament"
+                    element={
+                        <Tournament
+                            players={players}
+                            sortedPlayers={sortedPlayers}
+                            registeredPlayers={registeredPlayers}
+                            setRegisteredPlayers={setRegisteredPlayers}
+                            setTournamentMatches={setTournamentMatches}
+                            setRound={setRound}
+                        />
+                    }
+                />
 
-        <Route
-          path="/tournament-game"
-          element={
-            <TournamentGame
-              players={players}
-              registeredPlayers={registeredPlayers}
-              tournamentMatches={tournamentMatches}
-              setTournamentMatches={setTournamentMatches}
-              round={round}
-              setRound={setRound}
-            />
-          }
-        />
+                <Route
+                    path="/tournament-game"
+                    element={
+                        <TournamentGame
+                            players={players}
+                            registeredPlayers={registeredPlayers}
+                            tournamentMatches={tournamentMatches}
+                            setTournamentMatches={setTournamentMatches}
+                            round={round}
+                            setRound={setRound}
+                        />
+                    }
+                />
 
-        <Route
-          path="/tournamentwinner"
-          element={<TournamentWinner players={players} />}
-        />
+                <Route
+                    path="/tournamentwinner"
+                    element={<TournamentWinner players={players} />}
+                />
 
-        <Route path="/surprise" element={<Surprise />} />
-      </Routes>
-    </HashRouter>
-  );
+                <Route path="/surprise" element={<Surprise />} />
+            </Routes>
+        </HashRouter>
+    );
 }
 
 export default App;
