@@ -61,14 +61,16 @@ const History = (props) => {
                 </div>
             </div>
 
-            <div className="col-12 d-flex align-items-center">
+            <div className="col-12 align-items-center">
                 {console.log("Matches = ", props.matches)}
                 {console.log("Player = ", props.players)}
 
                 {props.matches.map((match) => (
                     <div className="row">
                         <HistoryMatch
-                            date={match.date.toDate().toDateString()                                }
+                            id={player.id}
+
+                            date={match.date.toDate().toDateString()}
 
                             image={props.players[match.player_one].image}
                             image2={props.players[match.player_two].image}
