@@ -61,6 +61,8 @@ const NewGame = (props) => {
           currentPoints={player1Points}
           playerGainedPoints={player1GainedPoints}
           setPlayer1GainedPoints={setPlayer1GainedPoints}
+          player1Points={player1Points}
+          player2Points={player2Points}
           pointsPressed="1"
         />
 
@@ -72,6 +74,8 @@ const NewGame = (props) => {
           currentPoints={player2Points}
           playerGainedPoints={player2GainedPoints}
           setPlayer2GainedPoints={setPlayer2GainedPoints}
+          player1Points={player1Points}
+          player2Points={player2Points}
           pointsPressed="2"
         />
       </div>

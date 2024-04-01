@@ -24,6 +24,10 @@ const NewGamePoints = (props) => {
             currentPoints={props.currentPoints}
             add="true"
             pointsPressed={props.pointsPressed}
+            setPlayer1GainedPoints={props.setPlayer1GainedPoints}
+            setPlayer2GainedPoints={props.setPlayer2GainedPoints}
+            player1Points={props.player1Points}
+            player2Points={props.player2Points}
           />
         </div>
         <div className="col-6 button text-start">
@@ -33,6 +37,10 @@ const NewGamePoints = (props) => {
             onSetPlayer2Points={props.onSetPlayer2Points}
             currentPoints={props.currentPoints}
             pointsPressed={props.pointsPressed}
+            setPlayer1GainedPoints={props.setPlayer1GainedPoints}
+            setPlayer2GainedPoints={props.setPlayer2GainedPoints}
+            player1Points={props.player1Points}
+            player2Points={props.player2Points}
           />
         </div>
       </div>
