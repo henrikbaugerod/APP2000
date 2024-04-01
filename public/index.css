@@ -363,7 +363,15 @@ input[type="file"]::file-selector-button:active {
 /* =====================================  */
 /* PlayerProfile.js */
 /* =====================================  */
+input[type=text] {
+    border: 2px solid transparent;
+}
 
+input[type=text]:focus {
+    border: 2px solid #white;
+    background-color: #7900FF;
+    color: white;
+}
 
 
 /* =====================================  */
@@ -371,7 +379,8 @@ input[type="file"]::file-selector-button:active {
 /* =====================================  */
 
 .active-shadow-bottom {
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Example shadow */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    /* Example shadow */
     border: 0;
 }
 
@@ -408,7 +417,7 @@ input[type="file"]::file-selector-button:active {
     transition: all .3s ease;
 }
 
-.tournamentBoxChild:hover > img {
+.tournamentBoxChild:hover>img {
     scale: 1.1;
     transition: all .3s ease;
 }
