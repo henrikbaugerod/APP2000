@@ -68,7 +68,7 @@ const History = (props) => {
                 {props.matches.map((match) => (
                     <div className="row">
                         <HistoryMatch
-                            id={player.id}
+                            
 
                             date={match.date.toDate().toDateString()}
 
