@@ -68,8 +68,8 @@ const History = (props) => {
                 {props.matches.map((match) => (
                     <div className="row">
 
-            <Link to="/playerprofile">
-                <HistoryMatch
+            <Link to="/playerprofile" className='text-decoration-none'>
+                <HistoryMatch 
                     id={match.id}
                     player1={match.player_one}
                     player2={match.player_two}
