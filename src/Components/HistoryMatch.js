@@ -31,7 +31,7 @@ function formatDate(dateString) {
                     <div className="col-4">
                         <div className='row gx-2 align-items-center'>
                             <div className="col-auto">
-                                <Link to="/playerprofile" className="text-decoration-none">
+                                <Link to="/playerprofile" className="text-decoration-none" onClick={() => sessionStorage.setItem("playerId", props.player1)}>
                                     <img src={props.image} alt="" className='img-fluid rounded-circle' />
                                 </Link>
                             </div>
@@ -39,7 +39,7 @@ function formatDate(dateString) {
                                 <h5>vs</h5>
                             </div>
                             <div className="col-auto">
-                                <Link to="/playerprofile" className="text-decoration-none">
+                                <Link to="/playerprofile" className="text-decoration-none" onClick={ () => sessionStorage.setItem("playerId",props.player2)}>
                                     <img src={props.image2} alt="" className='img-fluid rounded-circle' />
                                 </Link>
                             </div>

@@ -69,10 +69,10 @@ const History = (props) => {
                     <div className="row">
 
             <Link to="/playerprofile">
-                <div onClick={() => sessionStorage.setItem('playerId', match.player_one)} className="d-inline-block">
-                </div>
                 <HistoryMatch
                     id={match.id}
+                    player1={match.player_one}
+                    player2={match.player_two}
                     date={match.date.toDate().toDateString()}
                     image={props.players[match.player_one].image }
                     image2={props.players[match.player_two].image}
