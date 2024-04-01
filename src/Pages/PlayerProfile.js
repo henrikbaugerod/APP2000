@@ -11,24 +11,40 @@ const Playerprofile = (props) => {
     const [file, setFile] = useState(null);
     const [playerId, setPlayerId] = useState(sessionStorage.getItem("playerId"));
     const [isLoading, setIsLoading] = useState(false);
+    const [editing, setEditing] = useState(false);
     const [backLink, setBackLink] = useState(sessionStorage.getItem("backLink"));
 
-    const [name, setName] = useState(props.players[sessionStorage.getItem("playerId")].name);
-    const [nickname, setNickname] = useState('');
+    const initialName = (props.players && playerId && props.players[playerId]) ? props.players[playerId].name : '';
+    const [name, setName] = useState(initialName);
+    const initialNickname = (props.players && playerId && props.players[playerId]) ? props.players[playerId].nickname : '';
+    const [nickname, setNickname] = useState(initialNickname);
+    const initialLocation = (props.players && playerId && props.players[playerId]) ? props.players[playerId].location : '';
+    const [location, setLocation] = useState(initialLocation);
 
-    const [editing, setEditing] = useState(false);
 
-    console.log(props);
 
+    // Function to handle change in the name input
+    const handleInputChange = (event, input) => {
+        if (input === 'name') {
+            setName(event);
+        } else if (input === 'nickname') {
+            setNickname(event);
+        } else if (input === 'location') {
+            setLocation(event);
+        }
+    }
+
+    // Function to handle the change between profile and stats on profile
     const handleTabChange = (tab) => {
         setActiveButton(tab);
     };
 
+    // Function to handle changing the files
     const handleFileChange = (event) => {
         setFile(event.target.files[0]);
     };
-    //console.log(file)
 
+    // Function to save the new image
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!file) return;
@@ -60,7 +76,7 @@ const Playerprofile = (props) => {
                 // Update the image URL in the database
                 await updateDoc(playerRef, { image: fileUrl });
 
-                /// Update the players state with the new image URL
+                // Update the players state with the new image URL
                 const updatedPlayers = [...props.players];
                 const playerIndex = updatedPlayers.findIndex(
                     (player) => player.id === playerId
@@ -96,14 +112,66 @@ const Playerprofile = (props) => {
     };
 
     // Function to save the changed information of a player
-    const saveInformation = () => {
-        const formData = new FormData();
-        formData.append("file", file);
+    const saveInformation = async (event) => {
+        console.log("START saveInformation()");
+        setIsLoading(true);
+
+        // Choosing what table to update
+        const playerRef = doc(db, "players", playerId);
+
+        try {
+            // Update the name of the player in the database
+            await updateDoc(playerRef, { name: name })
+
+            // Upadte the nickname of hte player in the database
+            await updateDoc(playerRef, { nickname: nickname })
+
+            // Update the location of the player in the database
+            await updateDoc(playerRef, { location: location })
+
+            // Update the players name and nickname with the new values
+            const updatedPlayers = [...props.players];
+            const playerIndex = updatedPlayers.findIndex(
+                (player) => player.id === playerId
+            );
+            if (playerIndex !== -1) {
+                updatedPlayers[playerIndex] = {
+                    ...updatedPlayers[playerIndex],
+                    name: name,
+                    nickname: nickname,
+                    location: location,
+                };
+                props.setPlayers(updatedPlayers);
+            }
+
+            const updatedSortedPlayers = [...props.sortedPlayers];
+            const sortedPlayerIndex = updatedSortedPlayers.findIndex(
+                (player) => player.id === playerId
+            );
+            if (sortedPlayerIndex !== -1) {
+                updatedSortedPlayers[sortedPlayerIndex] = {
+                    ...updatedSortedPlayers[sortedPlayerIndex],
+                    name: name,
+                    nickname: nickname,
+                    location: location,
+                };
+                props.setSortedPlayers(updatedSortedPlayers);
+            }
+        } catch (e) {
+            console.error("Error updating information: ", e);
+        } finally {
+            setEditing(false)
+            setIsLoading(false)
+        }
+
+
     }
 
     useEffect(() => {
         sessionStorage.setItem("currentPage", "/playerprofile");
     }, []);
+
+    console.log('Location = ', location)
 
     return (
         <div className="container">
@@ -240,12 +308,20 @@ const Playerprofile = (props) => {
                                             </div>
                                         ) : (
                                             <div>
-                                                <input type="text" class="form-control rounded mb-2" value={name}/>
-                                                <input type="text" class="form-control rounded mb-2" value={nickname}/>
-                                                <select type="select" class="form-control rounded" value={props.players[playerId].location}>
-                                                    <option>1</option>
-                                                    <option>1</option>
-                                                </select>
+                                                <input type="text" class="form-control rounded mb-2" value={name} onChange={((event) => handleInputChange(event.target.value, 'name'))} />
+                                                <input type="text" class="form-control rounded mb-2" value={nickname} onChange={((event) => handleInputChange(event.target.value, 'nickname'))} />
+                                                {location !== 'catch' ? (
+                                                    <select type="select" class="form-select rounded" value={location} onChange={((event) => handleInputChange(event.target.value, 'location'))}>
+                                                        <option selected>External</option>
+                                                        <option>Catch</option>
+                                                    </select>
+                                                ) : (
+                                                    <select type="select" class="form-select rounded" value={location} onChange={((event) => handleInputChange(event.target.value, 'location'))}>
+                                                        <option selected>Catch</option>
+                                                        <option>External</option>
+                                                    </select>
+                                                )}
+
                                             </div>
                                         )}
 
@@ -268,18 +344,19 @@ const Playerprofile = (props) => {
             <div className="row mt-5 pt-5">
                 <div className="col-6">
                     {editing ? (
-                        <button class="d-flex w-100 btn bg-darkPurple text-white justify-content-center py-3 rounded-pill" onClick={() => saveInformation}>Save</button>
+                        <button class="d-flex w-100 btn bg-darkPurple text-white justify-content-center py-3 rounded-pill" disabled={isLoading ? true : false} onClick={() => saveInformation()}>{isLoading ? 'Saving' : 'Save'}</button>
                     ) : (
                         <button class="d-flex w-100 btn bg-darkPurple text-white justify-content-center py-3 rounded-pill" onClick={() => setEditing(true)}>Edit</button>
                     )}
                 </div>
                 <div className="col-6">
-                    <Link
-                        to="/players"
-                        className="d-flex btn border border-white text-white justify-content-center py-3 rounded-pill"
-                    >
-                        Back
-                    </Link>
+                    {editing ? (
+                        <button class="w-100 btn border border-white text-white justify-content-center py-3 rounded-pill" onClick={() => setEditing(false)}>Cancel</button>
+                    ) : (
+                        <Link to="/players" className="d-flex btn border border-white text-white justify-content-center py-3 rounded-pill">
+                            Back
+                        </Link>
+                    )}
                 </div>
             </div>
         </div >
