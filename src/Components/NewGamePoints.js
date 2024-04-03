@@ -36,7 +36,8 @@ const NewGamePoints = (props) => {
             props.setPlayer1GainedPoints(-p1Pot);
             props.setPlayer2GainedPoints(p1Pot);
         } else {
-            console.log("Uavgjort?");
+            props.setPlayer1GainedPoints(0)
+            props.setPlayer2GainedPoints(0)
         }
     };
 

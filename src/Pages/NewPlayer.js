@@ -3,7 +3,7 @@ import axios from 'axios';
 import Header from '../Components/Header';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { collection, addDoc, doc } from "firebase/firestore";
+import { collection, setDoc, doc } from "firebase/firestore";
 import { db } from "../firebase";
 
 const NewPlayer = (props) => {
@@ -72,7 +72,7 @@ const NewPlayer = (props) => {
             };
 
             // Add new player to Firestore
-            await addDoc(collection(db, "players"), playerData);
+            await setDoc(doc(db, "players", newPlayerId.toString()), playerData);
 
             // Update the players list in the parent component
             const updatedPlayers = [...props.players, playerData];

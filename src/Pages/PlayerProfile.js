@@ -308,15 +308,15 @@ const Playerprofile = (props) => {
                                             </div>
                                         ) : (
                                             <div>
-                                                <input type="text" class="form-control rounded mb-2" value={name} onChange={((event) => handleInputChange(event.target.value, 'name'))} />
-                                                <input type="text" class="form-control rounded mb-2" value={nickname} onChange={((event) => handleInputChange(event.target.value, 'nickname'))} />
+                                                <input type="text" className="form-control rounded mb-2" value={name} onChange={((event) => handleInputChange(event.target.value, 'name'))} />
+                                                <input type="text" className="form-control rounded mb-2" value={nickname} onChange={((event) => handleInputChange(event.target.value, 'nickname'))} />
                                                 {location !== 'catch' ? (
-                                                    <select type="select" class="form-select rounded" value={location} onChange={((event) => handleInputChange(event.target.value, 'location'))}>
+                                                    <select type="select" className="form-select rounded" value={location} onChange={((event) => handleInputChange(event.target.value, 'location'))}>
                                                         <option selected>External</option>
                                                         <option>Catch</option>
                                                     </select>
                                                 ) : (
-                                                    <select type="select" class="form-select rounded" value={location} onChange={((event) => handleInputChange(event.target.value, 'location'))}>
+                                                    <select type="select" className="form-select rounded" value={location} onChange={((event) => handleInputChange(event.target.value, 'location'))}>
                                                         <option selected>Catch</option>
                                                         <option>External</option>
                                                     </select>
@@ -344,14 +344,14 @@ const Playerprofile = (props) => {
             <div className="row mt-5 pt-5">
                 <div className="col-6">
                     {editing ? (
-                        <button class="d-flex w-100 btn bg-darkPurple text-white justify-content-center py-3 rounded-pill" disabled={isLoading ? true : false} onClick={() => saveInformation()}>{isLoading ? 'Saving' : 'Save'}</button>
+                        <button className="d-flex w-100 btn bg-darkPurple text-white justify-content-center py-3 rounded-pill" disabled={isLoading ? true : false} onClick={() => saveInformation()}>{isLoading ? 'Saving' : 'Save'}</button>
                     ) : (
-                        <button class="d-flex w-100 btn bg-darkPurple text-white justify-content-center py-3 rounded-pill" onClick={() => setEditing(true)}>Edit</button>
+                        <button className="d-flex w-100 btn bg-darkPurple text-white justify-content-center py-3 rounded-pill" onClick={() => setEditing(true)}>Edit</button>
                     )}
                 </div>
                 <div className="col-6">
                     {editing ? (
-                        <button class="w-100 btn border border-white text-white justify-content-center py-3 rounded-pill" onClick={() => setEditing(false)}>Cancel</button>
+                        <button className="w-100 btn border border-white text-white justify-content-center py-3 rounded-pill" onClick={() => setEditing(false)}>Cancel</button>
                     ) : (
                         <Link to="/players" className="d-flex btn border border-white text-white justify-content-center py-3 rounded-pill">
                             Back
