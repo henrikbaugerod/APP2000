@@ -18,9 +18,9 @@ const RegisterButton = (props) => {
 
         if (props.player1Points > props.player2Points) {
             pointsPlayer1 = parseInt(player1Poeng) + player1GainedPoints;
-            pointsPlayer2 = parseInt(player2Poeng) - player2GainedPoints;
+            pointsPlayer2 = parseInt(player2Poeng) - player2GainedPoints * -1;
         } else {
-            pointsPlayer1 = parseInt(player1Poeng) - player1GainedPoints;
+            pointsPlayer1 = parseInt(player1Poeng) - player1GainedPoints * -1;
             pointsPlayer2 = parseInt(player2Poeng) + player2GainedPoints;
         }
 

@@ -34,7 +34,6 @@ const NewGamePoints = (props) => {
                     props.setPlayer2GainedPoints(Math.abs(p2Pot) * -1);
                 } else {
                     p2Pot = 2 + 1 * Math.floor(pointDifference / 5);
-                    p1Pot = -p2Pot;
                     p1Pot = p2Pot;
 
                     props.setPlayer1GainedPoints(Math.abs(p1Pot) * -1);
@@ -45,17 +44,16 @@ const NewGamePoints = (props) => {
 
                 if (props.player1Points > props.player2Points) {
                     p1Pot = 2 + 1 * Math.floor(pointDifference / 5);
-                    p2Pot = -p1Pot;
                     p2Pot = p1Pot;
 
-                    props.setPlayer1GainedPoints(parseInt(Math.abs(p1Pot) * -1));
-                    props.setPlayer2GainedPoints(p2Pot);
+                    props.setPlayer1GainedPoints(parseInt(Math.abs(p1Pot)));
+                    props.setPlayer2GainedPoints(p2Pot * -1);
                 } else {
                     p1Pot = 2;
                     p2Pot = 2;
 
-                    props.setPlayer1GainedPoints(p1Pot);
-                    props.setPlayer2GainedPoints(Math.abs(p2Pot) * -1);
+                    props.setPlayer1GainedPoints(p1Pot * -1);
+                    props.setPlayer2GainedPoints(Math.abs(p2Pot));
                 }
             }
         }
