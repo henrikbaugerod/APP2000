@@ -43,9 +43,10 @@ const AddSubButton = (props) => {
 
 
     return (
-        <div>
-            <button onClick={handleClick}>{buttonText}</button>
-        </div>
+        <button style={{ width: "65px", height: "65px", backgroundColor: "#5500b3"}} class={`d-flex justify-content-center align-items-center ${props.add === "true" ? 'rounded-end' : 'rounded-start'}`} onClick={handleClick}>
+            {/* <button onClick={handleClick} style={{ fontSize: "30px", fontWeight: "bold"}}>{buttonText}</button> */}
+            {buttonText}
+        </button>
     );
 };
 

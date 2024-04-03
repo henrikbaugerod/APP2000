@@ -175,7 +175,7 @@ const Playerprofile = (props) => {
             }
         });
     };
-    
+
     // Call the function to filter player matches
     filterPlayerMatches();
 
@@ -347,22 +347,26 @@ const Playerprofile = (props) => {
 
             {activeButton === "stats" && (
                 <div>
-                    {playerMatches.map((match) => (
-                        <div className="row">
-
-                            <HistoryMatch
-                                id={match.id}
-                                player1={match.player_one}
-                                player2={match.player_two}
-                                date={match.date.toDate().toDateString()}
-                                image={props.players[match.player_one].image}
-                                image2={props.players[match.player_two].image}
-                                score={match.score_player_one}
-                                score2={match.score_player_two}
-                            />
-
+                    {playerMatches.length > 0 ? (
+                        playerMatches.map((match) => (
+                            <div className="row">
+                                <HistoryMatch
+                                    id={match.id}
+                                    player1={match.player_one}
+                                    player2={match.player_two}
+                                    date={match.date.toDate().toDateString()}
+                                    image={props.players[match.player_one].image}
+                                    image2={props.players[match.player_two].image}
+                                    score={match.score_player_one}
+                                    score2={match.score_player_two}
+                                />
+                            </div>
+                        ))
+                    ) : (
+                        <div class="row text-center py-3">
+                            <h5>No matches</h5>
                         </div>
-                    ))}
+                    )}
                 </div>
             )}
 
