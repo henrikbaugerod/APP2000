@@ -37,7 +37,11 @@ const NewGame = (props) => {
 
   return (
     <div className="container">
-      <Header backLink={"/"} />
+      <Header 
+        backLink={"/"}
+        onSetPlayerId1={props.onSetPlayerId1}
+        onSetPlayerId2={props.onSetPlayerId2}
+      />
 
       {/* PLAYER CARD */}
       <div className="row mt-5 mb-5">
@@ -107,6 +111,11 @@ const NewGame = (props) => {
           <Link
             to="/"
             className="d-flex btn border border-white text-white justify-content-center py-3 rounded-pill"
+            onClick={() => {
+              props.onSetPlayerId1(null);
+              props.onSetPlayerId2(null);
+              sessionStorage.setItem("playerPressed", null);
+            }}
           >
             Cancel
           </Link>
