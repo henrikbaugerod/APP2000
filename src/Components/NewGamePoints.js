@@ -1,58 +1,95 @@
-import { Button } from "bootstrap";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import AddSubButton from "./AddSubButton";
 
 const NewGamePoints = (props) => {
-  return (
-    <div className="col-5">
-      {/* Score */}
-      <div className="row mt-2 mb-2">
-        <div className="col-12">
-          <div className="pointsCircle bg-purple d-flex justify-content-center align-items-center">
-            <p>{props.currentPoints}</p>
-          </div>
-        </div>
-      </div>
+    useEffect(() => {
+        
+        // Calculate gained points
+        calculateGainedPoints();
+    }, [props.player1Points, props.player2Points]);
 
-      {/* Add or retract */}
-      <div className="row mt-2 mb-2">
-        <div className="col-6 button text-end">
-          <AddSubButton
-            buttonText="+"
-            onSetPlayer1Points={props.onSetPlayer1Points}
-            onSetPlayer2Points={props.onSetPlayer2Points}
-            currentPoints={props.currentPoints}
-            add="true"
-            pointsPressed={props.pointsPressed}
-            setPlayer1GainedPoints={props.setPlayer1GainedPoints}
-            setPlayer2GainedPoints={props.setPlayer2GainedPoints}
-            player1Points={props.player1Points}
-            player2Points={props.player2Points}
-          />
-        </div>
-        <div className="col-6 button text-start">
-          <AddSubButton
-            buttonText="-"
-            onSetPlayer1Points={props.onSetPlayer1Points}
-            onSetPlayer2Points={props.onSetPlayer2Points}
-            currentPoints={props.currentPoints}
-            pointsPressed={props.pointsPressed}
-            setPlayer1GainedPoints={props.setPlayer1GainedPoints}
-            setPlayer2GainedPoints={props.setPlayer2GainedPoints}
-            player1Points={props.player1Points}
-            player2Points={props.player2Points}
-          />
-        </div>
-      </div>
+    const calculateGainedPoints = () => {
+        let difference = null;
+        let pointDifference = 0;
+        let p1Pot;
+        let p2Pot;
 
-      {/* Points gained or lossed */}
-      <div className="row justify-content-center">
-        <div className="newGameScore bg-purple rounded-3">
-          <p>{props.playerGainedPoints}</p>
+        // Differanse (finn poengskille)
+        if (props.player1Points > props.player2Points) {
+            pointDifference = props.player1Points - props.player2Points;
+            p1Pot = 2 + 1 * Math.floor(pointDifference / 5);
+            p2Pot = 2;
+        } else if (props.player2Points > props.player1Points) {
+            pointDifference = props.player2Points - props.player1Points;
+            p2Pot = 2 + 1 * Math.floor(pointDifference / 5);
+            p1Pot = 2;
+        } else {
+            p1Pot = 2;
+            p2Pot = 2;
+        }
+
+        // Differanse (finne vinner)
+        if (props.player1Points > props.player2Points) {
+            props.setPlayer1GainedPoints(p2Pot);
+            props.setPlayer2GainedPoints(-p2Pot);
+        } else if (props.player2Points > props.player1Points) {
+            props.setPlayer1GainedPoints(-p1Pot);
+            props.setPlayer2GainedPoints(p1Pot);
+        } else {
+            console.log("Uavgjort?");
+        }
+    };
+
+    return (
+        <div className="col-5">
+            {/* Score */}
+            <div className="row mt-2 mb-2">
+                <div className="col-12">
+                    <div className="pointsCircle bg-purple d-flex justify-content-center align-items-center">
+                        <p>{props.currentPoints}</p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Add or retract */}
+            <div className="row mt-2 mb-2">
+                <div className="col-6 button text-end">
+                    <AddSubButton
+                        buttonText="+"
+                        onSetPlayer1Points={props.onSetPlayer1Points}
+                        onSetPlayer2Points={props.onSetPlayer2Points}
+                        currentPoints={props.currentPoints}
+                        add="true"
+                        pointsPressed={props.pointsPressed}
+                        setPlayer1GainedPoints={props.setPlayer1GainedPoints}
+                        setPlayer2GainedPoints={props.setPlayer2GainedPoints}
+                        player1Points={props.player1Points}
+                        player2Points={props.player2Points}
+                    />
+                </div>
+                <div className="col-6 button text-start">
+                    <AddSubButton
+                        buttonText="-"
+                        onSetPlayer1Points={props.onSetPlayer1Points}
+                        onSetPlayer2Points={props.onSetPlayer2Points}
+                        currentPoints={props.currentPoints}
+                        pointsPressed={props.pointsPressed}
+                        setPlayer1GainedPoints={props.setPlayer1GainedPoints}
+                        setPlayer2GainedPoints={props.setPlayer2GainedPoints}
+                        player1Points={props.player1Points}
+                        player2Points={props.player2Points}
+                    />
+                </div>
+            </div>
+
+            {/* Points gained or lossed */}
+            <div className="row justify-content-center">
+                <div className="newGameScore bg-purple rounded-3">
+                    <p>{props.playerGainedPoints}</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default NewGamePoints;
