@@ -16,17 +16,12 @@ const RegisterButton = (props) => {
         let pointsPlayer1;
         let pointsPlayer2;
 
-        if (player1GainedPoints > 0) {
+        if (props.player1Points > props.player2Points) {
             pointsPlayer1 = parseInt(player1Poeng) + player1GainedPoints;
-            console.log(player1GainedPoints, parseInt(player1Poeng));
+            pointsPlayer2 = parseInt(player2Poeng) - player2GainedPoints;
         } else {
             pointsPlayer1 = parseInt(player1Poeng) - player1GainedPoints;
-        }
-
-        if (player2GainedPoints > 0) {
             pointsPlayer2 = parseInt(player2Poeng) + player2GainedPoints;
-        } else {
-            pointsPlayer2 = parseInt(player2Poeng) - player2GainedPoints;
         }
 
         // Lagre resultat og sende til database
