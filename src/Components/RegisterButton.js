@@ -1,6 +1,6 @@
 import React from "react";
 
-import { updateDoc, doc } from "firebase/firestore";
+import { setDoc, updateDoc, doc, Timestamp } from "firebase/firestore";
 import { db } from "../firebase";
 
 const RegisterButton = (props) => {
@@ -36,14 +36,50 @@ const RegisterButton = (props) => {
         try {
             await updateDoc(player1Ref, { points: pointsPlayer1 });
             await updateDoc(player2Ref, { points: pointsPlayer2 });
-        } catch(e) {
+        } catch (e) {
             console.log("Could not update player points")
         } finally {
             console.log("Points updated")
         }
 
+        // Add the match to the database
+        const maxId = findMaxId(props.matches);
+        const newMatchId = (maxId + 1);
+        const matchData = {
+            date: Timestamp.now(),
+            id: newMatchId,
+            player_one: playerId1,
+            player_two: playerId2,
+            score_player_one: props.player1Points,
+            score_player_two: props.player2Points
+        } 
+
+        // Add new match to Firestore
+        await setDoc(doc(db, "matches", newMatchId.toString()), matchData);
+
+        // Update the matches list in the parent component
+        const updatedMatches = [...props.matches, matchData];
+        props.setMatches(updatedMatches);
+
+
+
+        // 
+
         // Gå til forside/annen logikk
     };
+
+    // Function to find the biggest id
+    function findMaxId(matches) {
+        let maxId = -Infinity;
+        for (let match of matches) {
+            const matchId = parseInt(match.id);
+            if (matchId > maxId) {
+                maxId = matchId;
+            }
+        }
+
+        return maxId;
+    }
 
     return (
         <div>

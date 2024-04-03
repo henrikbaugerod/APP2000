@@ -100,7 +100,11 @@ const NewGame = (props) => {
                         playerId2={props.playerId2}
                         player1GainedPoints={player1GainedPoints}
                         player2GainedPoints={player2GainedPoints}
+                        player1Points={player1Points}
+                        player2Points={player2Points}
                         players={props}
+                        matches={props.matches}
+                        setMatches={props.setMatches}
                     ></RegisterButton>
                 </div>
                 <div className="col-6">
