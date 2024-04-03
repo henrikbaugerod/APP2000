@@ -5,7 +5,16 @@ const Header = (props) => {
   return (
     <div className="header row justify-content-center text-center py-4 mb-4 w-100">
       <div className="header-logo position-relevant">
-        <Link to="/">
+        <Link
+          to="/"
+          onClick={() => {
+            if (props.onSetPlayerId1 && props.onSetPlayerId2) {
+              props.onSetPlayerId1(null);
+              props.onSetPlayerId2(null);
+              sessionStorage.setItem("playerPressed", null);
+            }
+          }}
+        >
           <img src="images/Group 93.svg" alt="" />
         </Link>
         {props.text ? (
@@ -26,9 +35,11 @@ const Header = (props) => {
               : sessionStorage.getItem("previousPage")
           }
           onClick={() => {
-            props.onSetPlayerId1(null);
-            props.onSetPlayerId2(null);
-            sessionStorage.setItem("playerPressed", null);
+            if (props.onSetPlayerId1 && props.onSetPlayerId2) {
+              props.onSetPlayerId1(null);
+              props.onSetPlayerId2(null);
+              sessionStorage.setItem("playerPressed", null);
+            }
           }}
           className="position-absolute "
           style={{
