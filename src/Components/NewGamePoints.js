@@ -3,7 +3,6 @@ import AddSubButton from "./AddSubButton";
 
 const NewGamePoints = (props) => {
     useEffect(() => {
-
         // Calculate gained points
         calculateGainedPoints();
     }, [props.player1Points, props.player2Points]);
@@ -17,45 +16,54 @@ const NewGamePoints = (props) => {
         const player1poeng = sessionStorage.getItem("player1poeng");
         const player2poeng = sessionStorage.getItem("player2poeng");
 
-
         if (props.player1Points === props.player2Points) {
             p1Pot = 0;
             p2Pot = 0;
-
-            props.setPlayer1GainedPoints(p1Pot);
-            props.setPlayer2GainedPoints(p2Pot);
         } else {
             if (player1poeng > player2poeng) {
                 pointDifference = player1poeng - player2poeng;
 
-                if (props.player1Points > props.player2Points) {
-                    p1Pot = 2;
-                    p2Pot = 2;
+
+                if (props.player1Points === props.player2Points) {
+                    p1Pot = 0;
+                    p2Pot = 0;
 
                     props.setPlayer1GainedPoints(p1Pot);
-                    props.setPlayer2GainedPoints(Math.abs(p2Pot) * -1);
-                } else {
-                    p2Pot = 2 + 1 * Math.floor(pointDifference / 5);
-                    p1Pot = p2Pot;
-
-                    props.setPlayer1GainedPoints(Math.abs(p1Pot) * -1);
-                    props.setPlayer2GainedPoints(p2Pot);
-                }
-            } else {
-                pointDifference = player2poeng - player1poeng;
-
-                if (props.player1Points > props.player2Points) {
-                    p1Pot = 2 + 1 * Math.floor(pointDifference / 5);
-                    p2Pot = p1Pot;
-
-                    props.setPlayer1GainedPoints(parseInt(Math.abs(p1Pot) * -1));
                     props.setPlayer2GainedPoints(p2Pot);
                 } else {
-                    p1Pot = 2;
-                    p2Pot = 2;
+                    if (player1poeng > player2poeng) {
+                        pointDifference = player1poeng - player2poeng;
 
-                    props.setPlayer1GainedPoints(p1Pot);
-                    props.setPlayer2GainedPoints(Math.abs(p2Pot) * -1);
+                        if (props.player1Points > props.player2Points) {
+                            p1Pot = 2;
+                            p2Pot = 2;
+
+                            props.setPlayer1GainedPoints(p1Pot);
+                            props.setPlayer2GainedPoints(Math.abs(p2Pot) * -1);
+                        } else {
+                            p2Pot = 2 + 1 * Math.floor(pointDifference / 5);
+                            p1Pot = p2Pot;
+
+                            props.setPlayer1GainedPoints(Math.abs(p1Pot) * -1);
+                            props.setPlayer2GainedPoints(p2Pot);
+                        }
+                    } else {
+                        pointDifference = player2poeng - player1poeng;
+
+                        if (props.player1Points > props.player2Points) {
+                            p1Pot = 2 + 1 * Math.floor(pointDifference / 5);
+                            p2Pot = p1Pot;
+
+                            props.setPlayer1GainedPoints(parseInt(Math.abs(p1Pot) * -1));
+                            props.setPlayer2GainedPoints(p2Pot);
+                        } else {
+                            p1Pot = 2;
+                            p2Pot = 2;
+
+                            props.setPlayer1GainedPoints(p1Pot);
+                            props.setPlayer2GainedPoints(Math.abs(p2Pot) * -1);
+                        }
+                    }
                 }
             }
         }
@@ -109,8 +117,14 @@ const NewGamePoints = (props) => {
                     )}
                 </div>
             </div>
+            {/* Points gained or lossed */}
+            <div className="row justify-content-center" >
+                <div className="newGameScore bg-purple rounded-3">
+                    <p>{props.playerGainedPoints}</p>
+                </div>
+            </div>
         </div>
-    );
+    )
 };
 
 export default NewGamePoints;
