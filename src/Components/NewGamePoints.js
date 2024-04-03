@@ -3,7 +3,7 @@ import AddSubButton from "./AddSubButton";
 
 const NewGamePoints = (props) => {
     useEffect(() => {
-        
+
         // Calculate gained points
         calculateGainedPoints();
     }, [props.player1Points, props.player2Points]);
@@ -14,30 +14,40 @@ const NewGamePoints = (props) => {
         let p1Pot;
         let p2Pot;
 
-        // Differanse (finn poengskille)
-        if (props.player1Points > props.player2Points) {
-            pointDifference = props.player1Points - props.player2Points;
-            p1Pot = 2 + 1 * Math.floor(pointDifference / 5);
-            p2Pot = 2;
-        } else if (props.player2Points > props.player1Points) {
-            pointDifference = props.player2Points - props.player1Points;
-            p2Pot = 2 + 1 * Math.floor(pointDifference / 5);
-            p1Pot = 2;
+        const player1poeng = sessionStorage.getItem("player1poeng");
+        const player2poeng = sessionStorage.getItem("player2poeng");
+
+
+        if (props.player1Points === props.player2Points) {
+            p1Pot = 0;
+            p2Pot = 0;
         } else {
-            p1Pot = 2;
-            p2Pot = 2;
+            if (player1poeng > player2poeng) {
+                pointDifference = player1poeng - player2poeng;
+
+                if (props.player1Points > props.player2Points) {
+                    p1Pot = 2;
+                    p2Pot = 2;
+                } else {
+                    p2Pot = 2 + 1 * Math.floor(pointDifference / 5);
+                    p1Pot = -p2Pot;
+                }
+            } else {
+                pointDifference = player2poeng - player1poeng;
+
+                if (props.player1Points > props.player2Points) {
+                    p1Pot = 2 + 1 * Math.floor(pointDifference / 5);
+                    p2Pot = -p1Pot;
+                } else {
+                    p1Pot = 2;
+                    p2Pot = 2;
+                }
+            }
         }
 
-        // Differanse (finne vinner)
-        if (props.player1Points > props.player2Points) {
-            props.setPlayer1GainedPoints(p2Pot);
-            props.setPlayer2GainedPoints(-p2Pot);
-        } else if (props.player2Points > props.player1Points) {
-            props.setPlayer1GainedPoints(-p1Pot);
-            props.setPlayer2GainedPoints(p1Pot);
-        } else {
-            console.log("Uavgjort?");
-        }
+        props.setPlayer1GainedPoints(p1Pot);
+        props.setPlayer2GainedPoints(p2Pot);
+
     };
 
     return (

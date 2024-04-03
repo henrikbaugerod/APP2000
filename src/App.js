@@ -81,6 +81,8 @@ function App() {
                         <NewGame
                             players={players}
                             setPlayers={setPlayers}
+                            matches={matches}
+                            setMatches={setMatches}
                             onSetPlayerId1={setPlayerId1}
                             onSetPlayerId2={setPlayerId2}
                             playerId1={playerId1}
