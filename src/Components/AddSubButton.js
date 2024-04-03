@@ -1,19 +1,19 @@
 import React from "react";
 
 const AddSubButton = (props) => {
-    const buttonText = props.buttonText;
-    const pointsPressed = props.pointsPressed;
-    const add = props.add;
+  const buttonText = props.buttonText;
+  const pointsPressed = props.pointsPressed;
+  const add = props.add;
 
   const setPlayer1Points = props.onSetPlayer1Points;
   const setPlayer2Points = props.onSetPlayer2Points;
   const currentPoints = props.currentPoints;
 
-    const setPlayer1GainedPoints = props.setPlayer1GainedPoints;
-    const setPlayer2GainedPoints = props.setPlayer2GainedPoints;
+  const setPlayer1GainedPoints = props.setPlayer1GainedPoints;
+  const setPlayer2GainedPoints = props.setPlayer2GainedPoints;
 
-  const player2Points = props.player2Points;
-  const player1Points = props.player1Points;
+  let player2Points = props.player2Points;
+  let player1Points = props.player1Points;
 
   const p1Points = sessionStorage.getItem("player1poeng");
   const p2Points = sessionStorage.getItem("player2poeng");
@@ -51,6 +51,9 @@ const AddSubButton = (props) => {
 
   // Poengsystem
   const setPoints = () => {
+    console.log(player1Points);
+    console.log(player2Points);
+
     let difference = null;
     let winner = null;
     let pointDifference = 0;
