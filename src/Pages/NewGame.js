@@ -18,6 +18,7 @@ const NewGame = (props) => {
     // Oppdatere nåværende side
     useEffect(() => {
         sessionStorage.setItem("currentPage", "/newgame");
+        setPlayerPressed(sessionStorage.setItem("findPlayer", false));
 
         if (playerPressed === "1") {
             props.onSetPlayerId1(playerId);
@@ -100,8 +101,6 @@ const NewGame = (props) => {
                         player1GainedPoints={player1GainedPoints}
                         player2GainedPoints={player2GainedPoints}
                         players={props}
-                        player1Points={player1Points}
-                        player2Points={player2Points}
                     ></RegisterButton>
                 </div>
                 <div className="col-6">

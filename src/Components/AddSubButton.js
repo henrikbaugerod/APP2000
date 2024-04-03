@@ -1,9 +1,9 @@
 import React from "react";
 
 const AddSubButton = (props) => {
-    const buttonText = props.buttonText;
-    const pointsPressed = props.pointsPressed;
-    const add = props.add;
+  const buttonText = props.buttonText;
+  const pointsPressed = props.pointsPressed;
+  const add = props.add;
 
     const setPlayer1Points = props.onSetPlayer1Points;
     const setPlayer2Points = props.onSetPlayer2Points;
