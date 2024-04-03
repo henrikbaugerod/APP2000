@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../Components/Header";
 import { Link } from "react-router-dom";
+import HistoryMatch from "../Components/HistoryMatch";
 
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebase";
@@ -163,15 +164,24 @@ const Playerprofile = (props) => {
             setEditing(false)
             setIsLoading(false)
         }
-
-
     }
+
+    const playerMatches = [];
+
+    const filterPlayerMatches = () => {
+        props.matches.forEach(match => {
+            if (playerId === match.player_one || playerId === match.player_two) {
+                playerMatches.push(match);
+            }
+        });
+    };
+    
+    // Call the function to filter player matches
+    filterPlayerMatches();
 
     useEffect(() => {
         sessionStorage.setItem("currentPage", "/playerprofile");
     }, []);
-
-    console.log('Location = ', location)
 
     return (
         <div className="container">
@@ -337,7 +347,22 @@ const Playerprofile = (props) => {
 
             {activeButton === "stats" && (
                 <div>
-                    <p>Stats goes here</p>
+                    {playerMatches.map((match) => (
+                        <div className="row">
+
+                            <HistoryMatch
+                                id={match.id}
+                                player1={match.player_one}
+                                player2={match.player_two}
+                                date={match.date.toDate().toDateString()}
+                                image={props.players[match.player_one].image}
+                                image2={props.players[match.player_two].image}
+                                score={match.score_player_one}
+                                score2={match.score_player_two}
+                            />
+
+                        </div>
+                    ))}
                 </div>
             )}
 
