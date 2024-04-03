@@ -15,8 +15,6 @@ const NewGame = (props) => {
   const [player1GainedPoints, setPlayer1GainedPoints] = useState(0);
   const [player2GainedPoints, setPlayer2GainedPoints] = useState(0);
 
-  console.log(player1GainedPoints);
-  console.log(player2GainedPoints);
 
 
   // Oppdatere nåværende side
@@ -101,7 +99,7 @@ const NewGame = (props) => {
             playerId2={props.playerId2}
             player1GainedPoints={player1GainedPoints}
             player2GainedPoints={player2GainedPoints}
-            props={props}
+            players={props}
           ></RegisterButton>
         </div>
         <div className="col-6">
