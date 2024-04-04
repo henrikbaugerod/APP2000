@@ -5,15 +5,43 @@ body {
 
 .container {
     max-width: 500px !important;
+    position: relative;
+    height: 100vh;
+}
+
+img {
+    object-fit: cover;
+    object-position: center;
+}
+
+.btn:disabled {
+    border: none;
 }
 
 
 /* =====================================  */
-/* Header.js */
+/* Header.js and Footer.js */
 /* =====================================  */
+.sticky-top {
+    top: 0;
+    background-color: #6100CC !important;
+}
+
+.header {
+    position: relative;
+}
 
 .header-logo img {
     max-height: 60px;
+}
+
+.footer {
+    position: sticky;
+    bottom: 0;
+    left: -12px;
+    width: 100%;
+    padding: 20px 0px;
+    background-color: #6100CC;
 }
 
 
@@ -26,7 +54,7 @@ body {
     color: white;
     border-radius: 8px;
     font-size: 30px;
-    padding: 20px; 
+    padding: 20px;
     align-items: left;
     text-align: left;
     border: none;
@@ -37,6 +65,7 @@ body {
     width: 60px;
     height: 60px;
     padding-right: 20px;
+    object-fit: contain;
 }
 
 
@@ -44,11 +73,24 @@ body {
 /* NewGame-js */
 /* =====================================  */
 
-.circle {
-    width: 100px;
-    height: 100px;
+.playerCircle {
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     margin: auto;
+}
+
+.pointsCircle {
+    width: 65px;
+    height: 65px;
+    /* border-radius: 50%; */
+    margin: auto;
+    margin-bottom: 0;
+}
+
+.pointsCircle p {
+    text-align: center;
+    margin-bottom: 0px;
 }
 
 .newGameName {
@@ -63,7 +105,7 @@ body {
 }
 
 .newGamePoints {
-    width: 100px;
+    width: auto;
     height: 40px;
     object-fit: cover;
     display: flex;
@@ -74,6 +116,30 @@ body {
 .newGamePoints p {
     text-align: center;
     margin-bottom: 0px;
+}
+
+.newGameScore {
+    width: 50px !important;
+    height: 40px;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newGameScore p {
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.button button {
+    border: none;
+    background: none;
+    color: inherit;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
 }
 
 
@@ -98,6 +164,12 @@ body {
     background-color: #c8c8c8;
 }
 
+.bg-silver:hover,
+.bg-gold:hover,
+.bg-bronze:hover {
+    filter: brightness(110%);
+}
+
 .bg-silver img {
     border: 2px solid #6A6A6A;
 }
@@ -116,6 +188,11 @@ body {
 
 .bg-gold img {
     border: 2px solid #FFD600;
+}
+
+.btn.bg-darkPurple:hover,
+a .bg-darkPurple:hover {
+    background-color: #7900FF !important;
 }
 
 /* =====================================  */
@@ -164,7 +241,13 @@ body {
     border-radius: 50%;
 }
 
-.playerButton:hover > .playerBox {
+img.playerBoxIcon {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+.playerButton:hover>.playerBox {
     background-color: #8d29ff !important;
 }
 
@@ -176,14 +259,14 @@ body {
 /* NewPlayer.js */
 /* =====================================  */
 
-.borderCircle{
+.borderCircle {
     width: 145px;
     height: 145px;
     border-style: solid;
     border-color: #8d29ff;
 }
 
-.textBox input{
+.textBox input {
     width: 100%;
     height: 60px;
     background-color: #7900FF;
@@ -191,15 +274,14 @@ body {
     color: white;
     padding-left: 15px;
     font-size: 20px;
-
 }
 
-.textBox input::placeholder{
+.textBox input::placeholder {
     color: white;
     font-size: 20px;
 }
 
-.checkBox label{
+.checkBox label {
     padding-left: 10px;
     font-size: 20px;
 }
@@ -210,16 +292,210 @@ body {
     margin-bottom: 10px;
 }
 
+<<<<<<< HEAD
 .buttonReg button{
     width: 100%;
 }
 
+=======
+input[type="file"] {
+    outline: none;
+    padding: 4px;
+    margin: -4px;
+    color: transparent;
+    transform: translateX(27%);
+}
+
+input[type="file"]:focus-within::file-selector-button,
+input[type="file"]:focus::file-selector-button {
+    outline: 2px solid #0964b0;
+    outline-offset: 2px;
+}
+
+input[type="file"]::before {
+    top: 16px;
+}
+
+input[type="file"]::after {
+    top: 14px;
+}
+
+input[type="file"] {
+    position: relative;
+}
+
+input[type="file"]::file-selector-button {
+    width: 136px;
+    color: transparent;
+}
+
+input[type="file"]::before {
+    position: absolute;
+    pointer-events: none;
+    top: 12px;
+    left: 21px;
+    color: white;
+    content: "Change image";
+}
+
+input[type="file"]::file-selector-button {
+    border-radius: 4px;
+    padding: 0 16px;
+    height: 40px;
+    cursor: pointer;
+    background-color: #2E1230;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+    margin-right: 16px;
+    transition: background-color 200ms;
+    border-radius: 9999px;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: #7900FF;
+}
+
+input[type="file"]::file-selector-button:active {
+    background-color: #7900FF;
+}
+
+@supports (-moz-appearance: none) {
+    input[type="file"]::file-selector-button {
+        color: #0964b0;
+    }
+}
+
+
+>>>>>>> 3238dc5af06add426050a6ff66984a0dda447e8a
 /* =====================================  */
 /* PlayerProfile.js */
 /* =====================================  */
+input[type=text] {
+    border: 2px solid transparent;
+}
 
+input[type=text]:focus {
+    border: 2px solid white;
+    background-color: #7900FF;
+    color: white;
+}
+
+.form-select {
+    width: 100%;
+    height: 60px;
+    background-color: #7900FF !important;
+    border: none !important;
+    color: white !important;
+    padding-left: 15px !important;
+    font-size: 20px !important;
+}
+
+.form-select option {
+    padding: 0.375rem 0.75rem;
+}
 
 
 /* =====================================  */
 /* History.js */
 /* =====================================  */
+
+.active-shadow-bottom {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    /* Example shadow */
+    border: 0;
+}
+
+.active-border-bottom {
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.2) !important;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+
+.historyBox img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+/* =====================================  */
+/* Tournament.js */
+/* =====================================  */
+.tournamentBox {
+    border: 1px solid #2E1230;
+    border-radius: 15px;
+}
+
+.tournamentBox img {
+    width: 50px;
+    height: 50px;
+}
+
+.tournamentBoxChild {
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.tournamentBoxChild:hover>img {
+    scale: 1.1;
+    transition: all .3s ease;
+}
+
+
+/* =====================================  */
+/* Surprise.js */
+/* =====================================  */
+
+
+@keyframes scroll {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    90% {
+        transform: translate3d(0, calc(-100% + 328px), 0);
+    }
+
+    100% {
+        transform: translate3d(0, calc(-100% + 332px), 0);
+    }
+}
+
+@keyframes blur {
+    0% {
+        filter: blur(0);
+    }
+
+    10% {
+        filter: blur(0);
+    }
+
+    30% {
+        filter: blur(6px);
+    }
+
+    60% {
+        filter: blur(6px);
+    }
+
+    80% {
+        filter: blur(0);
+    }
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(10deg);
+    }
+
+    50% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(10deg);
+    }
+}
