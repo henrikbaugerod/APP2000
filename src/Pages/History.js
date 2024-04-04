@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 const History = (props) => {
     const [filtredPlayers, setfiltredPlayers] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState("all");
+    const { Matches } = props;
+    console.log(Matches);
 
     useEffect(() => {
         setfiltredPlayers(props.history);
@@ -26,54 +28,60 @@ const History = (props) => {
         return filtredPlayers;
     }
 
+    useEffect(() => {
+        sessionStorage.setItem('currentPage', '/history')
+    }, []);
+
     return (
         <div className="container">
             <Header
                 backLink={'/menu'}
             />
-            <div className="row align-items-center mb-3">
+            <div className="row align-items-center mb-3 bg">
                 <div className="col-12 text-center">
                     <h5>Match history</h5>
                 </div>
             </div>
 
-            <div className="row gx-0 mb-4" style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.3)' }}>
+            <div className="row gx-0 mb-4">
                 <div className="col-4 text-center">
-                    <button value="all" onClick={handleCategory} className={`${selectedCategory === 'all' ? 'bg-purple' : 'bg-normalPurple'} w-100 border-0 py-2 text-white categoryButton`}>
+                    <button value="all" onClick={handleCategory} className={`categoryButton ${selectedCategory === 'all' ? 'bg-purple active-shadow-bottom' : 'bg-normalPurple active-border-bottom'} w-100 py-2 text-white categoryButton`}>
                         All
                     </button>
                 </div>
                 <div className="col-4 text-center">
-                    <button value="catch" onClick={handleCategory} className={`${selectedCategory === 'catch' ? 'bg-purple' : 'bg-normalPurple'} w-100 border-0 py-2 text-white categoryButton`}>
+                    <button value="catch" onClick={handleCategory} className={`categoryButton ${selectedCategory === 'catch' ? 'bg-purple active-shadow-bottom' : 'bg-normalPurple active-border-bottom'} w-100 py-2 text-white categoryButton`}>
                         Catch
                     </button>
                 </div>
                 <div className="col-4 text-center">
-                    <button value="external" onClick={handleCategory} className={`${selectedCategory === 'external' ? 'bg-purple' : 'bg-normalPurple'} w-100 border-0 py-2 text-white categoryButton`}>
+                    <button value="external" onClick={handleCategory} className={`categoryButton ${selectedCategory === 'external' ? 'bg-purple active-shadow-bottom' : 'bg-normalPurple active-border-bottom'} w-100 py-2 text-white categoryButton`}>
                         External
                     </button>
                 </div>
-
-                <HistoryMatch
-                    date={"2.februar"}
-                    image={'./images/user-regular.svg'}
-                    image2={'./images/user-regular.svg'}
-                    score={'1-1'}
-                />
-
             </div>
 
+            <div className="col-12 align-items-center">
+                {console.log("Matches = ", props.matches)}
+                {console.log("Player = ", props.players)}
 
-            {filtredPlayers &&
-                filtredPlayers.map((player) => (
-                    <PlayerBox
-                        name={player.name}
-                        image={player.image}
-                        points={player.points}
-                        place={player.ranking}
-                    />
+                {props.matches.map((match) => (
+                    <div className="row">
+
+                        <HistoryMatch
+                            id={match.id}
+                            player1={match.player_one}
+                            player2={match.player_two}
+                            date={match.date.toDate().toDateString()}
+                            image={props.players[match.player_one].image}
+                            image2={props.players[match.player_two].image}
+                            score={match.score_player_one}
+                            score2={match.score_player_two}
+                        />
+
+                    </div>
                 ))}
-
+            </div>
         </div>
     );
 };

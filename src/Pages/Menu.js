@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../Components/Header';
 import MenuButton from '../Components/MenuButton';
 import { Link } from 'react-router-dom';
@@ -6,38 +6,46 @@ import { Link } from 'react-router-dom';
 
 
 const Menu = (props) => {
+    useEffect(() => {
+        sessionStorage.setItem('currentPage', '/menu')
+    }, []);
+
     return (
         <div className="container">
-            <Header
-                backLink={'/'}
+            <Header 
+                previousPage='/'
             />
 
             <Link to="/players" className="text-decoration-none">
                 <MenuButton
                     image={'./images/user-regular.svg'}
                     text={"Players"}
+                    previousPage='/menu'
                 />
             </Link>
 
-            <Link to="/tournaments" className="text-decoration-none">
+            <Link to="/tournament" className="text-decoration-none">
                 <MenuButton
                     image={'./images/trophy-solid.svg'}
                     text={"Tournaments"}
-                ></MenuButton>
+                    previousPage='/menu'
+                />
             </Link>
 
             <Link to="/history" className="text-decoration-none">
                 <MenuButton
                     image={'./images/clock-rotate-left-solid.svg'}
-                    text={"History"}
-                ></MenuButton>
+                    text={"Match history"}
+                    previousPage='/menu'
+                />
             </Link>
 
             <Link to="/surprise" className="text-decoration-none">
                 <MenuButton
-                    image={'./images/gift-solid.svg'}
-                    text={"Surprise"}
-                ></MenuButton>
+                    image={'./images/swords-regular.svg'}
+                    text={"Challenge"}
+                    previousPage='/menu'
+                />
             </Link>
         </div>
     );
