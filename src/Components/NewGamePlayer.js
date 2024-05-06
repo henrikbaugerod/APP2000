@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const NewGamePlayer = (props) => {
-  const [findPlayer, setFindPlayer] = useState(false);
 
   const handleClick = () => {
     console.log("Link clicked");
     sessionStorage.setItem("findPlayer", true);
+    console.log(sessionStorage.getItem("findPlayer"));
 
     // Vite hvilken side som er trykket
     if (props.playerPressed == "1") {

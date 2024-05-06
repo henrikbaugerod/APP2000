@@ -25,6 +25,7 @@ function App() {
     const [playerId1, setPlayerId1] = useState(null);
     const [playerId2, setPlayerId2] = useState(null);
 
+
     const fetchPost = async () => {
         await getDocs(collection(db, "players")).then((querySnapshot) => {
             const unsortedData = querySnapshot.docs
