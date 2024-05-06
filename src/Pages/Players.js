@@ -114,7 +114,7 @@ const Players = (props) => {
             {filtredPlayers &&
                 filtredPlayers.map((player, key) => (
                     <div className="row">
-                        {findPlayer ? (
+                        {findPlayer == "true" ? (
                             <Link to="/newgame">
                                 <PlayerBox
                                     id={player.id}
