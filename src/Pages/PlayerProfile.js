@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-import Header from '../Components/Header';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-
-const Playerprofile = (props) => {
-    const [activeButton, setActiveButton] = useState('information');
-=======
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../Components/Header";
@@ -14,7 +6,6 @@ import HistoryMatch from "../Components/HistoryMatch";
 
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebase";
->>>>>>> 3238dc5af06add426050a6ff66984a0dda447e8a
 
 const Playerprofile = (props) => {
     const [activeButton, setActiveButton] = useState("information");
@@ -189,7 +180,8 @@ const Playerprofile = (props) => {
     filterPlayerMatches();
 
     useEffect(() => {
-        sessionStorage.setItem("currentPage", "/playerprofile");
+        sessionStorage.setItem('previousPage', sessionStorage.getItem('currentPage'));
+        sessionStorage.setItem('currentPage', '/playerprofile');
     }, []);
 
     return (
@@ -219,18 +211,6 @@ const Playerprofile = (props) => {
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
-            <div className='row mt-3 justify-content-center'>
-                <div className='col-3'>
-                    <div className='editButton'>
-                    <Link to="/" className="d-flex btn bg-darkPurple text-white justify-content-center py-3 rounded-pill">
-                        Change
-                    </Link>
-                    </div>
-                </div>
-            </div>
-            <div className="row gx-0 mt-5" style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.3)' }}>
-=======
             {activeButton === "information" ? (
                 <div className="row mt-3 justify-content-center pb-3">
                     <div className="editButton">
@@ -256,14 +236,14 @@ const Playerprofile = (props) => {
                                             type="submit"
                                             className="d-flex btn bg-darkPurple text-white justify-content-center py-2 px-4 rounded-pill disabled"
                                         >
-                                            Uploading...
+                                            Saving...
                                         </button>
                                     ) : (
                                         <button
                                             type="submit"
                                             className="d-flex btn bg-darkPurple text-white justify-content-center py-2 px-4 rounded-pill"
                                         >
-                                            Upload
+                                            Save image
                                         </button>
                                     )}
                                 </div>
@@ -282,7 +262,6 @@ const Playerprofile = (props) => {
                 className="row gx-0 mt-4"
                 style={{ borderBottom: "1px solid rgba(0, 0, 0, 0.3)" }}
             >
->>>>>>> 3238dc5af06add426050a6ff66984a0dda447e8a
                 <div className={`col-6 text-center `}>
                     <button
                         type="button"
@@ -309,34 +288,6 @@ const Playerprofile = (props) => {
             {activeButton === "information" && (
                 <div>
                     {/* Render Information content here */}
-<<<<<<< HEAD
-                    
-                    <div className='row mt-5'>
-                        <div className='col-12'>
-                            <div className='textBox'>
-                                <input type="text" id="name" name="name" placeholder="Name" className='mb-3 rounded-3' value="Hentes fra Database" readonly></input>
-                                <input type="text" id="nickName" name="nickName" placeholder="Nickname" className='rounded-3' value={`${props.players.nickname}`} readonly></input>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='row mt-5'>
-                        <div className='col-12'>
-                            <div className='header1'>
-                                <h1>Category</h1>
-                                    <div className='checkBox'>
-                                        <input class="form-radio-input" type="radio" id="cat" name="cat" value="catch"/>
-                                        <label class="form-check-label" for="catch">CATCH</label>
-                                    </div>
-                                    <div className='checkBox'>
-                                        <input class="form-radio-input" type="radio" id="cat" name="cat" value="external"/>
-                                        <label class="form-check-label" for="external">External</label>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-=======
->>>>>>> 3238dc5af06add426050a6ff66984a0dda447e8a
 
                     <div className="row mt-4">
                         <div className="col-12">
@@ -425,14 +376,14 @@ const Playerprofile = (props) => {
                     {editing ? (
                         <button className="d-flex w-100 btn bg-darkPurple text-white justify-content-center py-3 rounded-pill" disabled={isLoading ? true : false} onClick={() => saveInformation()}>{isLoading ? 'Saving' : 'Save'}</button>
                     ) : (
-                        <button className="d-flex w-100 btn bg-darkPurple text-white justify-content-center py-3 rounded-pill" onClick={() => setEditing(true)}>Edit</button>
+                        <button className="d-flex w-100 btn bg-darkPurple text-white justify-content-center py-3 rounded-pill" onClick={() => setEditing(true)} disabled={activeButton == 'information' ? false : true}>Edit</button>
                     )}
                 </div>
                 <div className="col-6">
                     {editing ? (
                         <button className="w-100 btn border border-white text-white justify-content-center py-3 rounded-pill" onClick={() => setEditing(false)}>Cancel</button>
                     ) : (
-                        <Link to="/players" className="d-flex btn border border-white text-white justify-content-center py-3 rounded-pill">
+                        <Link to={sessionStorage.getItem('previousPage')} className="d-flex btn border border-white text-white justify-content-center py-3 rounded-pill">
                             Back
                         </Link>
                     )}

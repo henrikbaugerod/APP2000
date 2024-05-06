@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom';
 
 const Menu = (props) => {
     useEffect(() => {
-        sessionStorage.setItem('currentPage', '/menu')
+        sessionStorage.setItem('previousPage', sessionStorage.getItem('currentPage'));
+        sessionStorage.setItem('currentPage', '/menu');
     }, []);
 
     return (

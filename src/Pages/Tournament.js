@@ -59,7 +59,8 @@ const Tournament = (props) => {
     }
 
     useEffect(() => {
-        sessionStorage.setItem('currentPage', '/tournament')
+        sessionStorage.setItem('previousPage', sessionStorage.getItem('currentPage'));
+        sessionStorage.setItem('currentPage', '/tournament');
     }, []);
 
     return (

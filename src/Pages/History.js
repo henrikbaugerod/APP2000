@@ -67,7 +67,6 @@ const History = (props) => {
 
                 {props.matches.map((match) => (
                     <div className="row">
-
                         <HistoryMatch
                             id={match.id}
                             player1={match.player_one}
@@ -77,6 +76,7 @@ const History = (props) => {
                             image2={props.players[match.player_two].image}
                             score={match.score_player_one}
                             score2={match.score_player_two}
+                            category={selectedCategory}
                         />
 
                     </div>

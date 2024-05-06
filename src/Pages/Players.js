@@ -32,7 +32,8 @@ const Players = (props) => {
     }
 
     useEffect(() => {
-        sessionStorage.setItem("currentPage", "/players");
+        sessionStorage.setItem('previousPage', sessionStorage.getItem('currentPage'));
+        sessionStorage.setItem('currentPage', '/players');
     }, []);
 
     return (

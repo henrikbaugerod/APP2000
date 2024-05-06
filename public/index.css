@@ -292,12 +292,6 @@ img.playerBoxIcon {
     margin-bottom: 10px;
 }
 
-<<<<<<< HEAD
-.buttonReg button{
-    width: 100%;
-}
-
-=======
 input[type="file"] {
     outline: none;
     padding: 4px;
@@ -366,7 +360,6 @@ input[type="file"]::file-selector-button:active {
 }
 
 
->>>>>>> 3238dc5af06add426050a6ff66984a0dda447e8a
 /* =====================================  */
 /* PlayerProfile.js */
 /* =====================================  */
