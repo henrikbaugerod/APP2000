@@ -13,7 +13,6 @@ const Playerprofile = (props) => {
     const [playerId, setPlayerId] = useState(sessionStorage.getItem("playerId"));
     const [isLoading, setIsLoading] = useState(false);
     const [editing, setEditing] = useState(false);
-    const [backLink, setBackLink] = useState(sessionStorage.getItem("backLink"));
 
     const initialName = (props.players && playerId && props.players[playerId]) ? props.players[playerId].name : '';
     const [name, setName] = useState(initialName);
@@ -186,7 +185,7 @@ const Playerprofile = (props) => {
 
     return (
         <div className="container">
-            <Header backLink={backLink ? backLink : "/players"} />
+            <Header />
 
             <div className="row justify-content-center">
                 <div className="col-4">
