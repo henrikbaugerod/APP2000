@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 const NewGamePlayer = (props) => {
 
   const handleClick = () => {
-    console.log("Link clicked");
     sessionStorage.setItem("findPlayer", true);
-    console.log(sessionStorage.getItem("findPlayer"));
 
     // Vite hvilken side som er trykket
     if (props.playerPressed == "1") {
