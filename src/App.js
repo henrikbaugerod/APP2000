@@ -47,7 +47,10 @@ function App() {
                 id: doc.id,
             }));
 
-            setMatches(unsortedMatches);
+            const sortedMatches = [...unsortedMatches]
+                .sort((a, b) => b.date - a.date) // Sort players by points in descending order
+
+            setMatches(sortedMatches);
         });
     };
 

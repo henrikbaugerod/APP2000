@@ -5,32 +5,36 @@ import HistoryMatch from '../Components/HistoryMatch';
 import { Link } from 'react-router-dom';
 
 const History = (props) => {
-    const [filtredPlayers, setfiltredPlayers] = useState(null);
-    const [selectedCategory, setSelectedCategory] = useState("all");
     const { Matches } = props;
-    console.log(Matches);
+
+    const [filtredMatches, setfiltredMatches] = useState(null);
+    const [selectedCategory, setSelectedCategory] = useState('all')
 
     useEffect(() => {
-        setfiltredPlayers(props.history);
-    }, [props.players]);
+        setfiltredMatches(props.matches);
+    }, [props.matches]);
 
     function handleCategory(e) {
-        let playerCategory = e.target.value;
-        playerCategory !== "all"
-            ? setfiltredPlayers(filterPlayers(playerCategory))
-            : setfiltredPlayers(props.players);
+        let matchCategory = e.target.value;
+        matchCategory !== "all"
+            ? setfiltredMatches(filterMatches(matchCategory))
+            : setfiltredMatches(props.matches);
 
-        setSelectedCategory(e.target.value)
+        setSelectedCategory(e.target.value);
     }
 
-    function filterPlayers(category) {
-        let filtredPlayers = props.players.filter(type => type.category === category);
-        return filtredPlayers;
+    function filterMatches(category) {
+        let filtredMatches = props.matches.filter(
+            (type) => type.location === category
+        );
+        return filtredMatches;
     }
 
     useEffect(() => {
-        sessionStorage.setItem('currentPage', '/history')
+        sessionStorage.setItem('previousPage', sessionStorage.getItem('currentPage'));
+        sessionStorage.setItem('currentPage', '/history');
     }, []);
+
 
     return (
         <div className="container">
@@ -50,12 +54,12 @@ const History = (props) => {
                     </button>
                 </div>
                 <div className="col-4 text-center">
-                    <button value="catch" onClick={handleCategory} className={`categoryButton ${selectedCategory === 'catch' ? 'bg-purple active-shadow-bottom' : 'bg-normalPurple active-border-bottom'} w-100 py-2 text-white categoryButton`}>
+                    <button value="Catch" onClick={handleCategory} className={`categoryButton ${selectedCategory === 'catch' ? 'bg-purple active-shadow-bottom' : 'bg-normalPurple active-border-bottom'} w-100 py-2 text-white categoryButton`}>
                         Catch
                     </button>
                 </div>
                 <div className="col-4 text-center">
-                    <button value="external" onClick={handleCategory} className={`categoryButton ${selectedCategory === 'external' ? 'bg-purple active-shadow-bottom' : 'bg-normalPurple active-border-bottom'} w-100 py-2 text-white categoryButton`}>
+                    <button value="External" onClick={handleCategory} className={`categoryButton ${selectedCategory === 'external' ? 'bg-purple active-shadow-bottom' : 'bg-normalPurple active-border-bottom'} w-100 py-2 text-white categoryButton`}>
                         External
                     </button>
                 </div>
@@ -65,22 +69,23 @@ const History = (props) => {
                 {console.log("Matches = ", props.matches)}
                 {console.log("Player = ", props.players)}
 
-                {props.matches.map((match) => (
-                    <div className="row">
-                        <HistoryMatch
-                            id={match.id}
-                            player1={match.player_one}
-                            player2={match.player_two}
-                            date={match.date.toDate().toDateString()}
-                            image={props.players[match.player_one].image}
-                            image2={props.players[match.player_two].image}
-                            score={match.score_player_one}
-                            score2={match.score_player_two}
-                            category={selectedCategory}
-                        />
+                {filtredMatches &&
+                    filtredMatches.map((match) => (
+                        <div className="row">
+                            <HistoryMatch
+                                id={match.id}
+                                player1={match.player_one}
+                                player2={match.player_two}
+                                date={match.date.toDate().toDateString()}
+                                image={props.players[match.player_one].image}
+                                image2={props.players[match.player_two].image}
+                                score={match.score_player_one}
+                                score2={match.score_player_two}
+                                category={selectedCategory}
+                            />
 
-                    </div>
-                ))}
+                        </div>
+                    ))}
             </div>
         </div>
     );

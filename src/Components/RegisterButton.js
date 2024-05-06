@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 import { setDoc, updateDoc, doc, Timestamp } from "firebase/firestore";
 import { db } from "../firebase";
 
 const RegisterButton = (props) => {
+    const navigate = useNavigate();
     const player1Poeng = sessionStorage.getItem("player1poeng");
     const player2Poeng = sessionStorage.getItem("player2poeng");
     const playerId1 = props.playerId1;
@@ -54,15 +56,25 @@ const RegisterButton = (props) => {
                 };
                 props.setPlayers(updatedPlayers);
             }
-            
+
         } catch (e) {
             console.log("Could not update player points")
         } finally {
             console.log("Points updated")
         }
 
+        // Finding out if the match has an external player
+        let externalPlayer = false;
+        if (props.players.players[playerId1].location === 'external' || props.players.players[playerId2].location === 'external') {
+            externalPlayer = true;
+        }
+
         // Add the match to the database
-        const maxId = findMaxId(props.matches);
+        let maxId = findMaxId(props.matches);
+        if (maxId === -Infinity) {
+            maxId = 0;
+        }
+        console.log(maxId, 'maxId')
         const newMatchId = (maxId + 1);
         const matchData = {
             date: Timestamp.now(),
@@ -70,8 +82,9 @@ const RegisterButton = (props) => {
             player_one: playerId1,
             player_two: playerId2,
             score_player_one: props.player1Points,
-            score_player_two: props.player2Points
-        } 
+            score_player_two: props.player2Points,
+            location: externalPlayer ? 'External' : 'Catch' 
+        }
 
         // Add new match to Firestore
         await setDoc(doc(db, "matches", newMatchId.toString()), matchData);
@@ -80,11 +93,8 @@ const RegisterButton = (props) => {
         const updatedMatches = [...props.matches, matchData];
         props.setMatches(updatedMatches);
 
-
-
-        // 
-
         // Gå til forside/annen logikk
+        navigate("/");
     };
 
     // Function to find the biggest id
