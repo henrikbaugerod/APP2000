@@ -37,96 +37,99 @@ const NewGame = (props) => {
     }, []);
 
     return (
-        <div className="container">
-            <Header
-                backLink={"/"}
-                onSetPlayerId1={props.onSetPlayerId1}
-                onSetPlayerId2={props.onSetPlayerId2}
-            />
+      <div className="container">
+        <Header
+          backLink={"/"}
+          onSetPlayerId1={props.onSetPlayerId1}
+          onSetPlayerId2={props.onSetPlayerId2}
+        />
 
-            {/* PLAYER CARD */}
-            <div className="row mt-5 mb-5">
-                {/* Player 1 */}
-                <NewGamePlayer
-                    playerPressed="1"
-                    players={props}
-                    playerId={props.playerId1}
-                />
+        {/* PLAYER CARD */}
+        <div className="row mt-5 mb-5">
+          {/* Player 1 */}
+          <NewGamePlayer
+            playerPressed="1"
+            players={props}
+            playerId={props.playerId1}
+          />
 
-                <div className="col-2 d-flex justify-content-center align-items-center">
-                    <p>vs</p>
-                </div>
+          <div className="col-2 d-flex justify-content-center align-items-center">
+            <p>vs</p>
+          </div>
 
-                {/* Player 2 */}
-                <NewGamePlayer
-                    playerPressed="2"
-                    players={props}
-                    playerId={props.playerId2}
-                />
-            </div>
-
-            {/* PLAYER POINTS */}
-            <div className="row mt-5 mb-5">
-                {/* Player 1 */}
-                <NewGamePoints
-                    onSetPlayer1Points={setPlayer1Points}
-                    onSetPlayer2Points={setPlayer2Points}
-                    currentPoints={player1Points}
-                    playerGainedPoints={player1GainedPoints}
-                    setPlayer1GainedPoints={setPlayer1GainedPoints}
-                    setPlayer2GainedPoints={setPlayer2GainedPoints}
-                    player1Points={player1Points}
-                    player2Points={player2Points}
-                    pointsPressed="1"
-                />
-
-                <div className="col-2"></div>
-
-                {/* Player 2 */}
-                <NewGamePoints
-                    onSetPlayer1Points={setPlayer1Points}
-                    onSetPlayer2Points={setPlayer2Points}
-                    currentPoints={player2Points}
-                    playerGainedPoints={player2GainedPoints}
-                    setPlayer1GainedPoints={setPlayer1GainedPoints}
-                    setPlayer2GainedPoints={setPlayer2GainedPoints}
-                    player1Points={player1Points}
-                    player2Points={player2Points}
-                    pointsPressed="2"
-                />
-            </div>
-
-            {/* Buttons */}
-            <div className="row mt-5 mb-5">
-                <div className="col-6 d-flex btn button bg-darkPurple text-white justify-content-center py-3 rounded-pill">
-                    <RegisterButton
-                        buttonText="Register"
-                        playerId1={props.playerId1}
-                        playerId2={props.playerId2}
-                        player1GainedPoints={player1GainedPoints}
-                        player2GainedPoints={player2GainedPoints}
-                        player1Points={player1Points}
-                        player2Points={player2Points}
-                        players={props}
-                        matches={props.matches}
-                        setMatches={props.setMatches}
-                    ></RegisterButton>
-                </div>
-                <div className="col-6">
-                    <Link
-                        to="/"
-                        className="d-flex btn border border-white text-white justify-content-center py-3 rounded-pill"
-                        onClick={() => {
-                            props.onSetPlayerId1(null);
-                            props.onSetPlayerId2(null);
-                            sessionStorage.setItem("playerPressed", null);
-                        }}
-                    >
-                        Cancel
-                    </Link>
-                </div>
-            </div>
+          {/* Player 2 */}
+          <NewGamePlayer
+            playerPressed="2"
+            players={props}
+            playerId={props.playerId2}
+          />
         </div>
+
+        {/* PLAYER POINTS */}
+        <div className="row mt-5 mb-5">
+          {/* Player 1 */}
+          <NewGamePoints
+            onSetPlayer1Points={setPlayer1Points}
+            onSetPlayer2Points={setPlayer2Points}
+            currentPoints={player1Points}
+            playerGainedPoints={player1GainedPoints}
+            setPlayer1GainedPoints={setPlayer1GainedPoints}
+            setPlayer2GainedPoints={setPlayer2GainedPoints}
+            player1Points={player1Points}
+            player2Points={player2Points}
+            pointsPressed="1"
+          />
+
+          <div className="col-2"></div>
+
+          {/* Player 2 */}
+          <NewGamePoints
+            onSetPlayer1Points={setPlayer1Points}
+            onSetPlayer2Points={setPlayer2Points}
+            currentPoints={player2Points}
+            playerGainedPoints={player2GainedPoints}
+            setPlayer1GainedPoints={setPlayer1GainedPoints}
+            setPlayer2GainedPoints={setPlayer2GainedPoints}
+            player1Points={player1Points}
+            player2Points={player2Points}
+            pointsPressed="2"
+          />
+        </div>
+
+        {/* Buttons */}
+        <div className="row mt-5 mb-5">
+          <div className="col-6 d-flex btn button bg-darkPurple text-white justify-content-center py-3 rounded-pill">
+            <RegisterButton
+              buttonText="Register"
+              playerId1={props.playerId1}
+              playerId2={props.playerId2}
+              player1GainedPoints={player1GainedPoints}
+              player2GainedPoints={player2GainedPoints}
+              player1Points={player1Points}
+              player2Points={player2Points}
+              players={props}
+              matches={props.matches}
+              setMatches={props.setMatches}
+              onSetPlayerId1={props.onSetPlayerId1}
+              onSetPlayerId2={props.onSetPlayerId2}
+              onSetPlayerId={setPlayerId}
+            ></RegisterButton>
+          </div>
+          <div className="col-6">
+            <Link
+              to="/"
+              className="d-flex btn border border-white text-white justify-content-center py-3 rounded-pill"
+              onClick={() => {
+                props.onSetPlayerId1(null);
+                props.onSetPlayerId2(null);
+                sessionStorage.setItem("playerPressed", null);
+              }}
+            >
+              Cancel
+            </Link>
+          </div>
+        </div>
+      </div>
     );
 };
 

@@ -15,6 +15,11 @@ const RegisterButton = (props) => {
 
     // Bruke poeng og oppdatere tilsvarende til database for hver spiller
     const handleClick = async () => {
+
+        // Logikk som ikke tillater kun en spiller, eller lik spiller
+        
+
+
         let pointsPlayer1;
         let pointsPlayer2;
 
@@ -35,7 +40,7 @@ const RegisterButton = (props) => {
             await updateDoc(player2Ref, { points: pointsPlayer2 });
 
             // Update the players with the new points
-            const updatedPlayers = [...props.players];
+            const updatedPlayers = [...props.players.players];
             const playerIndex1 = updatedPlayers.findIndex(
                 (player) => player.id === props.playerId1
             );
@@ -93,7 +98,11 @@ const RegisterButton = (props) => {
         const updatedMatches = [...props.matches, matchData];
         props.setMatches(updatedMatches);
 
-        // Gå til forside/annen logikk
+        // Gå til forside/annen logikk, resette NewGame
+        props.onSetPlayerId1(null);
+        props.onSetPlayerId2(null);
+        sessionStorage.removeItem("playerId");
+        console.log("fixed");
         navigate("/");
     };
 
