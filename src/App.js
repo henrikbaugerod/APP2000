@@ -58,9 +58,12 @@ function App() {
     useEffect(() => {
         fetchPost();
         fetchMatches();
+    }, []); 
+
+    useEffect(() => {
         sessionStorage.setItem("currentPage", "/");
         sessionStorage.setItem("previousPage", "/");
-    }, []);
+    })
 
     return (
         <HashRouter>

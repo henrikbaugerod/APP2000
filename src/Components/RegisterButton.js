@@ -38,29 +38,35 @@ const RegisterButton = (props) => {
         try {
             await updateDoc(player1Ref, { points: pointsPlayer1 });
             await updateDoc(player2Ref, { points: pointsPlayer2 });
+            console.log('Line 41')
 
             // Update the players with the new points
             const updatedPlayers = [...props.players.players];
+            console.log('Line 45')
             const playerIndex1 = updatedPlayers.findIndex(
                 (player) => player.id === props.playerId1
             );
+            console.log('Line 49')
             const playerIndex2 = updatedPlayers.findIndex(
                 (player) => player.id === props.playerId2
             );
+            console.log('Line 53')
             if (playerIndex1 !== -1) {
                 updatedPlayers[playerIndex1] = {
                     ...updatedPlayers[playerIndex1],
                     points: pointsPlayer1,
                 };
-                props.setPlayers(updatedPlayers);
+                props.players.setPlayers(updatedPlayers);
             }
+            console.log('Line 61')
             if (playerIndex2 !== -1) {
                 updatedPlayers[playerIndex2] = {
                     ...updatedPlayers[playerIndex2],
                     points: pointsPlayer2,
                 };
-                props.setPlayers(updatedPlayers);
+                props.players.setPlayers(updatedPlayers);
             }
+            console.log('Line 69 DONE!')
 
         } catch (e) {
             console.log("Could not update player points")

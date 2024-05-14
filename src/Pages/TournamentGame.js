@@ -5,34 +5,59 @@ import { Link } from 'react-router-dom';
 const TournamentGame = (props) => {
     const [winners, setWinners] = useState([]);
     const [matches, setMatches] = useState(null);
+    const [goNext, setGoNext] = useState(true);
+    const [resetOpacity, setResetOpacity] = useState(false);
 
     const handleClick = (e, key, match) => {
         const img1 = document.getElementsByClassName('playerImg1-' + key);
         const img2 = document.getElementsByClassName('playerImg2-' + key);
 
-        if (!match.player1.includes('BYE') && !match.player2.includes('BYE')) {
+        if (!match.player1.toString().includes('BYE') && !match.player2.includes('BYE')) {
+            // Copy the existing winners array
+            const newWinners = [...winners];
+
+            // Remove the current players from the newWinners array if they were selected before
+            const matchPlayer1Index = newWinners.indexOf(match.player1);
+            const matchPlayer2Index = newWinners.indexOf(match.player2);
+            if (matchPlayer1Index !== -1) {
+                newWinners.splice(matchPlayer1Index, 1);
+            }
+            if (matchPlayer2Index !== -1) {
+                newWinners.splice(matchPlayer2Index, 1);
+            }
+
+            // Add the current winner to the newWinners array based on the clicked player
             if (e.target.classList.contains('playerImg1')) {
                 img1[0].classList.remove('opacity-25');
                 img2[0].classList.add('opacity-25');
 
-                setWinners(prevWinners => [...prevWinners, match.player1]);
+                newWinners.push(match.player1);
             } else {
                 img2[0].classList.remove('opacity-25');
                 img1[0].classList.add('opacity-25');
 
-                setWinners(prevWinners => [...prevWinners, match.player2]);
+                newWinners.push(match.player2);
             }
+
+            // Update the winners array
+            setWinners(newWinners);
         }
     };
 
     useEffect(() => {
-        console.log("Winners: ", props.winners)
-        const matches = document.getElementsByClassName('tournamentBox');
-        setMatches(matches.length)
+        if (winners.length == props.tournamentMatches.length) {
+            setGoNext(false);
+        }
+    }, [winners])
+
+
+    useEffect(() => {
+        const lmatches = document.getElementsByClassName('tournamentBox');
+        setMatches(lmatches.length)
         const box = document.getElementsByClassName('tournamentBoxChild');
 
-        for (let i = 0; i < matches.length; i++) {
-            if (matches[i].textContent.includes('BYE')) {
+        for (let i = 0; i < lmatches.length; i++) {
+            if (lmatches[i].textContent.includes('BYE')) {
                 const tournamentBoxId = box[i].getAttribute('id');
 
                 setWinners(prevWinners => [...prevWinners, tournamentBoxId]);
@@ -40,6 +65,9 @@ const TournamentGame = (props) => {
         }
     }, [])
 
+    useEffect(() => {
+        console.log("Winners: ", winners)
+    }, [winners])
 
 
     const nextRound = () => {
@@ -59,9 +87,27 @@ const TournamentGame = (props) => {
         props.setRound(props.round - 1)
     }
 
+    useEffect(() => {
+        sessionStorage.setItem('previousPage', sessionStorage.getItem('currentPage'));
+        sessionStorage.setItem('currentPage', '/tournament');
+    }, []);
+
+    useEffect(() => {
+        // Remove opacity-25 class from all player images
+        const playerImages = document.getElementsByClassName('playerImg1');
+        for (let img of playerImages) {
+            img.classList.remove('opacity-25');
+        }
+
+        const playerImages2 = document.getElementsByClassName('playerImg2');
+        for (let img of playerImages2) {
+            img.classList.remove('opacity-25');
+        }
+    }, [props.round])
+
     return (
         <div className="container">
-            <Header backLink={'/tournament'} />
+            <Header previousPage={'/tournament'} />
 
             <div className="row justify-content-center g-3 text-center">
                 {props.round === 1 ? <h2>Final</h2> : null}
@@ -103,11 +149,11 @@ const TournamentGame = (props) => {
             <div className="row justify-content-center mt-4">
                 <div className="col-auto">
                     {props.round === 1 ? (
-                        <Link to="/tournamentwinner" className="btn bg-darkPurple text-white justify-content-center py-3 rounded-pill px-5" onClick={() => sessionStorage.setItem('tournamentWinnerId', winners[0])}>
-                            End tournament
+                        <Link to="/tournamentwinner" className="justify-content-center py-3 rounded-pill px-5" onClick={() => sessionStorage.setItem('tournamentWinnerId', winners[0])}>
+                            <button class="btn bg-darkPurple text-white">End tournamentsss</button>
                         </Link>
                     ) : (
-                        <button className="btn bg-darkPurple text-white justify-content-center py-3 rounded-pill px-5" /* disabled={winners.length < props.tournamentMatches.length} */ onClick={nextRound}>Next round</button>
+                        <button className="btn bg-darkPurple text-white justify-content-center py-3 rounded-pill px-5" disabled={goNext} onClick={nextRound}>Next round</button>
                     )}
 
                 </div>
