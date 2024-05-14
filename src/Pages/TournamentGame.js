@@ -150,7 +150,7 @@ const TournamentGame = (props) => {
                 <div className="col-auto">
                     {props.round === 1 ? (
                         <Link to="/tournamentwinner" className="justify-content-center py-3 rounded-pill px-5" onClick={() => sessionStorage.setItem('tournamentWinnerId', winners[0])}>
-                            <button class="btn bg-darkPurple text-white">End tournamentsss</button>
+                            <button class="btn bg-darkPurple text-white">End tournament</button>
                         </Link>
                     ) : (
                         <button className="btn bg-darkPurple text-white justify-content-center py-3 rounded-pill px-5" disabled={goNext} onClick={nextRound}>Next round</button>
